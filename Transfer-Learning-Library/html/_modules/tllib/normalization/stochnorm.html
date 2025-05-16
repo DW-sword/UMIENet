@@ -1,0 +1,754 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tllib.normalization.stochnorm &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>tllib.normalization.stochnorm</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for tllib.normalization.stochnorm</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Yifei Ji</span>
+<span class="sd">@contact: jiyf990330@163.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="k">as</span> <span class="nn">F</span>
+
+<span class="kn">from</span> <span class="nn">torch.nn.parameter</span> <span class="kn">import</span> <span class="n">Parameter</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;StochNorm1d&#39;</span><span class="p">,</span> <span class="s1">&#39;StochNorm2d&#39;</span><span class="p">,</span> <span class="s1">&#39;convert_model&#39;</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">_StochNorm</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_features</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">affine</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">track_running_stats</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">0.5</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">_StochNorm</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span> <span class="o">=</span> <span class="n">num_features</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">eps</span> <span class="o">=</span> <span class="n">eps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">momentum</span> <span class="o">=</span> <span class="n">momentum</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">affine</span> <span class="o">=</span> <span class="n">affine</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">track_running_stats</span> <span class="o">=</span> <span class="n">track_running_stats</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">affine</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bias</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;weight&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;bias&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_running_stats</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;running_mean&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s1">&#39;running_var&#39;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">num_features</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;running_mean&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">register_parameter</span><span class="p">(</span><span class="s1">&#39;running_var&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_parameters</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">reset_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">track_running_stats</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running_mean</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">running_var</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">affine</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">uniform_</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_check_input_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">NotImplemented</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_input_dim</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="n">z_0</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">(</span>
+                <span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">momentum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+
+            <span class="n">z_1</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">(</span>
+                <span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
+                <span class="kc">True</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">momentum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span>
+                                                                                      <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span>
+                                                                                      <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+            <span class="k">elif</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span>
+                                                                                      <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">float</span><span class="p">()</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">BaseException</span><span class="p">()</span>
+
+            <span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">*</span> <span class="n">z_0</span> <span class="o">+</span> <span class="n">s</span> <span class="o">*</span> <span class="n">z_1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">batch_norm</span><span class="p">(</span>
+                <span class="nb">input</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">running_var</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">bias</span><span class="p">,</span>
+                <span class="kc">False</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">momentum</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">eps</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">z</span>
+
+
+<div class="viewcode-block" id="StochNorm1d"><a class="viewcode-back" href="../../../tllib/normalization.html#tllib.normalization.stochnorm.StochNorm1d">[docs]</a><span class="k">class</span> <span class="nc">StochNorm1d</span><span class="p">(</span><span class="n">_StochNorm</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Applies Stochastic Normalization over a 2D or 3D input (a mini-batch of 1D inputs with optional additional channel dimension)</span>
+
+<span class="sd">    Stochastic  Normalization is proposed in `Stochastic Normalization (NIPS 2020) &lt;https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf&gt;`_</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}</span>
+
+<span class="sd">         y_i = \gamma \hat{x}_i + \beta</span>
+
+<span class="sd">    where :math:`\mu` and :math:`\sigma` are mean and variance of current mini-batch data.</span>
+
+<span class="sd">    :math:`\tilde{\mu}` and :math:`\tilde{\sigma}` are current moving statistics of training data.</span>
+
+<span class="sd">    :math:`s` is a branch-selection variable generated from a Bernoulli distribution, where :math:`P(s=1)=p`.</span>
+
+
+<span class="sd">    During training, there are two normalization branches. One uses mean and</span>
+<span class="sd">    variance of current mini-batch data, while the other uses current moving</span>
+<span class="sd">    statistics of the training data as usual batch normalization.</span>
+
+<span class="sd">    During evaluation, the moving statistics is used for normalization.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_features (int): :math:`c` from an expected input of size :math:`(b, c, l)` or  :math:`l` from an expected input of size :math:`(b, l)`.</span>
+<span class="sd">        eps (float): A value added to the denominator for numerical stability.</span>
+<span class="sd">            Default: 1e-5</span>
+<span class="sd">        momentum (float): The value used for the running_mean and running_var</span>
+<span class="sd">            computation. Default: 0.1</span>
+<span class="sd">        affine (bool): A boolean value that when set to ``True``, gives the layer learnable</span>
+<span class="sd">            affine parameters. Default: ``True``</span>
+<span class="sd">        track_running_stats (bool): A boolean value that when set to True, this module tracks</span>
+<span class="sd">         the running mean and variance, and when set to False, this module does not</span>
+<span class="sd">         track such statistics, and initializes statistics buffers running_mean and</span>
+<span class="sd">         running_var as None. When these buffers are None, this module always uses</span>
+<span class="sd">         batch statistics in both training and eval modes. Default: True</span>
+<span class="sd">         p (float): The probability to choose the second branch (usual BN). Default: 0.5</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Input: :math:`(b, l)` or :math:`(b, c, l)`</span>
+<span class="sd">        - Output: :math:`(b, l)` or :math:`(b, c, l)` (same shape as input)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_check_input_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">2</span> <span class="ow">and</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;expected 2D or 3D input (got </span><span class="si">{}</span><span class="s1">D input)&#39;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span></div>
+
+
+<div class="viewcode-block" id="StochNorm2d"><a class="viewcode-back" href="../../../tllib/normalization.html#tllib.normalization.stochnorm.StochNorm2d">[docs]</a><span class="k">class</span> <span class="nc">StochNorm2d</span><span class="p">(</span><span class="n">_StochNorm</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies Stochastic  Normalization over a 4D input (a mini-batch of 2D inputs with additional channel dimension)</span>
+
+<span class="sd">    Stochastic  Normalization is proposed in `Stochastic Normalization (NIPS 2020) &lt;https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf&gt;`_</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}</span>
+
+<span class="sd">         y_i = \gamma \hat{x}_i + \beta</span>
+
+<span class="sd">    where :math:`\mu` and :math:`\sigma` are mean and variance of current mini-batch data.</span>
+
+<span class="sd">    :math:`\tilde{\mu}` and :math:`\tilde{\sigma}` are current moving statistics of training data.</span>
+
+<span class="sd">    :math:`s` is a branch-selection variable generated from a Bernoulli distribution, where :math:`P(s=1)=p`.</span>
+
+
+<span class="sd">    During training, there are two normalization branches. One uses mean and</span>
+<span class="sd">    variance of current mini-batch data, while the other uses current moving</span>
+<span class="sd">    statistics of the training data as usual batch normalization.</span>
+
+<span class="sd">    During evaluation, the moving statistics is used for normalization.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_features (int): :math:`c` from an expected input of size :math:`(b, c, h, w)`.</span>
+<span class="sd">        eps (float): A value added to the denominator for numerical stability.</span>
+<span class="sd">            Default: 1e-5</span>
+<span class="sd">        momentum (float): The value used for the running_mean and running_var</span>
+<span class="sd">            computation. Default: 0.1</span>
+<span class="sd">        affine (bool): A boolean value that when set to ``True``, gives the layer learnable</span>
+<span class="sd">            affine parameters. Default: ``True``</span>
+<span class="sd">        track_running_stats (bool): A boolean value that when set to True, this module tracks</span>
+<span class="sd">         the running mean and variance, and when set to False, this module does not</span>
+<span class="sd">         track such statistics, and initializes statistics buffers running_mean and</span>
+<span class="sd">         running_var as None. When these buffers are None, this module always uses</span>
+<span class="sd">         batch statistics in both training and eval modes. Default: True</span>
+<span class="sd">         p (float): The probability to choose the second branch (usual BN). Default: 0.5</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Input: :math:`(b, c, h, w)`</span>
+<span class="sd">        - Output: :math:`(b, c, h, w)` (same shape as input)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_check_input_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;expected 4D input (got </span><span class="si">{}</span><span class="s1">D input)&#39;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span></div>
+
+
+<div class="viewcode-block" id="StochNorm3d"><a class="viewcode-back" href="../../../tllib/normalization.html#tllib.normalization.stochnorm.StochNorm3d">[docs]</a><span class="k">class</span> <span class="nc">StochNorm3d</span><span class="p">(</span><span class="n">_StochNorm</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applies Stochastic  Normalization over a 5D input (a mini-batch of 3D inputs with additional channel dimension)</span>
+
+<span class="sd">    Stochastic  Normalization is proposed in `Stochastic Normalization (NIPS 2020) &lt;https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf&gt;`_</span>
+
+<span class="sd">    .. math::</span>
+
+<span class="sd">        \hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}</span>
+
+<span class="sd">        \hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}</span>
+
+<span class="sd">         y_i = \gamma \hat{x}_i + \beta</span>
+
+<span class="sd">    where :math:`\mu` and :math:`\sigma` are mean and variance of current mini-batch data.</span>
+
+<span class="sd">    :math:`\tilde{\mu}` and :math:`\tilde{\sigma}` are current moving statistics of training data.</span>
+
+<span class="sd">    :math:`s` is a branch-selection variable generated from a Bernoulli distribution, where :math:`P(s=1)=p`.</span>
+
+
+<span class="sd">    During training, there are two normalization branches. One uses mean and</span>
+<span class="sd">    variance of current mini-batch data, while the other uses current moving</span>
+<span class="sd">    statistics of the training data as usual batch normalization.</span>
+
+<span class="sd">    During evaluation, the moving statistics is used for normalization.</span>
+
+
+<span class="sd">    Args:</span>
+<span class="sd">        num_features (int): :math:`c` from an expected input of size :math:`(b, c, d, h, w)`</span>
+<span class="sd">        eps (float): A value added to the denominator for numerical stability.</span>
+<span class="sd">            Default: 1e-5</span>
+<span class="sd">        momentum (float): The value used for the running_mean and running_var</span>
+<span class="sd">            computation. Default: 0.1</span>
+<span class="sd">        affine (bool): A boolean value that when set to ``True``, gives the layer learnable</span>
+<span class="sd">            affine parameters. Default: ``True``</span>
+<span class="sd">        track_running_stats (bool): A boolean value that when set to True, this module tracks</span>
+<span class="sd">         the running mean and variance, and when set to False, this module does not</span>
+<span class="sd">         track such statistics, and initializes statistics buffers running_mean and</span>
+<span class="sd">         running_var as None. When these buffers are None, this module always uses</span>
+<span class="sd">         batch statistics in both training and eval modes. Default: True</span>
+<span class="sd">         p (float): The probability to choose the second branch (usual BN). Default: 0.5</span>
+
+<span class="sd">    Shape:</span>
+<span class="sd">        - Input: :math:`(b, c, d, h, w)`</span>
+<span class="sd">        - Output: :math:`(b, c, d, h, w)` (same shape as input)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_check_input_dim</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;expected 4D input (got </span><span class="si">{}</span><span class="s1">D input)&#39;</span>
+                             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">input</span><span class="o">.</span><span class="n">dim</span><span class="p">()))</span></div>
+
+
+<div class="viewcode-block" id="convert_model"><a class="viewcode-back" href="../../../tllib/normalization.html#tllib.normalization.stochnorm.convert_model">[docs]</a><span class="k">def</span> <span class="nf">convert_model</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Traverses the input module and its child recursively and replaces all</span>
+<span class="sd">    instance of BatchNorm to StochNorm.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        module (torch.nn.Module): The input module needs to be convert to StochNorm model.</span>
+<span class="sd">        p (float): The hyper-parameter for StochNorm layer.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">         The module converted to StochNorm version.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mod</span> <span class="o">=</span> <span class="n">module</span>
+    <span class="k">for</span> <span class="n">pth_module</span><span class="p">,</span> <span class="n">stoch_module</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">batchnorm</span><span class="o">.</span><span class="n">BatchNorm1d</span><span class="p">,</span>
+                                         <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">batchnorm</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">,</span>
+                                         <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">batchnorm</span><span class="o">.</span><span class="n">BatchNorm3d</span><span class="p">],</span>
+                                        <span class="p">[</span><span class="n">StochNorm1d</span><span class="p">,</span>
+                                         <span class="n">StochNorm2d</span><span class="p">,</span>
+                                         <span class="n">StochNorm3d</span><span class="p">]):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">pth_module</span><span class="p">):</span>
+            <span class="n">mod</span> <span class="o">=</span> <span class="n">stoch_module</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">num_features</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">eps</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">momentum</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">affine</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="n">mod</span><span class="o">.</span><span class="n">running_mean</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">running_mean</span>
+            <span class="n">mod</span><span class="o">.</span><span class="n">running_var</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">running_var</span>
+
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">affine</span><span class="p">:</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">weight</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+                <span class="n">mod</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">bias</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_children</span><span class="p">():</span>
+        <span class="n">mod</span><span class="o">.</span><span class="n">add_module</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">convert_model</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">mod</span></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

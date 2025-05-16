@@ -1,0 +1,578 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tllib.vision.datasets.domainnet &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../../index.html">Module code</a> &gt;</li>
+        
+      <li>tllib.vision.datasets.domainnet</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for tllib.vision.datasets.domainnet</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Junguang Jiang</span>
+<span class="sd">@contact: JiangJunguang1123@outlook.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">.imagelist</span> <span class="kn">import</span> <span class="n">ImageList</span>
+<span class="kn">from</span> <span class="nn">._util</span> <span class="kn">import</span> <span class="n">download</span> <span class="k">as</span> <span class="n">download_data</span><span class="p">,</span> <span class="n">check_exits</span>
+
+
+<div class="viewcode-block" id="DomainNet"><a class="viewcode-back" href="../../../../tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet">[docs]</a><span class="k">class</span> <span class="nc">DomainNet</span><span class="p">(</span><span class="n">ImageList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;`DomainNet &lt;http://ai.bu.edu/M3SDA/#dataset&gt;`_ (cleaned version, recommended)</span>
+
+<span class="sd">    See `Moment Matching for Multi-Source Domain Adaptation &lt;https://arxiv.org/abs/1812.01754&gt;`_ for details.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        root (str): Root directory of dataset</span>
+<span class="sd">        task (str): The task (domain) to create dataset. Choices include ``&#39;c&#39;``:clipart, \</span>
+<span class="sd">            ``&#39;i&#39;``: infograph, ``&#39;p&#39;``: painting, ``&#39;q&#39;``: quickdraw, ``&#39;r&#39;``: real, ``&#39;s&#39;``: sketch</span>
+<span class="sd">        split (str, optional): The dataset split, supports ``train``, or ``test``.</span>
+<span class="sd">        download (bool, optional): If true, downloads the dataset from the internet and puts it \</span>
+<span class="sd">            in root directory. If dataset is already downloaded, it is not downloaded again.</span>
+<span class="sd">        transform (callable, optional): A function/transform that  takes in an PIL image and returns a \</span>
+<span class="sd">            transformed version. E.g, :class:`torchvision.transforms.RandomCrop`.</span>
+<span class="sd">        target_transform (callable, optional): A function/transform that takes in the target and transforms it.</span>
+
+<span class="sd">    .. note:: In `root`, there will exist following files after downloading.</span>
+<span class="sd">        ::</span>
+<span class="sd">            clipart/</span>
+<span class="sd">            infograph/</span>
+<span class="sd">            painting/</span>
+<span class="sd">            quickdraw/</span>
+<span class="sd">            real/</span>
+<span class="sd">            sketch/</span>
+<span class="sd">            image_list/</span>
+<span class="sd">                clipart.txt</span>
+<span class="sd">                ...</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">download_list</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;image_list&quot;</span><span class="p">,</span> <span class="s2">&quot;image_list.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;https://cloud.tsinghua.edu.cn/f/90ecb35bbd374e5e8c41/?dl=1&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;clipart&quot;</span><span class="p">,</span> <span class="s2">&quot;clipart.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/groundtruth/clipart.zip&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;infograph&quot;</span><span class="p">,</span> <span class="s2">&quot;infograph.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/infograph.zip&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;painting&quot;</span><span class="p">,</span> <span class="s2">&quot;painting.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/groundtruth/painting.zip&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;quickdraw&quot;</span><span class="p">,</span> <span class="s2">&quot;quickdraw.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/quickdraw.zip&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;real&quot;</span><span class="p">,</span> <span class="s2">&quot;real.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/real.zip&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;sketch&quot;</span><span class="p">,</span> <span class="s2">&quot;sketch.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;http://csr.bu.edu/ftp/visda/2019/multi-source/sketch.zip&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">image_list</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;clipart&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;i&quot;</span><span class="p">:</span> <span class="s2">&quot;infograph&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="s2">&quot;painting&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="s2">&quot;quickdraw&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="s2">&quot;real&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;s&quot;</span><span class="p">:</span> <span class="s2">&quot;sketch&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aircraft_carrier&#39;</span><span class="p">,</span> <span class="s1">&#39;airplane&#39;</span><span class="p">,</span> <span class="s1">&#39;alarm_clock&#39;</span><span class="p">,</span> <span class="s1">&#39;ambulance&#39;</span><span class="p">,</span> <span class="s1">&#39;angel&#39;</span><span class="p">,</span> <span class="s1">&#39;animal_migration&#39;</span><span class="p">,</span> <span class="s1">&#39;ant&#39;</span><span class="p">,</span> <span class="s1">&#39;anvil&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;arm&#39;</span><span class="p">,</span> <span class="s1">&#39;asparagus&#39;</span><span class="p">,</span> <span class="s1">&#39;axe&#39;</span><span class="p">,</span> <span class="s1">&#39;backpack&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;bandage&#39;</span><span class="p">,</span> <span class="s1">&#39;barn&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball&#39;</span><span class="p">,</span> <span class="s1">&#39;baseball_bat&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;basket&#39;</span><span class="p">,</span> <span class="s1">&#39;basketball&#39;</span><span class="p">,</span> <span class="s1">&#39;bat&#39;</span><span class="p">,</span> <span class="s1">&#39;bathtub&#39;</span><span class="p">,</span> <span class="s1">&#39;beach&#39;</span><span class="p">,</span> <span class="s1">&#39;bear&#39;</span><span class="p">,</span> <span class="s1">&#39;beard&#39;</span><span class="p">,</span> <span class="s1">&#39;bed&#39;</span><span class="p">,</span> <span class="s1">&#39;bee&#39;</span><span class="p">,</span> <span class="s1">&#39;belt&#39;</span><span class="p">,</span> <span class="s1">&#39;bench&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;bicycle&#39;</span><span class="p">,</span> <span class="s1">&#39;binoculars&#39;</span><span class="p">,</span> <span class="s1">&#39;bird&#39;</span><span class="p">,</span> <span class="s1">&#39;birthday_cake&#39;</span><span class="p">,</span> <span class="s1">&#39;blackberry&#39;</span><span class="p">,</span> <span class="s1">&#39;blueberry&#39;</span><span class="p">,</span> <span class="s1">&#39;book&#39;</span><span class="p">,</span> <span class="s1">&#39;boomerang&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;bottlecap&#39;</span><span class="p">,</span> <span class="s1">&#39;bowtie&#39;</span><span class="p">,</span> <span class="s1">&#39;bracelet&#39;</span><span class="p">,</span> <span class="s1">&#39;brain&#39;</span><span class="p">,</span> <span class="s1">&#39;bread&#39;</span><span class="p">,</span> <span class="s1">&#39;bridge&#39;</span><span class="p">,</span> <span class="s1">&#39;broccoli&#39;</span><span class="p">,</span> <span class="s1">&#39;broom&#39;</span><span class="p">,</span> <span class="s1">&#39;bucket&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;bulldozer&#39;</span><span class="p">,</span> <span class="s1">&#39;bus&#39;</span><span class="p">,</span> <span class="s1">&#39;bush&#39;</span><span class="p">,</span> <span class="s1">&#39;butterfly&#39;</span><span class="p">,</span> <span class="s1">&#39;cactus&#39;</span><span class="p">,</span> <span class="s1">&#39;cake&#39;</span><span class="p">,</span> <span class="s1">&#39;calculator&#39;</span><span class="p">,</span> <span class="s1">&#39;calendar&#39;</span><span class="p">,</span> <span class="s1">&#39;camel&#39;</span><span class="p">,</span> <span class="s1">&#39;camera&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;camouflage&#39;</span><span class="p">,</span> <span class="s1">&#39;campfire&#39;</span><span class="p">,</span> <span class="s1">&#39;candle&#39;</span><span class="p">,</span> <span class="s1">&#39;cannon&#39;</span><span class="p">,</span> <span class="s1">&#39;canoe&#39;</span><span class="p">,</span> <span class="s1">&#39;car&#39;</span><span class="p">,</span> <span class="s1">&#39;carrot&#39;</span><span class="p">,</span> <span class="s1">&#39;castle&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;ceiling_fan&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;cello&#39;</span><span class="p">,</span> <span class="s1">&#39;cell_phone&#39;</span><span class="p">,</span> <span class="s1">&#39;chair&#39;</span><span class="p">,</span> <span class="s1">&#39;chandelier&#39;</span><span class="p">,</span> <span class="s1">&#39;church&#39;</span><span class="p">,</span> <span class="s1">&#39;circle&#39;</span><span class="p">,</span> <span class="s1">&#39;clarinet&#39;</span><span class="p">,</span> <span class="s1">&#39;clock&#39;</span><span class="p">,</span> <span class="s1">&#39;cloud&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;coffee_cup&#39;</span><span class="p">,</span> <span class="s1">&#39;compass&#39;</span><span class="p">,</span> <span class="s1">&#39;computer&#39;</span><span class="p">,</span> <span class="s1">&#39;cookie&#39;</span><span class="p">,</span> <span class="s1">&#39;cooler&#39;</span><span class="p">,</span> <span class="s1">&#39;couch&#39;</span><span class="p">,</span> <span class="s1">&#39;cow&#39;</span><span class="p">,</span> <span class="s1">&#39;crab&#39;</span><span class="p">,</span> <span class="s1">&#39;crayon&#39;</span><span class="p">,</span> <span class="s1">&#39;crocodile&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;crown&#39;</span><span class="p">,</span> <span class="s1">&#39;cruise_ship&#39;</span><span class="p">,</span> <span class="s1">&#39;cup&#39;</span><span class="p">,</span> <span class="s1">&#39;diamond&#39;</span><span class="p">,</span> <span class="s1">&#39;dishwasher&#39;</span><span class="p">,</span> <span class="s1">&#39;diving_board&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;dolphin&#39;</span><span class="p">,</span> <span class="s1">&#39;donut&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;door&#39;</span><span class="p">,</span> <span class="s1">&#39;dragon&#39;</span><span class="p">,</span> <span class="s1">&#39;dresser&#39;</span><span class="p">,</span> <span class="s1">&#39;drill&#39;</span><span class="p">,</span> <span class="s1">&#39;drums&#39;</span><span class="p">,</span> <span class="s1">&#39;duck&#39;</span><span class="p">,</span> <span class="s1">&#39;dumbbell&#39;</span><span class="p">,</span> <span class="s1">&#39;ear&#39;</span><span class="p">,</span> <span class="s1">&#39;elbow&#39;</span><span class="p">,</span> <span class="s1">&#39;elephant&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;envelope&#39;</span><span class="p">,</span> <span class="s1">&#39;eraser&#39;</span><span class="p">,</span> <span class="s1">&#39;eye&#39;</span><span class="p">,</span> <span class="s1">&#39;eyeglasses&#39;</span><span class="p">,</span> <span class="s1">&#39;face&#39;</span><span class="p">,</span> <span class="s1">&#39;fan&#39;</span><span class="p">,</span> <span class="s1">&#39;feather&#39;</span><span class="p">,</span> <span class="s1">&#39;fence&#39;</span><span class="p">,</span> <span class="s1">&#39;finger&#39;</span><span class="p">,</span> <span class="s1">&#39;fire_hydrant&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;fireplace&#39;</span><span class="p">,</span> <span class="s1">&#39;firetruck&#39;</span><span class="p">,</span> <span class="s1">&#39;fish&#39;</span><span class="p">,</span> <span class="s1">&#39;flamingo&#39;</span><span class="p">,</span> <span class="s1">&#39;flashlight&#39;</span><span class="p">,</span> <span class="s1">&#39;flip_flops&#39;</span><span class="p">,</span> <span class="s1">&#39;floor_lamp&#39;</span><span class="p">,</span> <span class="s1">&#39;flower&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;flying_saucer&#39;</span><span class="p">,</span> <span class="s1">&#39;foot&#39;</span><span class="p">,</span> <span class="s1">&#39;fork&#39;</span><span class="p">,</span> <span class="s1">&#39;frog&#39;</span><span class="p">,</span> <span class="s1">&#39;frying_pan&#39;</span><span class="p">,</span> <span class="s1">&#39;garden&#39;</span><span class="p">,</span> <span class="s1">&#39;garden_hose&#39;</span><span class="p">,</span> <span class="s1">&#39;giraffe&#39;</span><span class="p">,</span> <span class="s1">&#39;goatee&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;golf_club&#39;</span><span class="p">,</span> <span class="s1">&#39;grapes&#39;</span><span class="p">,</span> <span class="s1">&#39;grass&#39;</span><span class="p">,</span> <span class="s1">&#39;guitar&#39;</span><span class="p">,</span> <span class="s1">&#39;hamburger&#39;</span><span class="p">,</span> <span class="s1">&#39;hammer&#39;</span><span class="p">,</span> <span class="s1">&#39;hand&#39;</span><span class="p">,</span> <span class="s1">&#39;harp&#39;</span><span class="p">,</span> <span class="s1">&#39;hat&#39;</span><span class="p">,</span> <span class="s1">&#39;headphones&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;hedgehog&#39;</span><span class="p">,</span> <span class="s1">&#39;helicopter&#39;</span><span class="p">,</span> <span class="s1">&#39;helmet&#39;</span><span class="p">,</span> <span class="s1">&#39;hexagon&#39;</span><span class="p">,</span> <span class="s1">&#39;hockey_puck&#39;</span><span class="p">,</span> <span class="s1">&#39;hockey_stick&#39;</span><span class="p">,</span> <span class="s1">&#39;horse&#39;</span><span class="p">,</span> <span class="s1">&#39;hospital&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;hot_air_balloon&#39;</span><span class="p">,</span> <span class="s1">&#39;hot_dog&#39;</span><span class="p">,</span> <span class="s1">&#39;hot_tub&#39;</span><span class="p">,</span> <span class="s1">&#39;hourglass&#39;</span><span class="p">,</span> <span class="s1">&#39;house&#39;</span><span class="p">,</span> <span class="s1">&#39;house_plant&#39;</span><span class="p">,</span> <span class="s1">&#39;hurricane&#39;</span><span class="p">,</span> <span class="s1">&#39;ice_cream&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;jacket&#39;</span><span class="p">,</span> <span class="s1">&#39;jail&#39;</span><span class="p">,</span> <span class="s1">&#39;kangaroo&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;keyboard&#39;</span><span class="p">,</span> <span class="s1">&#39;knee&#39;</span><span class="p">,</span> <span class="s1">&#39;knife&#39;</span><span class="p">,</span> <span class="s1">&#39;ladder&#39;</span><span class="p">,</span> <span class="s1">&#39;lantern&#39;</span><span class="p">,</span> <span class="s1">&#39;laptop&#39;</span><span class="p">,</span> <span class="s1">&#39;leaf&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;leg&#39;</span><span class="p">,</span> <span class="s1">&#39;light_bulb&#39;</span><span class="p">,</span> <span class="s1">&#39;lighter&#39;</span><span class="p">,</span> <span class="s1">&#39;lighthouse&#39;</span><span class="p">,</span> <span class="s1">&#39;lightning&#39;</span><span class="p">,</span> <span class="s1">&#39;line&#39;</span><span class="p">,</span> <span class="s1">&#39;lion&#39;</span><span class="p">,</span> <span class="s1">&#39;lipstick&#39;</span><span class="p">,</span> <span class="s1">&#39;lobster&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;lollipop&#39;</span><span class="p">,</span> <span class="s1">&#39;mailbox&#39;</span><span class="p">,</span> <span class="s1">&#39;map&#39;</span><span class="p">,</span> <span class="s1">&#39;marker&#39;</span><span class="p">,</span> <span class="s1">&#39;matches&#39;</span><span class="p">,</span> <span class="s1">&#39;megaphone&#39;</span><span class="p">,</span> <span class="s1">&#39;mermaid&#39;</span><span class="p">,</span> <span class="s1">&#39;microphone&#39;</span><span class="p">,</span> <span class="s1">&#39;microwave&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;monkey&#39;</span><span class="p">,</span> <span class="s1">&#39;moon&#39;</span><span class="p">,</span> <span class="s1">&#39;mosquito&#39;</span><span class="p">,</span> <span class="s1">&#39;motorbike&#39;</span><span class="p">,</span> <span class="s1">&#39;mountain&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;moustache&#39;</span><span class="p">,</span> <span class="s1">&#39;mouth&#39;</span><span class="p">,</span> <span class="s1">&#39;mug&#39;</span><span class="p">,</span> <span class="s1">&#39;mushroom&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;nail&#39;</span><span class="p">,</span> <span class="s1">&#39;necklace&#39;</span><span class="p">,</span> <span class="s1">&#39;nose&#39;</span><span class="p">,</span> <span class="s1">&#39;ocean&#39;</span><span class="p">,</span> <span class="s1">&#39;octagon&#39;</span><span class="p">,</span> <span class="s1">&#39;octopus&#39;</span><span class="p">,</span> <span class="s1">&#39;onion&#39;</span><span class="p">,</span> <span class="s1">&#39;oven&#39;</span><span class="p">,</span> <span class="s1">&#39;owl&#39;</span><span class="p">,</span> <span class="s1">&#39;paintbrush&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;paint_can&#39;</span><span class="p">,</span> <span class="s1">&#39;palm_tree&#39;</span><span class="p">,</span> <span class="s1">&#39;panda&#39;</span><span class="p">,</span> <span class="s1">&#39;pants&#39;</span><span class="p">,</span> <span class="s1">&#39;paper_clip&#39;</span><span class="p">,</span> <span class="s1">&#39;parachute&#39;</span><span class="p">,</span> <span class="s1">&#39;parrot&#39;</span><span class="p">,</span> <span class="s1">&#39;passport&#39;</span><span class="p">,</span> <span class="s1">&#39;peanut&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;pear&#39;</span><span class="p">,</span> <span class="s1">&#39;peas&#39;</span><span class="p">,</span> <span class="s1">&#39;pencil&#39;</span><span class="p">,</span> <span class="s1">&#39;penguin&#39;</span><span class="p">,</span> <span class="s1">&#39;piano&#39;</span><span class="p">,</span> <span class="s1">&#39;pickup_truck&#39;</span><span class="p">,</span> <span class="s1">&#39;picture_frame&#39;</span><span class="p">,</span> <span class="s1">&#39;pig&#39;</span><span class="p">,</span> <span class="s1">&#39;pillow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;pineapple&#39;</span><span class="p">,</span> <span class="s1">&#39;pizza&#39;</span><span class="p">,</span> <span class="s1">&#39;pliers&#39;</span><span class="p">,</span> <span class="s1">&#39;police_car&#39;</span><span class="p">,</span> <span class="s1">&#39;pond&#39;</span><span class="p">,</span> <span class="s1">&#39;pool&#39;</span><span class="p">,</span> <span class="s1">&#39;popsicle&#39;</span><span class="p">,</span> <span class="s1">&#39;postcard&#39;</span><span class="p">,</span> <span class="s1">&#39;potato&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;power_outlet&#39;</span><span class="p">,</span> <span class="s1">&#39;purse&#39;</span><span class="p">,</span> <span class="s1">&#39;rabbit&#39;</span><span class="p">,</span> <span class="s1">&#39;raccoon&#39;</span><span class="p">,</span> <span class="s1">&#39;radio&#39;</span><span class="p">,</span> <span class="s1">&#39;rain&#39;</span><span class="p">,</span> <span class="s1">&#39;rainbow&#39;</span><span class="p">,</span> <span class="s1">&#39;rake&#39;</span><span class="p">,</span> <span class="s1">&#39;remote_control&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;rhinoceros&#39;</span><span class="p">,</span> <span class="s1">&#39;rifle&#39;</span><span class="p">,</span> <span class="s1">&#39;river&#39;</span><span class="p">,</span> <span class="s1">&#39;roller_coaster&#39;</span><span class="p">,</span> <span class="s1">&#39;rollerskates&#39;</span><span class="p">,</span> <span class="s1">&#39;sailboat&#39;</span><span class="p">,</span> <span class="s1">&#39;sandwich&#39;</span><span class="p">,</span> <span class="s1">&#39;saw&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;saxophone&#39;</span><span class="p">,</span> <span class="s1">&#39;school_bus&#39;</span><span class="p">,</span> <span class="s1">&#39;scissors&#39;</span><span class="p">,</span> <span class="s1">&#39;scorpion&#39;</span><span class="p">,</span> <span class="s1">&#39;screwdriver&#39;</span><span class="p">,</span> <span class="s1">&#39;sea_turtle&#39;</span><span class="p">,</span> <span class="s1">&#39;see_saw&#39;</span><span class="p">,</span> <span class="s1">&#39;shark&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;sheep&#39;</span><span class="p">,</span> <span class="s1">&#39;shoe&#39;</span><span class="p">,</span> <span class="s1">&#39;shorts&#39;</span><span class="p">,</span> <span class="s1">&#39;shovel&#39;</span><span class="p">,</span> <span class="s1">&#39;sink&#39;</span><span class="p">,</span> <span class="s1">&#39;skateboard&#39;</span><span class="p">,</span> <span class="s1">&#39;skull&#39;</span><span class="p">,</span> <span class="s1">&#39;skyscraper&#39;</span><span class="p">,</span> <span class="s1">&#39;sleeping_bag&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;smiley_face&#39;</span><span class="p">,</span> <span class="s1">&#39;snail&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">,</span> <span class="s1">&#39;snorkel&#39;</span><span class="p">,</span> <span class="s1">&#39;snowflake&#39;</span><span class="p">,</span> <span class="s1">&#39;snowman&#39;</span><span class="p">,</span> <span class="s1">&#39;soccer_ball&#39;</span><span class="p">,</span> <span class="s1">&#39;sock&#39;</span><span class="p">,</span> <span class="s1">&#39;speedboat&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;spider&#39;</span><span class="p">,</span> <span class="s1">&#39;spoon&#39;</span><span class="p">,</span> <span class="s1">&#39;spreadsheet&#39;</span><span class="p">,</span> <span class="s1">&#39;square&#39;</span><span class="p">,</span> <span class="s1">&#39;squiggle&#39;</span><span class="p">,</span> <span class="s1">&#39;squirrel&#39;</span><span class="p">,</span> <span class="s1">&#39;stairs&#39;</span><span class="p">,</span> <span class="s1">&#39;star&#39;</span><span class="p">,</span> <span class="s1">&#39;steak&#39;</span><span class="p">,</span> <span class="s1">&#39;stereo&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;stethoscope&#39;</span><span class="p">,</span> <span class="s1">&#39;stitches&#39;</span><span class="p">,</span> <span class="s1">&#39;stop_sign&#39;</span><span class="p">,</span> <span class="s1">&#39;stove&#39;</span><span class="p">,</span> <span class="s1">&#39;strawberry&#39;</span><span class="p">,</span> <span class="s1">&#39;streetlight&#39;</span><span class="p">,</span> <span class="s1">&#39;string_bean&#39;</span><span class="p">,</span> <span class="s1">&#39;submarine&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;suitcase&#39;</span><span class="p">,</span> <span class="s1">&#39;sun&#39;</span><span class="p">,</span> <span class="s1">&#39;swan&#39;</span><span class="p">,</span> <span class="s1">&#39;sweater&#39;</span><span class="p">,</span> <span class="s1">&#39;swing_set&#39;</span><span class="p">,</span> <span class="s1">&#39;sword&#39;</span><span class="p">,</span> <span class="s1">&#39;syringe&#39;</span><span class="p">,</span> <span class="s1">&#39;table&#39;</span><span class="p">,</span> <span class="s1">&#39;teapot&#39;</span><span class="p">,</span> <span class="s1">&#39;teddy-bear&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;telephone&#39;</span><span class="p">,</span> <span class="s1">&#39;television&#39;</span><span class="p">,</span> <span class="s1">&#39;tennis_racquet&#39;</span><span class="p">,</span> <span class="s1">&#39;tent&#39;</span><span class="p">,</span> <span class="s1">&#39;The_Eiffel_Tower&#39;</span><span class="p">,</span> <span class="s1">&#39;The_Great_Wall_of_China&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;The_Mona_Lisa&#39;</span><span class="p">,</span> <span class="s1">&#39;tiger&#39;</span><span class="p">,</span> <span class="s1">&#39;toaster&#39;</span><span class="p">,</span> <span class="s1">&#39;toe&#39;</span><span class="p">,</span> <span class="s1">&#39;toilet&#39;</span><span class="p">,</span> <span class="s1">&#39;tooth&#39;</span><span class="p">,</span> <span class="s1">&#39;toothbrush&#39;</span><span class="p">,</span> <span class="s1">&#39;toothpaste&#39;</span><span class="p">,</span> <span class="s1">&#39;tornado&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;tractor&#39;</span><span class="p">,</span> <span class="s1">&#39;traffic_light&#39;</span><span class="p">,</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;tree&#39;</span><span class="p">,</span> <span class="s1">&#39;triangle&#39;</span><span class="p">,</span> <span class="s1">&#39;trombone&#39;</span><span class="p">,</span> <span class="s1">&#39;truck&#39;</span><span class="p">,</span> <span class="s1">&#39;trumpet&#39;</span><span class="p">,</span> <span class="s1">&#39;t-shirt&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;umbrella&#39;</span><span class="p">,</span> <span class="s1">&#39;underwear&#39;</span><span class="p">,</span> <span class="s1">&#39;van&#39;</span><span class="p">,</span> <span class="s1">&#39;vase&#39;</span><span class="p">,</span> <span class="s1">&#39;violin&#39;</span><span class="p">,</span> <span class="s1">&#39;washing_machine&#39;</span><span class="p">,</span> <span class="s1">&#39;watermelon&#39;</span><span class="p">,</span> <span class="s1">&#39;waterslide&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;whale&#39;</span><span class="p">,</span> <span class="s1">&#39;wheel&#39;</span><span class="p">,</span> <span class="s1">&#39;windmill&#39;</span><span class="p">,</span> <span class="s1">&#39;wine_bottle&#39;</span><span class="p">,</span> <span class="s1">&#39;wine_glass&#39;</span><span class="p">,</span> <span class="s1">&#39;wristwatch&#39;</span><span class="p">,</span> <span class="s1">&#39;yoga&#39;</span><span class="p">,</span> <span class="s1">&#39;zebra&#39;</span><span class="p">,</span> <span class="s1">&#39;zigzag&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">task</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="n">download</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="n">task</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_list</span>
+        <span class="k">assert</span> <span class="n">split</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">]</span>
+        <span class="n">data_list_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="s2">&quot;image_list&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{}</span><span class="s2">.txt&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">image_list</span><span class="p">[</span><span class="n">task</span><span class="p">],</span> <span class="n">split</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">data_list_file</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">args</span><span class="p">:</span> <span class="n">download_data</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_list</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">args</span><span class="p">:</span> <span class="n">check_exits</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_list</span><span class="p">))</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DomainNet</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">DomainNet</span><span class="o">.</span><span class="n">CLASSES</span><span class="p">,</span> <span class="n">data_list_file</span><span class="o">=</span><span class="n">data_list_file</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="DomainNet.domains"><a class="viewcode-back" href="../../../../tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet.domains">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">domains</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">cls</span><span class="o">.</span><span class="n">image_list</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+         <script src="../../../../_static/jquery.js"></script>
+         <script src="../../../../_static/underscore.js"></script>
+         <script src="../../../../_static/doctools.js"></script>
+         <script src="../../../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

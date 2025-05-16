@@ -1,0 +1,588 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview: module code &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Overview: module code</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>All modules for which code is available</h1>
+<ul><li><a href="tllib/alignment/adda.html">tllib.alignment.adda</a></li>
+<li><a href="tllib/alignment/advent.html">tllib.alignment.advent</a></li>
+<li><a href="tllib/alignment/bsp.html">tllib.alignment.bsp</a></li>
+<li><a href="tllib/alignment/cdan.html">tllib.alignment.cdan</a></li>
+<li><a href="tllib/alignment/coral.html">tllib.alignment.coral</a></li>
+<li><a href="tllib/alignment/d_adapt/modeling/meta_arch/rcnn.html">tllib.alignment.d_adapt.modeling.meta_arch.rcnn</a></li>
+<li><a href="tllib/alignment/d_adapt/modeling/meta_arch/retinanet.html">tllib.alignment.d_adapt.modeling.meta_arch.retinanet</a></li>
+<li><a href="tllib/alignment/d_adapt/proposal.html">tllib.alignment.d_adapt.proposal</a></li>
+<li><a href="tllib/alignment/dan.html">tllib.alignment.dan</a></li>
+<li><a href="tllib/alignment/dann.html">tllib.alignment.dann</a></li>
+<li><a href="tllib/alignment/jan.html">tllib.alignment.jan</a></li>
+<li><a href="tllib/alignment/mcd.html">tllib.alignment.mcd</a></li>
+<li><a href="tllib/alignment/mdd.html">tllib.alignment.mdd</a></li>
+<li><a href="tllib/alignment/osbp.html">tllib.alignment.osbp</a></li>
+<li><a href="tllib/alignment/regda.html">tllib.alignment.regda</a></li>
+<li><a href="tllib/modules/classifier.html">tllib.modules.classifier</a></li>
+<li><a href="tllib/modules/domain_discriminator.html">tllib.modules.domain_discriminator</a></li>
+<li><a href="tllib/modules/entropy.html">tllib.modules.entropy</a></li>
+<li><a href="tllib/modules/grl.html">tllib.modules.grl</a></li>
+<li><a href="tllib/modules/kernels.html">tllib.modules.kernels</a></li>
+<li><a href="tllib/modules/loss.html">tllib.modules.loss</a></li>
+<li><a href="tllib/modules/regressor.html">tllib.modules.regressor</a></li>
+<li><a href="tllib/normalization/afn.html">tllib.normalization.afn</a></li>
+<li><a href="tllib/normalization/ibn.html">tllib.normalization.ibn</a></li>
+<li><a href="tllib/normalization/mixstyle.html">tllib.normalization.mixstyle</a></li>
+<ul><li><a href="tllib/normalization/mixstyle/resnet.html">tllib.normalization.mixstyle.resnet</a></li>
+</ul><li><a href="tllib/normalization/stochnorm.html">tllib.normalization.stochnorm</a></li>
+<li><a href="tllib/ranking/hscore.html">tllib.ranking.hscore</a></li>
+<li><a href="tllib/ranking/leep.html">tllib.ranking.leep</a></li>
+<li><a href="tllib/ranking/logme.html">tllib.ranking.logme</a></li>
+<li><a href="tllib/ranking/nce.html">tllib.ranking.nce</a></li>
+<li><a href="tllib/regularization/bi_tuning.html">tllib.regularization.bi_tuning</a></li>
+<li><a href="tllib/regularization/bss.html">tllib.regularization.bss</a></li>
+<li><a href="tllib/regularization/co_tuning.html">tllib.regularization.co_tuning</a></li>
+<li><a href="tllib/regularization/delta.html">tllib.regularization.delta</a></li>
+<li><a href="tllib/regularization/lwf.html">tllib.regularization.lwf</a></li>
+<li><a href="tllib/reweight/groupdro.html">tllib.reweight.groupdro</a></li>
+<li><a href="tllib/reweight/iwan.html">tllib.reweight.iwan</a></li>
+<li><a href="tllib/reweight/pada.html">tllib.reweight.pada</a></li>
+<li><a href="tllib/self_training/dst.html">tllib.self_training.dst</a></li>
+<li><a href="tllib/self_training/flexmatch.html">tllib.self_training.flexmatch</a></li>
+<li><a href="tllib/self_training/mcc.html">tllib.self_training.mcc</a></li>
+<li><a href="tllib/self_training/mean_teacher.html">tllib.self_training.mean_teacher</a></li>
+<li><a href="tllib/self_training/pi_model.html">tllib.self_training.pi_model</a></li>
+<li><a href="tllib/self_training/pseudo_label.html">tllib.self_training.pseudo_label</a></li>
+<li><a href="tllib/self_training/self_ensemble.html">tllib.self_training.self_ensemble</a></li>
+<li><a href="tllib/self_training/self_tuning.html">tllib.self_training.self_tuning</a></li>
+<li><a href="tllib/self_training/uda.html">tllib.self_training.uda</a></li>
+<li><a href="tllib/translation/cycada.html">tllib.translation.cycada</a></li>
+<li><a href="tllib/translation/cyclegan/discriminator.html">tllib.translation.cyclegan.discriminator</a></li>
+<li><a href="tllib/translation/cyclegan/generator.html">tllib.translation.cyclegan.generator</a></li>
+<li><a href="tllib/translation/cyclegan/loss.html">tllib.translation.cyclegan.loss</a></li>
+<li><a href="tllib/translation/cyclegan/transform.html">tllib.translation.cyclegan.transform</a></li>
+<li><a href="tllib/translation/cyclegan/util.html">tllib.translation.cyclegan.util</a></li>
+<li><a href="tllib/translation/fourier_transform.html">tllib.translation.fourier_transform</a></li>
+<li><a href="tllib/translation/spgan/loss.html">tllib.translation.spgan.loss</a></li>
+<li><a href="tllib/translation/spgan/siamese.html">tllib.translation.spgan.siamese</a></li>
+<li><a href="tllib/utils/analysis.html">tllib.utils.analysis</a></li>
+<ul><li><a href="tllib/utils/analysis/a_distance.html">tllib.utils.analysis.a_distance</a></li>
+<li><a href="tllib/utils/analysis/tsne.html">tllib.utils.analysis.tsne</a></li>
+</ul><li><a href="tllib/utils/data.html">tllib.utils.data</a></li>
+<li><a href="tllib/utils/logger.html">tllib.utils.logger</a></li>
+<li><a href="tllib/utils/meter.html">tllib.utils.meter</a></li>
+<li><a href="tllib/utils/metric.html">tllib.utils.metric</a></li>
+<li><a href="tllib/vision/datasets/aircrafts.html">tllib.vision.datasets.aircrafts</a></li>
+<li><a href="tllib/vision/datasets/caltech101.html">tllib.vision.datasets.caltech101</a></li>
+<li><a href="tllib/vision/datasets/coco70.html">tllib.vision.datasets.coco70</a></li>
+<li><a href="tllib/vision/datasets/cub200.html">tllib.vision.datasets.cub200</a></li>
+<li><a href="tllib/vision/datasets/digits.html">tllib.vision.datasets.digits</a></li>
+<li><a href="tllib/vision/datasets/domainnet.html">tllib.vision.datasets.domainnet</a></li>
+<li><a href="tllib/vision/datasets/dtd.html">tllib.vision.datasets.dtd</a></li>
+<li><a href="tllib/vision/datasets/eurosat.html">tllib.vision.datasets.eurosat</a></li>
+<li><a href="tllib/vision/datasets/food101.html">tllib.vision.datasets.food101</a></li>
+<li><a href="tllib/vision/datasets/imagelist.html">tllib.vision.datasets.imagelist</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/freihand.html">tllib.vision.datasets.keypoint_detection.freihand</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/hand_3d_studio.html">tllib.vision.datasets.keypoint_detection.hand_3d_studio</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/human36m.html">tllib.vision.datasets.keypoint_detection.human36m</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/keypoint_dataset.html">tllib.vision.datasets.keypoint_detection.keypoint_dataset</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/lsp.html">tllib.vision.datasets.keypoint_detection.lsp</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/rendered_hand_pose.html">tllib.vision.datasets.keypoint_detection.rendered_hand_pose</a></li>
+<li><a href="tllib/vision/datasets/keypoint_detection/surreal.html">tllib.vision.datasets.keypoint_detection.surreal</a></li>
+<li><a href="tllib/vision/datasets/office31.html">tllib.vision.datasets.office31</a></li>
+<li><a href="tllib/vision/datasets/officecaltech.html">tllib.vision.datasets.officecaltech</a></li>
+<li><a href="tllib/vision/datasets/officehome.html">tllib.vision.datasets.officehome</a></li>
+<li><a href="tllib/vision/datasets/openset.html">tllib.vision.datasets.openset</a></li>
+<li><a href="tllib/vision/datasets/oxfordflowers.html">tllib.vision.datasets.oxfordflowers</a></li>
+<li><a href="tllib/vision/datasets/oxfordpets.html">tllib.vision.datasets.oxfordpets</a></li>
+<li><a href="tllib/vision/datasets/pacs.html">tllib.vision.datasets.pacs</a></li>
+<li><a href="tllib/vision/datasets/partial.html">tllib.vision.datasets.partial</a></li>
+<ul><li><a href="tllib/vision/datasets/partial/caltech_imagenet.html">tllib.vision.datasets.partial.caltech_imagenet</a></li>
+<li><a href="tllib/vision/datasets/partial/imagenet_caltech.html">tllib.vision.datasets.partial.imagenet_caltech</a></li>
+</ul><li><a href="tllib/vision/datasets/patchcamelyon.html">tllib.vision.datasets.patchcamelyon</a></li>
+<li><a href="tllib/vision/datasets/regression/dsprites.html">tllib.vision.datasets.regression.dsprites</a></li>
+<li><a href="tllib/vision/datasets/regression/image_regression.html">tllib.vision.datasets.regression.image_regression</a></li>
+<li><a href="tllib/vision/datasets/regression/mpi3d.html">tllib.vision.datasets.regression.mpi3d</a></li>
+<li><a href="tllib/vision/datasets/reid/dukemtmc.html">tllib.vision.datasets.reid.dukemtmc</a></li>
+<li><a href="tllib/vision/datasets/reid/market1501.html">tllib.vision.datasets.reid.market1501</a></li>
+<li><a href="tllib/vision/datasets/reid/msmt17.html">tllib.vision.datasets.reid.msmt17</a></li>
+<li><a href="tllib/vision/datasets/resisc45.html">tllib.vision.datasets.resisc45</a></li>
+<li><a href="tllib/vision/datasets/retinopathy.html">tllib.vision.datasets.retinopathy</a></li>
+<li><a href="tllib/vision/datasets/segmentation/cityscapes.html">tllib.vision.datasets.segmentation.cityscapes</a></li>
+<li><a href="tllib/vision/datasets/segmentation/gta5.html">tllib.vision.datasets.segmentation.gta5</a></li>
+<li><a href="tllib/vision/datasets/segmentation/segmentation_list.html">tllib.vision.datasets.segmentation.segmentation_list</a></li>
+<li><a href="tllib/vision/datasets/segmentation/synthia.html">tllib.vision.datasets.segmentation.synthia</a></li>
+<li><a href="tllib/vision/datasets/stanford_cars.html">tllib.vision.datasets.stanford_cars</a></li>
+<li><a href="tllib/vision/datasets/stanford_dogs.html">tllib.vision.datasets.stanford_dogs</a></li>
+<li><a href="tllib/vision/datasets/sun397.html">tllib.vision.datasets.sun397</a></li>
+<li><a href="tllib/vision/datasets/visda2017.html">tllib.vision.datasets.visda2017</a></li>
+<li><a href="tllib/vision/models/keypoint_detection/loss.html">tllib.vision.models.keypoint_detection.loss</a></li>
+<li><a href="tllib/vision/models/keypoint_detection/pose_resnet.html">tllib.vision.models.keypoint_detection.pose_resnet</a></li>
+<li><a href="tllib/vision/models/object_detection/meta_arch/rcnn.html">tllib.vision.models.object_detection.meta_arch.rcnn</a></li>
+<li><a href="tllib/vision/models/object_detection/meta_arch/retinanet.html">tllib.vision.models.object_detection.meta_arch.retinanet</a></li>
+<li><a href="tllib/vision/models/object_detection/proposal_generator/rpn.html">tllib.vision.models.object_detection.proposal_generator.rpn</a></li>
+<li><a href="tllib/vision/models/object_detection/roi_heads/roi_heads.html">tllib.vision.models.object_detection.roi_heads.roi_heads</a></li>
+<li><a href="tllib/vision/models/reid/identifier.html">tllib.vision.models.reid.identifier</a></li>
+<li><a href="tllib/vision/models/reid/loss.html">tllib.vision.models.reid.loss</a></li>
+<li><a href="tllib/vision/models/reid/resnet.html">tllib.vision.models.reid.resnet</a></li>
+<li><a href="tllib/vision/models/resnet.html">tllib.vision.models.resnet</a></li>
+<li><a href="tllib/vision/models/segmentation/deeplabv2.html">tllib.vision.models.segmentation.deeplabv2</a></li>
+<li><a href="tllib/vision/transforms.html">tllib.vision.transforms</a></li>
+<ul><li><a href="tllib/vision/transforms/keypoint_detection.html">tllib.vision.transforms.keypoint_detection</a></li>
+<li><a href="tllib/vision/transforms/segmentation.html">tllib.vision.transforms.segmentation</a></li>
+</ul></ul>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

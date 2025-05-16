@@ -1,0 +1,586 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tllib.vision.datasets.cub200 &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+
+  
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../../index.html">Module code</a> &gt;</li>
+        
+      <li>tllib.vision.datasets.cub200</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for tllib.vision.datasets.cub200</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Yifei Ji</span>
+<span class="sd">@contact: jiyf990330@163.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">.imagelist</span> <span class="kn">import</span> <span class="n">ImageList</span>
+<span class="kn">from</span> <span class="nn">._util</span> <span class="kn">import</span> <span class="n">download</span> <span class="k">as</span> <span class="n">download_data</span><span class="p">,</span> <span class="n">check_exits</span>
+
+
+<div class="viewcode-block" id="CUB200"><a class="viewcode-back" href="../../../../tllib/vision/datasets.html#tllib.vision.datasets.cub200.CUB200">[docs]</a><span class="k">class</span> <span class="nc">CUB200</span><span class="p">(</span><span class="n">ImageList</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;`Caltech-UCSD Birds-200-2011 &lt;http://www.vision.caltech.edu/visipedia/CUB-200-2011.html&gt;`_  \</span>
+<span class="sd">    is a dataset for fine-grained visual recognition with 11,788 images in 200 bird species. \</span>
+<span class="sd">    It is an extended version of the CUB-200 dataset, roughly doubling the number of images.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        root (str): Root directory of dataset</span>
+<span class="sd">        split (str, optional): The dataset split, supports ``train``, or ``test``.</span>
+<span class="sd">        sample_rate (int): The sampling rates to sample random ``training`` images for each category.</span>
+<span class="sd">            Choices include 100, 50, 30, 15. Default: 100.</span>
+<span class="sd">        download (bool, optional): If true, downloads the dataset from the internet and puts it \</span>
+<span class="sd">            in root directory. If dataset is already downloaded, it is not downloaded again.</span>
+<span class="sd">        transform (callable, optional): A function/transform that  takes in an PIL image and returns a \</span>
+<span class="sd">            transformed version. E.g, :class:`torchvision.transforms.RandomCrop`.</span>
+<span class="sd">        target_transform (callable, optional): A function/transform that takes in the target and transforms it.</span>
+
+<span class="sd">    .. note:: In `root`, there will exist following files after downloading.</span>
+<span class="sd">        ::</span>
+<span class="sd">            train/</span>
+<span class="sd">            test/</span>
+<span class="sd">            image_list/</span>
+<span class="sd">                train_100.txt</span>
+<span class="sd">                train_50.txt</span>
+<span class="sd">                train_30.txt</span>
+<span class="sd">                train_15.txt</span>
+<span class="sd">                test.txt</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">download_list</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;image_list&quot;</span><span class="p">,</span> <span class="s2">&quot;image_list.zip&quot;</span><span class="p">,</span> <span class="s2">&quot;https://cloud.tsinghua.edu.cn/f/3ee8eaeb0ebc442aa5cf/?dl=1&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;train&quot;</span><span class="p">,</span> <span class="s2">&quot;train.tgz&quot;</span><span class="p">,</span> <span class="s2">&quot;https://cloud.tsinghua.edu.cn/f/92e1d91311d84491b8e0/?dl=1&quot;</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">,</span> <span class="s2">&quot;test.tgz&quot;</span><span class="p">,</span> <span class="s2">&quot;https://cloud.tsinghua.edu.cn/f/c0f9ae3891cd4b1c95a5/?dl=1&quot;</span><span class="p">),</span>
+    <span class="p">]</span>
+    <span class="n">image_list</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;train&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/train_100.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;train100&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/train_100.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;train50&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/train_50.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;train30&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/train_30.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;train15&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/train_15.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;test&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/test.txt&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;test100&quot;</span><span class="p">:</span> <span class="s2">&quot;image_list/test.txt&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">CLASSES</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;001.Black_footed_Albatross&#39;</span><span class="p">,</span> <span class="s1">&#39;002.Laysan_Albatross&#39;</span><span class="p">,</span> <span class="s1">&#39;003.Sooty_Albatross&#39;</span><span class="p">,</span> <span class="s1">&#39;004.Groove_billed_Ani&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;005.Crested_Auklet&#39;</span><span class="p">,</span> <span class="s1">&#39;006.Least_Auklet&#39;</span><span class="p">,</span> <span class="s1">&#39;007.Parakeet_Auklet&#39;</span><span class="p">,</span> <span class="s1">&#39;008.Rhinoceros_Auklet&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;009.Brewer_Blackbird&#39;</span><span class="p">,</span> <span class="s1">&#39;010.Red_winged_Blackbird&#39;</span><span class="p">,</span> <span class="s1">&#39;011.Rusty_Blackbird&#39;</span><span class="p">,</span> <span class="s1">&#39;012.Yellow_headed_Blackbird&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;013.Bobolink&#39;</span><span class="p">,</span> <span class="s1">&#39;014.Indigo_Bunting&#39;</span><span class="p">,</span> <span class="s1">&#39;015.Lazuli_Bunting&#39;</span><span class="p">,</span> <span class="s1">&#39;016.Painted_Bunting&#39;</span><span class="p">,</span> <span class="s1">&#39;017.Cardinal&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;018.Spotted_Catbird&#39;</span><span class="p">,</span> <span class="s1">&#39;019.Gray_Catbird&#39;</span><span class="p">,</span> <span class="s1">&#39;020.Yellow_breasted_Chat&#39;</span><span class="p">,</span> <span class="s1">&#39;021.Eastern_Towhee&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;022.Chuck_will_Widow&#39;</span><span class="p">,</span> <span class="s1">&#39;023.Brandt_Cormorant&#39;</span><span class="p">,</span> <span class="s1">&#39;024.Red_faced_Cormorant&#39;</span><span class="p">,</span> <span class="s1">&#39;025.Pelagic_Cormorant&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;026.Bronzed_Cowbird&#39;</span><span class="p">,</span> <span class="s1">&#39;027.Shiny_Cowbird&#39;</span><span class="p">,</span> <span class="s1">&#39;028.Brown_Creeper&#39;</span><span class="p">,</span> <span class="s1">&#39;029.American_Crow&#39;</span><span class="p">,</span> <span class="s1">&#39;030.Fish_Crow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;031.Black_billed_Cuckoo&#39;</span><span class="p">,</span> <span class="s1">&#39;032.Mangrove_Cuckoo&#39;</span><span class="p">,</span> <span class="s1">&#39;033.Yellow_billed_Cuckoo&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;034.Gray_crowned_Rosy_Finch&#39;</span><span class="p">,</span> <span class="s1">&#39;035.Purple_Finch&#39;</span><span class="p">,</span> <span class="s1">&#39;036.Northern_Flicker&#39;</span><span class="p">,</span> <span class="s1">&#39;037.Acadian_Flycatcher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;038.Great_Crested_Flycatcher&#39;</span><span class="p">,</span> <span class="s1">&#39;039.Least_Flycatcher&#39;</span><span class="p">,</span> <span class="s1">&#39;040.Olive_sided_Flycatcher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;041.Scissor_tailed_Flycatcher&#39;</span><span class="p">,</span> <span class="s1">&#39;042.Vermilion_Flycatcher&#39;</span><span class="p">,</span> <span class="s1">&#39;043.Yellow_bellied_Flycatcher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;044.Frigatebird&#39;</span><span class="p">,</span> <span class="s1">&#39;045.Northern_Fulmar&#39;</span><span class="p">,</span> <span class="s1">&#39;046.Gadwall&#39;</span><span class="p">,</span> <span class="s1">&#39;047.American_Goldfinch&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;048.European_Goldfinch&#39;</span><span class="p">,</span> <span class="s1">&#39;049.Boat_tailed_Grackle&#39;</span><span class="p">,</span> <span class="s1">&#39;050.Eared_Grebe&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;051.Horned_Grebe&#39;</span><span class="p">,</span> <span class="s1">&#39;052.Pied_billed_Grebe&#39;</span><span class="p">,</span> <span class="s1">&#39;053.Western_Grebe&#39;</span><span class="p">,</span> <span class="s1">&#39;054.Blue_Grosbeak&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;055.Evening_Grosbeak&#39;</span><span class="p">,</span> <span class="s1">&#39;056.Pine_Grosbeak&#39;</span><span class="p">,</span> <span class="s1">&#39;057.Rose_breasted_Grosbeak&#39;</span><span class="p">,</span> <span class="s1">&#39;058.Pigeon_Guillemot&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;059.California_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;060.Glaucous_winged_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;061.Heermann_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;062.Herring_Gull&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;063.Ivory_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;064.Ring_billed_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;065.Slaty_backed_Gull&#39;</span><span class="p">,</span> <span class="s1">&#39;066.Western_Gull&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;067.Anna_Hummingbird&#39;</span><span class="p">,</span> <span class="s1">&#39;068.Ruby_throated_Hummingbird&#39;</span><span class="p">,</span> <span class="s1">&#39;069.Rufous_Hummingbird&#39;</span><span class="p">,</span> <span class="s1">&#39;070.Green_Violetear&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;071.Long_tailed_Jaeger&#39;</span><span class="p">,</span> <span class="s1">&#39;072.Pomarine_Jaeger&#39;</span><span class="p">,</span> <span class="s1">&#39;073.Blue_Jay&#39;</span><span class="p">,</span> <span class="s1">&#39;074.Florida_Jay&#39;</span><span class="p">,</span> <span class="s1">&#39;075.Green_Jay&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;076.Dark_eyed_Junco&#39;</span><span class="p">,</span> <span class="s1">&#39;077.Tropical_Kingbird&#39;</span><span class="p">,</span> <span class="s1">&#39;078.Gray_Kingbird&#39;</span><span class="p">,</span> <span class="s1">&#39;079.Belted_Kingfisher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;080.Green_Kingfisher&#39;</span><span class="p">,</span> <span class="s1">&#39;081.Pied_Kingfisher&#39;</span><span class="p">,</span> <span class="s1">&#39;082.Ringed_Kingfisher&#39;</span><span class="p">,</span> <span class="s1">&#39;083.White_breasted_Kingfisher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;084.Red_legged_Kittiwake&#39;</span><span class="p">,</span> <span class="s1">&#39;085.Horned_Lark&#39;</span><span class="p">,</span> <span class="s1">&#39;086.Pacific_Loon&#39;</span><span class="p">,</span> <span class="s1">&#39;087.Mallard&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;088.Western_Meadowlark&#39;</span><span class="p">,</span> <span class="s1">&#39;089.Hooded_Merganser&#39;</span><span class="p">,</span> <span class="s1">&#39;090.Red_breasted_Merganser&#39;</span><span class="p">,</span> <span class="s1">&#39;091.Mockingbird&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;092.Nighthawk&#39;</span><span class="p">,</span> <span class="s1">&#39;093.Clark_Nutcracker&#39;</span><span class="p">,</span> <span class="s1">&#39;094.White_breasted_Nuthatch&#39;</span><span class="p">,</span> <span class="s1">&#39;095.Baltimore_Oriole&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;096.Hooded_Oriole&#39;</span><span class="p">,</span> <span class="s1">&#39;097.Orchard_Oriole&#39;</span><span class="p">,</span> <span class="s1">&#39;098.Scott_Oriole&#39;</span><span class="p">,</span> <span class="s1">&#39;099.Ovenbird&#39;</span><span class="p">,</span> <span class="s1">&#39;100.Brown_Pelican&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;101.White_Pelican&#39;</span><span class="p">,</span> <span class="s1">&#39;102.Western_Wood_Pewee&#39;</span><span class="p">,</span> <span class="s1">&#39;103.Sayornis&#39;</span><span class="p">,</span> <span class="s1">&#39;104.American_Pipit&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;105.Whip_poor_Will&#39;</span><span class="p">,</span> <span class="s1">&#39;106.Horned_Puffin&#39;</span><span class="p">,</span> <span class="s1">&#39;107.Common_Raven&#39;</span><span class="p">,</span> <span class="s1">&#39;108.White_necked_Raven&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;109.American_Redstart&#39;</span><span class="p">,</span> <span class="s1">&#39;110.Geococcyx&#39;</span><span class="p">,</span> <span class="s1">&#39;111.Loggerhead_Shrike&#39;</span><span class="p">,</span> <span class="s1">&#39;112.Great_Grey_Shrike&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;113.Baird_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;114.Black_throated_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;115.Brewer_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;116.Chipping_Sparrow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;117.Clay_colored_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;118.House_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;119.Field_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;120.Fox_Sparrow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;121.Grasshopper_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;122.Harris_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;123.Henslow_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;124.Le_Conte_Sparrow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;125.Lincoln_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;126.Nelson_Sharp_tailed_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;127.Savannah_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;128.Seaside_Sparrow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;129.Song_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;130.Tree_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;131.Vesper_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;132.White_crowned_Sparrow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;133.White_throated_Sparrow&#39;</span><span class="p">,</span> <span class="s1">&#39;134.Cape_Glossy_Starling&#39;</span><span class="p">,</span> <span class="s1">&#39;135.Bank_Swallow&#39;</span><span class="p">,</span> <span class="s1">&#39;136.Barn_Swallow&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;137.Cliff_Swallow&#39;</span><span class="p">,</span> <span class="s1">&#39;138.Tree_Swallow&#39;</span><span class="p">,</span> <span class="s1">&#39;139.Scarlet_Tanager&#39;</span><span class="p">,</span> <span class="s1">&#39;140.Summer_Tanager&#39;</span><span class="p">,</span> <span class="s1">&#39;141.Artic_Tern&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;142.Black_Tern&#39;</span><span class="p">,</span> <span class="s1">&#39;143.Caspian_Tern&#39;</span><span class="p">,</span> <span class="s1">&#39;144.Common_Tern&#39;</span><span class="p">,</span> <span class="s1">&#39;145.Elegant_Tern&#39;</span><span class="p">,</span> <span class="s1">&#39;146.Forsters_Tern&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;147.Least_Tern&#39;</span><span class="p">,</span> <span class="s1">&#39;148.Green_tailed_Towhee&#39;</span><span class="p">,</span> <span class="s1">&#39;149.Brown_Thrasher&#39;</span><span class="p">,</span> <span class="s1">&#39;150.Sage_Thrasher&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;151.Black_capped_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;152.Blue_headed_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;153.Philadelphia_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;154.Red_eyed_Vireo&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;155.Warbling_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;156.White_eyed_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;157.Yellow_throated_Vireo&#39;</span><span class="p">,</span> <span class="s1">&#39;158.Bay_breasted_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;159.Black_and_white_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;160.Black_throated_Blue_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;161.Blue_winged_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;162.Canada_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;163.Cape_May_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;164.Cerulean_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;165.Chestnut_sided_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;166.Golden_winged_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;167.Hooded_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;168.Kentucky_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;169.Magnolia_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;170.Mourning_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;171.Myrtle_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;172.Nashville_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;173.Orange_crowned_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;174.Palm_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;175.Pine_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;176.Prairie_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;177.Prothonotary_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;178.Swainson_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;179.Tennessee_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;180.Wilson_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;181.Worm_eating_Warbler&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;182.Yellow_Warbler&#39;</span><span class="p">,</span> <span class="s1">&#39;183.Northern_Waterthrush&#39;</span><span class="p">,</span> <span class="s1">&#39;184.Louisiana_Waterthrush&#39;</span><span class="p">,</span> <span class="s1">&#39;185.Bohemian_Waxwing&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;186.Cedar_Waxwing&#39;</span><span class="p">,</span> <span class="s1">&#39;187.American_Three_toed_Woodpecker&#39;</span><span class="p">,</span> <span class="s1">&#39;188.Pileated_Woodpecker&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;189.Red_bellied_Woodpecker&#39;</span><span class="p">,</span> <span class="s1">&#39;190.Red_cockaded_Woodpecker&#39;</span><span class="p">,</span> <span class="s1">&#39;191.Red_headed_Woodpecker&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;192.Downy_Woodpecker&#39;</span><span class="p">,</span> <span class="s1">&#39;193.Bewick_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;194.Cactus_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;195.Carolina_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;196.House_Wren&#39;</span><span class="p">,</span>
+               <span class="s1">&#39;197.Marsh_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;198.Rock_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;199.Winter_Wren&#39;</span><span class="p">,</span> <span class="s1">&#39;200.Common_Yellowthroat&#39;</span><span class="p">]</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">split</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">download</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">split</span> <span class="o">==</span> <span class="s1">&#39;train&#39;</span><span class="p">:</span>
+            <span class="n">list_name</span> <span class="o">=</span> <span class="s1">&#39;train&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">sample_rate</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">list_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_list</span>
+            <span class="n">data_list_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_list</span><span class="p">[</span><span class="n">list_name</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">data_list_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">image_list</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">download</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">args</span><span class="p">:</span> <span class="n">download_data</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_list</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">file_name</span><span class="p">,</span> <span class="n">_</span><span class="p">:</span> <span class="n">check_exits</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file_name</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_list</span><span class="p">))</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">CUB200</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">CUB200</span><span class="o">.</span><span class="n">CLASSES</span><span class="p">,</span> <span class="n">data_list_file</span><span class="o">=</span><span class="n">data_list_file</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+         <script src="../../../../_static/jquery.js"></script>
+         <script src="../../../../_static/underscore.js"></script>
+         <script src="../../../../_static/doctools.js"></script>
+         <script src="../../../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

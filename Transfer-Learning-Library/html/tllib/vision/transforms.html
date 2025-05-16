@@ -1,0 +1,1024 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Transforms &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Utilities" href="../utils/index.html" />
+    <link rel="prev" title="Models" href="models.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Vision</a> &gt;</li>
+        
+      <li>Transforms</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tllib/vision/transforms.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="transforms">
+<h1>Transforms<a class="headerlink" href="#transforms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-tllib.vision.transforms">
+<span id="classification"></span><h2>Classification<a class="headerlink" href="#module-tllib.vision.transforms" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.vision.transforms.DeNormalizeAndTranspose">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">DeNormalizeAndTranspose</code><span class="sig-paren">(</span><em class="sig-param">mean=(104.00698793</em>, <em class="sig-param">116.66876762</em>, <em class="sig-param">122.67891434)</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#DeNormalizeAndTranspose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.DeNormalizeAndTranspose" title="Permalink to this definition">¶</a></dt>
+<dd><p>First, convert a tensor image from the shape (C x H x W ) to shape (H x W x C).
+Then, denormalize it with mean and standard deviation.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.Denormalize">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">Denormalize</code><span class="sig-paren">(</span><em class="sig-param">mean</em>, <em class="sig-param">std</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#Denormalize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.Denormalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>DeNormalize a tensor image with mean and standard deviation.
+Given mean: <code class="docutils literal notranslate"><span class="pre">(mean[1],...,mean[n])</span></code> and std: <code class="docutils literal notranslate"><span class="pre">(std[1],..,std[n])</span></code> for <code class="docutils literal notranslate"><span class="pre">n</span></code>
+channels, this transform will denormalize each channel of the input
+<code class="docutils literal notranslate"><span class="pre">torch.*Tensor</span></code> i.e.,
+<code class="docutils literal notranslate"><span class="pre">output[channel]</span> <span class="pre">=</span> <span class="pre">input[channel]</span> <span class="pre">*</span> <span class="pre">std[channel]</span> <span class="pre">+</span> <span class="pre">mean[channel]</span></code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This transform acts out of place, i.e., it does not mutate the input tensor.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mean</strong> (<em>sequence</em>) – Sequence of means for each channel.</p></li>
+<li><p><strong>std</strong> (<em>sequence</em>) – Sequence of standard deviations for each channel.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.MultipleApply">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">MultipleApply</code><span class="sig-paren">(</span><em class="sig-param">transforms</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#MultipleApply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.MultipleApply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply a list of transformations to an image and get multiple transformed images.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – list of transformations</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">transform1</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">ResizeImage</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">T</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">)</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transform2</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="n">ResizeImage</span><span class="p">(</span><span class="mi">256</span><span class="p">),</span>
+<span class="gp">... </span>    <span class="n">T</span><span class="o">.</span><span class="n">RandomCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">multiply_transform</span> <span class="o">=</span> <span class="n">MultipleApply</span><span class="p">([</span><span class="n">transform1</span><span class="p">,</span> <span class="n">transform2</span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.NormalizeAndTranspose">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">NormalizeAndTranspose</code><span class="sig-paren">(</span><em class="sig-param">mean=(104.00698793</em>, <em class="sig-param">116.66876762</em>, <em class="sig-param">122.67891434)</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#NormalizeAndTranspose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.NormalizeAndTranspose" title="Permalink to this definition">¶</a></dt>
+<dd><p>First, normalize a tensor image with mean and standard deviation.
+Then, convert the shape (H x W x C) to shape (C x H x W).</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.RandomErasing">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">RandomErasing</code><span class="sig-paren">(</span><em class="sig-param">probability=0.5</em>, <em class="sig-param">sl=0.02</em>, <em class="sig-param">sh=0.4</em>, <em class="sig-param">r1=0.3</em>, <em class="sig-param">mean=(0.4914</em>, <em class="sig-param">0.4822</em>, <em class="sig-param">0.4465)</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#RandomErasing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.RandomErasing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random erasing augmentation from <a class="reference external" href="https://arxiv.org/pdf/1708.04896.pdf">Random Erasing Data Augmentation (CVPR 2017)</a>. This augmentation randomly selects a rectangle region in an image
+and erases its pixels.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>probability</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The probability that the Random Erasing operation will be performed.</p></li>
+<li><p><strong>sl</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Minimum proportion of erased area against input image.</p></li>
+<li><p><strong>sh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Maximum proportion of erased area against input image.</p></li>
+<li><p><strong>r1</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Minimum aspect ratio of erased area.</p></li>
+<li><p><strong>mean</strong> (<em>sequence</em>) – Value to fill the erased area.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.ResizeImage">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.</code><code class="sig-name descname">ResizeImage</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms.html#ResizeImage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.ResizeImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the input PIL Image to the given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Desired output size. If size is a sequence like
+(h, w), output size will be matched to this. If size is an int,
+output size will be (size, size)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tllib.vision.transforms.segmentation">
+<span id="segmentation"></span><h2>Segmentation<a class="headerlink" href="#module-tllib.vision.transforms.segmentation" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Junguang Jiang
+&#64;contact: <a class="reference external" href="mailto:JiangJunguang1123&#37;&#52;&#48;outlook&#46;com">JiangJunguang1123<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.ColorJitter">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">ColorJitter</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.ColorJitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.Compose">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">Compose</code><span class="sig-paren">(</span><em class="sig-param">transforms</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#Compose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.Compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Composes several transforms together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of transforms to compose.</p>
+</dd>
+</dl>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Compose</span><span class="p">([</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">Resize</span><span class="p">((</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">)),</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">RandomHorizontalFlip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="p">])</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.MultipleApply">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">MultipleApply</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.MultipleApply" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.Normalize">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">Normalize</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.Normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.NormalizeAndTranspose">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">NormalizeAndTranspose</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.NormalizeAndTranspose" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.RandomApply">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">RandomApply</code><span class="sig-paren">(</span><em class="sig-param">transforms</em>, <em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomApply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomApply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply randomly a list of transformations with a given probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – list of transformations</p></li>
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – probability</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.RandomChoice">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">RandomChoice</code><span class="sig-paren">(</span><em class="sig-param">transforms</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomChoice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomChoice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply single transformation randomly picked from a list.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.RandomCrop">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">RandomCrop</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomCrop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomCrop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop the given image at a random location.
+The image can be a PIL Image</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>size</strong> (<em>sequence</em>) – Desired output size of the crop.</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.segmentation.RandomCrop.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomCrop.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomCrop.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – (PIL Image): Image to be cropped.</p></li>
+<li><p><strong>label</strong> – (PIL Image): Segmentation label to be cropped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cropped image, cropped segmentation label.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.RandomHorizontalFlip">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">RandomHorizontalFlip</code><span class="sig-paren">(</span><em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomHorizontalFlip"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomHorizontalFlip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Horizontally flip the given PIL Image randomly with a given probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – probability of the image being flipped. Default value is 0.5</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.segmentation.RandomHorizontalFlip.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomHorizontalFlip.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomHorizontalFlip.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – (PIL Image): Image to be flipped.</p></li>
+<li><p><strong>label</strong> – (PIL Image): Segmentation label to be flipped.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Randomly flipped image, randomly flipped segmentation label.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.RandomResizedCrop">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">RandomResizedCrop</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">scale=(0.5</em>, <em class="sig-param">1.0)</em>, <em class="sig-param">ratio=(0.75</em>, <em class="sig-param">1.3333333333333333)</em>, <em class="sig-param">interpolation=3</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomResizedCrop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomResizedCrop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop the given image to random size and aspect ratio.
+The image can be a PIL Image.</p>
+<p>A crop of random size (default: of 0.5 to 1.0) of the original size and a random
+aspect ratio (default: of 3/4 to 4/3) of the original aspect ratio is made. This crop
+is finally resized to given size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em> or </em><em>sequence</em>) – expected output size of each edge. If size is an
+int instead of sequence like (h, w), a square output size <code class="docutils literal notranslate"><span class="pre">(size,</span> <span class="pre">size)</span></code> is
+made. If provided a tuple or list of length 1, it will be interpreted as (size[0], size[0]).</p></li>
+<li><p><strong>scale</strong> (<em>tuple of float</em>) – range of size of the origin size cropped</p></li>
+<li><p><strong>ratio</strong> (<em>tuple of float</em>) – range of aspect ratio of the origin aspect ratio cropped.</p></li>
+<li><p><strong>interpolation</strong> – Default: PIL.Image.BILINEAR</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.segmentation.RandomResizedCrop.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomResizedCrop.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomResizedCrop.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – (PIL Image): Image to be cropped and resized.</p></li>
+<li><p><strong>label</strong> – (PIL Image): Segmentation label to be cropped and resized.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Randomly cropped and resized image, randomly cropped and resized segmentation label.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="tllib.vision.transforms.segmentation.RandomResizedCrop.get_params">
+<em class="property">static </em><code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">img</em>, <em class="sig-param">scale</em>, <em class="sig-param">ratio</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#RandomResizedCrop.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.RandomResizedCrop.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random sized crop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>PIL Image</em>) – Input image.</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – range of scale of the origin size cropped</p></li>
+<li><p><strong>ratio</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – range of aspect ratio of the origin aspect ratio cropped</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>params (i, j, h, w) to be passed to <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random sized crop.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.segmentation.Resize">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">Resize</code><span class="sig-paren">(</span><em class="sig-param">image_size</em>, <em class="sig-param">label_size=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#Resize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.Resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the input image and the corresponding label to the given size.
+The image should be a PIL Image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_size</strong> (<em>sequence</em>) – The requested image size in pixels, as a 2-tuple:
+(width, height).</p></li>
+<li><p><strong>label_size</strong> (<em>sequence</em><em>, </em><em>optional</em>) – The requested segmentation label size in pixels, as a 2-tuple:
+(width, height). The same as image_size if None. Default: None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.segmentation.Resize.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">label</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#Resize.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.Resize.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image</strong> – (PIL Image): Image to be scaled.</p></li>
+<li><p><strong>label</strong> – (PIL Image): Segmentation label to be scaled.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Rescaled image, rescaled segmentation label</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.ToPILImage">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">ToPILImage</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.ToPILImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.segmentation.ToTensor">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">ToTensor</code><a class="headerlink" href="#tllib.vision.transforms.segmentation.ToTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.segmentation.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.transforms.segmentation.wrapper">
+<code class="sig-prename descclassname">tllib.vision.transforms.segmentation.</code><code class="sig-name descname">wrapper</code><span class="sig-paren">(</span><em class="sig-param">transform</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/segmentation.html#wrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.segmentation.wrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a transform for classification to a transform for segmentation.
+Note that the segmentation label will keep the same before and after wrapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transform</strong> (<em>class</em><em>, </em><em>callable</em>) – transform for classification</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transform for segmentation</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tllib.vision.transforms.keypoint_detection">
+<span id="keypoint-detection"></span><h2>Keypoint Detection<a class="headerlink" href="#module-tllib.vision.transforms.keypoint_detection" title="Permalink to this headline">¶</a></h2>
+<p>&#64;author: Junguang Jiang
+&#64;contact: <a class="reference external" href="mailto:JiangJunguang1123&#37;&#52;&#48;outlook&#46;com">JiangJunguang1123<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.CenterCrop">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">CenterCrop</code><span class="sig-paren">(</span><em class="sig-param">size</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#CenterCrop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.CenterCrop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crops the given PIL Image at the center.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.keypoint_detection.ColorJitter">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">ColorJitter</code><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.ColorJitter" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.keypoint_detection.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.Compose">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">Compose</code><span class="sig-paren">(</span><em class="sig-param">transforms</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#Compose"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.Compose" title="Permalink to this definition">¶</a></dt>
+<dd><p>Composes several transforms together.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transforms</strong> (list of <code class="docutils literal notranslate"><span class="pre">Transform</span></code> objects) – list of transforms to compose.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.keypoint_detection.Normalize">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">Normalize</code><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.Normalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.keypoint_detection.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.RandomApply">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">RandomApply</code><span class="sig-paren">(</span><em class="sig-param">transforms</em>, <em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#RandomApply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.RandomApply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Apply randomly a list of transformations with a given probability.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>transforms</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em> or </em><a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – list of transformations</p></li>
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – probability</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.RandomResizedCrop">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">RandomResizedCrop</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">scale=(0.6</em>, <em class="sig-param">1.3)</em>, <em class="sig-param">interpolation=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#RandomResizedCrop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.RandomResizedCrop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop the given PIL Image to random size and aspect ratio.</p>
+<p>A crop of random size (default: of 0.08 to 1.0) of the original size and a random
+aspect ratio (default: of 3/4 to 4/3) of the original aspect ratio is made. This crop
+is finally resized to given size.
+This is popularly used to train the Inception networks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – expected output size of each edge</p></li>
+<li><p><strong>scale</strong> – range of size of the origin size cropped</p></li>
+<li><p><strong>ratio</strong> – range of aspect ratio of the origin aspect ratio cropped</p></li>
+<li><p><strong>interpolation</strong> – Default: PIL.Image.BILINEAR</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.keypoint_detection.RandomResizedCrop.get_params">
+<em class="property">static </em><code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">img</em>, <em class="sig-param">scale</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#RandomResizedCrop.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.RandomResizedCrop.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random sized crop.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>PIL Image</em>) – Image to be cropped.</p></li>
+<li><p><strong>scale</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – range of size of the origin size cropped</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>params (i, j, h, w) to be passed to <code class="docutils literal notranslate"><span class="pre">crop</span></code> for a random</dt><dd><p>sized crop.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)">tuple</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.RandomRotation">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">RandomRotation</code><span class="sig-paren">(</span><em class="sig-param">degrees</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#RandomRotation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.RandomRotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rotate the image by angle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>degrees</strong> (<em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Range of degrees to select from.
+If degrees is a number instead of sequence like (min, max), the range of degrees
+will be (-degrees, +degrees).</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.transforms.keypoint_detection.RandomRotation.get_params">
+<em class="property">static </em><code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">degrees</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#RandomRotation.get_params"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.RandomRotation.get_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get parameters for <code class="docutils literal notranslate"><span class="pre">rotate</span></code> for a random rotation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>params to be passed to <code class="docutils literal notranslate"><span class="pre">rotate</span></code> for random rotation.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>sequence</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.Resize">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">Resize</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">interpolation=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#Resize"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.Resize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resize the input PIL Image to the given size.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.transforms.keypoint_detection.ResizePad">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">ResizePad</code><span class="sig-paren">(</span><em class="sig-param">size</em>, <em class="sig-param">interpolation=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#ResizePad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.ResizePad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pad the given image on all sides with the given “pad” value to resize the image to the given size.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="tllib.vision.transforms.keypoint_detection.ToTensor">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">ToTensor</code><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.ToTensor" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">tllib.vision.transforms.keypoint_detection.wrapper.&lt;locals&gt;.WrapperTransform</span></code></p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.transforms.keypoint_detection.center_crop">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">center_crop</code><span class="sig-paren">(</span><em class="sig-param">image</em>, <em class="sig-param">output_size</em>, <em class="sig-param">keypoint2d</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#center_crop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.center_crop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop the given PIL Image and resize it to desired size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>PIL Image</em>) – Image to be cropped. (0,0) denotes the top left corner of the image.</p></li>
+<li><p><strong>output_size</strong> (<em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – (height, width) of the crop box. If int,
+it is used for both directions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cropped image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>PIL Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.transforms.keypoint_detection.resized_crop">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">resized_crop</code><span class="sig-paren">(</span><em class="sig-param">img</em>, <em class="sig-param">top</em>, <em class="sig-param">left</em>, <em class="sig-param">height</em>, <em class="sig-param">width</em>, <em class="sig-param">size</em>, <em class="sig-param">interpolation=2</em>, <em class="sig-param">keypoint2d=None</em>, <em class="sig-param">intrinsic_matrix=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#resized_crop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.resized_crop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop the given PIL Image and resize it to desired size.</p>
+<p>Notably used in <a class="reference external" href="https://pytorch.org/vision/stable/generated/torchvision.transforms.RandomResizedCrop.html#torchvision.transforms.RandomResizedCrop" title="(in Torchvision vmain (0.13.1a0+bddbd7e ))"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomResizedCrop</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>img</strong> (<em>PIL Image</em>) – Image to be cropped. (0,0) denotes the top left corner of the image.</p></li>
+<li><p><strong>top</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Vertical component of the top left corner of the crop box.</p></li>
+<li><p><strong>left</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Horizontal component of the top left corner of the crop box.</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Height of the crop box.</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Width of the crop box.</p></li>
+<li><p><strong>size</strong> (<em>sequence</em><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Desired output size. Same semantics as <code class="docutils literal notranslate"><span class="pre">resize</span></code>.</p></li>
+<li><p><strong>interpolation</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Desired interpolation. Default is
+<code class="docutils literal notranslate"><span class="pre">PIL.Image.BILINEAR</span></code>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Cropped image.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>PIL Image</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.transforms.keypoint_detection.wrapper">
+<code class="sig-prename descclassname">tllib.vision.transforms.keypoint_detection.</code><code class="sig-name descname">wrapper</code><span class="sig-paren">(</span><em class="sig-param">transform</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/transforms/keypoint_detection.html#wrapper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.transforms.keypoint_detection.wrapper" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrap a transform for classification to a transform for keypoint detection.
+Note that the keypoint detection label will keep the same before and after wrapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>transform</strong> (<em>class</em><em>, </em><em>callable</em>) – transform for classification</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>transform for keypoint detection</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../utils/index.html" class="btn btn-neutral float-right" title="Utilities" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="models.html" class="btn btn-neutral" title="Models" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Transforms</a><ul>
+<li><a class="reference internal" href="#module-tllib.vision.transforms">Classification</a></li>
+<li><a class="reference internal" href="#module-tllib.vision.transforms.segmentation">Segmentation</a></li>
+<li><a class="reference internal" href="#module-tllib.vision.transforms.keypoint_detection">Keypoint Detection</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

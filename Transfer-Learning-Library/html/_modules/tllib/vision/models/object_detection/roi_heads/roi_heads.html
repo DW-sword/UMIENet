@@ -1,0 +1,736 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>tllib.vision.models.object_detection.roi_heads.roi_heads &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../../../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../../search.html" /> 
+
+  
+  <script src="../../../../../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../../../../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../../../../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../../tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../../../../index.html">Module code</a> &gt;</li>
+        
+      <li>tllib.vision.models.object_detection.roi_heads.roi_heads</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for tllib.vision.models.object_detection.roi_heads.roi_heads</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">@author: Junguang Jiang</span>
+<span class="sd">@contact: JiangJunguang1123@outlook.com</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Dict</span>
+<span class="kn">from</span> <span class="nn">detectron2.structures</span> <span class="kn">import</span> <span class="n">Instances</span>
+<span class="kn">from</span> <span class="nn">detectron2.modeling.roi_heads</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ROI_HEADS_REGISTRY</span><span class="p">,</span>
+    <span class="n">Res5ROIHeads</span><span class="p">,</span>
+    <span class="n">StandardROIHeads</span><span class="p">,</span>
+    <span class="n">select_foreground_proposals</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="TLRes5ROIHeads"><a class="viewcode-back" href="../../../../../../tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads">[docs]</a><span class="nd">@ROI_HEADS_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">TLRes5ROIHeads</span><span class="p">(</span><span class="n">Res5ROIHeads</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The ROIHeads in a typical &quot;C4&quot; R-CNN model, where</span>
+<span class="sd">    the box and mask head share the cropping and</span>
+<span class="sd">    the per-region feature computation by a Res5 block.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        in_features (list[str]): list of backbone feature map names to use for</span>
+<span class="sd">            feature extraction</span>
+<span class="sd">        pooler (ROIPooler): pooler to extra region features from backbone</span>
+<span class="sd">        res5 (nn.Sequential): a CNN to compute per-region features, to be used by</span>
+<span class="sd">            ``box_predictor`` and ``mask_head``. Typically this is a &quot;res5&quot;</span>
+<span class="sd">            block from a ResNet.</span>
+<span class="sd">        box_predictor (nn.Module): make box predictions from the feature.</span>
+<span class="sd">            Should have the same interface as :class:`FastRCNNOutputLayers`.</span>
+<span class="sd">        mask_head (nn.Module): transform features to make mask predictions</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        - images (ImageList):</span>
+<span class="sd">        - features (dict[str,Tensor]): input data as a mapping from feature</span>
+<span class="sd">          map name to tensor. Axis 0 represents the number of images `N` in</span>
+<span class="sd">          the input data; axes 1-3 are channels, height, and width, which may</span>
+<span class="sd">          vary between feature maps (e.g., if a feature pyramid is used).</span>
+<span class="sd">        - proposals (list[Instances]): length `N` list of `Instances`. The i-th</span>
+<span class="sd">          `Instances` contains object proposals for the i-th input image,</span>
+<span class="sd">          with fields &quot;proposal_boxes&quot; and &quot;objectness_logits&quot;.</span>
+<span class="sd">        - targets (list[Instances], optional): length `N` list of `Instances`. The i-th</span>
+<span class="sd">          `Instances` contains the ground-truth per-instance annotations</span>
+<span class="sd">          for the i-th input image.  Specify `targets` during training only.</span>
+<span class="sd">          It may have the following fields:</span>
+<span class="sd">            - gt_boxes: the bounding box of each instance.</span>
+<span class="sd">            - gt_classes: the label for each instance with a category ranging in [0, #class].</span>
+<span class="sd">            - gt_masks: PolygonMasks or BitMasks, the ground-truth masks of each instance.</span>
+<span class="sd">            - gt_keypoints: NxKx3, the groud-truth keypoints for each instance.</span>
+<span class="sd">        - labeled (bool, optional): whether has ground-truth label. Default: True</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">        - list[Instances]: length `N` list of `Instances` containing the</span>
+<span class="sd">          detected instances. Returned during inference only; may be [] during training.</span>
+
+<span class="sd">        - dict[str-&gt;Tensor]:</span>
+<span class="sd">          mapping from a named loss to a tensor storing the loss. Used during training only.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TLRes5ROIHeads</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labeled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="n">images</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">labeled</span><span class="p">:</span>
+                <span class="n">proposals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_and_sample_proposals</span><span class="p">(</span><span class="n">proposals</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">proposals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_unlabeled_proposals</span><span class="p">(</span><span class="n">proposals</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">targets</span>
+
+        <span class="n">proposal_boxes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">proposal_boxes</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proposals</span><span class="p">]</span>
+        <span class="n">box_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_shared_roi_transform</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">in_features</span><span class="p">],</span> <span class="n">proposal_boxes</span>
+        <span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="p">(</span><span class="n">box_features</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">del</span> <span class="n">features</span>
+            <span class="k">if</span> <span class="n">labeled</span><span class="p">:</span>
+                <span class="n">losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="o">.</span><span class="n">losses</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask_on</span><span class="p">:</span>
+                    <span class="n">proposals</span><span class="p">,</span> <span class="n">fg_selection_masks</span> <span class="o">=</span> <span class="n">select_foreground_proposals</span><span class="p">(</span>
+                        <span class="n">proposals</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_classes</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Since the ROI feature transform is shared between boxes and masks,</span>
+                    <span class="c1"># we don&#39;t need to recompute features. The mask loss is only defined</span>
+                    <span class="c1"># on foreground proposals, so we need to select out the foreground</span>
+                    <span class="c1"># features.</span>
+                    <span class="n">mask_features</span> <span class="o">=</span> <span class="n">box_features</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">fg_selection_masks</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)]</span>
+                    <span class="c1"># del box_features</span>
+                    <span class="n">losses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mask_head</span><span class="p">(</span><span class="n">mask_features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">losses</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;predictions&#39;</span><span class="p">:</span> <span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s1">&#39;box_features&#39;</span><span class="p">:</span> <span class="n">box_features</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">losses</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_instances</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+            <span class="n">pred_instances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward_with_given_boxes</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">pred_instances</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pred_instances</span><span class="p">,</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="TLRes5ROIHeads.sample_unlabeled_proposals"><a class="viewcode-back" href="../../../../../../tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads.sample_unlabeled_proposals">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">sample_unlabeled_proposals</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">proposals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Instances</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Instances</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepare some unlabeled proposals.</span>
+<span class="sd">        It returns top ``self.batch_size_per_image`` samples from proposals</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            proposals (list[Instances]): length `N` list of `Instances`. The i-th</span>
+<span class="sd">                `Instances` contains object proposals for the i-th input image,</span>
+<span class="sd">                with fields &quot;proposal_boxes&quot; and &quot;objectness_logits&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            length `N` list of `Instances`s containing the proposals sampled for training.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">proposal</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size_per_image</span><span class="p">]</span> <span class="k">for</span> <span class="n">proposal</span> <span class="ow">in</span> <span class="n">proposals</span><span class="p">]</span></div></div>
+
+
+<div class="viewcode-block" id="TLStandardROIHeads"><a class="viewcode-back" href="../../../../../../tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads">[docs]</a><span class="nd">@ROI_HEADS_REGISTRY</span><span class="o">.</span><span class="n">register</span><span class="p">()</span>
+<span class="k">class</span> <span class="nc">TLStandardROIHeads</span><span class="p">(</span><span class="n">StandardROIHeads</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    It&#39;s &quot;standard&quot; in a sense that there is no ROI transform sharing</span>
+<span class="sd">    or feature sharing between tasks.</span>
+<span class="sd">    Each head independently processes the input features by each head&#39;s</span>
+<span class="sd">    own pooler and head.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        box_in_features (list[str]): list of feature names to use for the box head.</span>
+<span class="sd">        box_pooler (ROIPooler): pooler to extra region features for box head</span>
+<span class="sd">        box_head (nn.Module): transform features to make box predictions</span>
+<span class="sd">        box_predictor (nn.Module): make box predictions from the feature.</span>
+<span class="sd">            Should have the same interface as :class:`FastRCNNOutputLayers`.</span>
+<span class="sd">        mask_in_features (list[str]): list of feature names to use for the mask</span>
+<span class="sd">            pooler or mask head. None if not using mask head.</span>
+<span class="sd">        mask_pooler (ROIPooler): pooler to extract region features from image features.</span>
+<span class="sd">            The mask head will then take region features to make predictions.</span>
+<span class="sd">            If None, the mask head will directly take the dict of image features</span>
+<span class="sd">            defined by `mask_in_features`</span>
+<span class="sd">        mask_head (nn.Module): transform features to make mask predictions</span>
+<span class="sd">        keypoint_in_features, keypoint_pooler, keypoint_head: similar to ``mask_*``.</span>
+<span class="sd">        train_on_pred_boxes (bool): whether to use proposal boxes or</span>
+<span class="sd">            predicted boxes from the box head to train other heads.</span>
+
+<span class="sd">    Inputs:</span>
+<span class="sd">        - images (ImageList):</span>
+<span class="sd">        - features (dict[str,Tensor]): input data as a mapping from feature</span>
+<span class="sd">          map name to tensor. Axis 0 represents the number of images `N` in</span>
+<span class="sd">          the input data; axes 1-3 are channels, height, and width, which may</span>
+<span class="sd">          vary between feature maps (e.g., if a feature pyramid is used).</span>
+<span class="sd">        - proposals (list[Instances]): length `N` list of `Instances`. The i-th</span>
+<span class="sd">          `Instances` contains object proposals for the i-th input image,</span>
+<span class="sd">          with fields &quot;proposal_boxes&quot; and &quot;objectness_logits&quot;.</span>
+<span class="sd">        - targets (list[Instances], optional): length `N` list of `Instances`. The i-th</span>
+<span class="sd">          `Instances` contains the ground-truth per-instance annotations</span>
+<span class="sd">          for the i-th input image.  Specify `targets` during training only.</span>
+<span class="sd">          It may have the following fields:</span>
+<span class="sd">            - gt_boxes: the bounding box of each instance.</span>
+<span class="sd">            - gt_classes: the label for each instance with a category ranging in [0, #class].</span>
+<span class="sd">            - gt_masks: PolygonMasks or BitMasks, the ground-truth masks of each instance.</span>
+<span class="sd">            - gt_keypoints: NxKx3, the groud-truth keypoints for each instance.</span>
+<span class="sd">        - labeled (bool, optional): whether has ground-truth label. Default: True</span>
+
+<span class="sd">    Outputs:</span>
+<span class="sd">        - list[Instances]: length `N` list of `Instances` containing the</span>
+<span class="sd">          detected instances. Returned during inference only; may be [] during training.</span>
+
+<span class="sd">        - dict[str-&gt;Tensor]:</span>
+<span class="sd">          mapping from a named loss to a tensor storing the loss. Used during training only.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TLStandardROIHeads</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">,</span> <span class="n">targets</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">labeled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;&quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="n">images</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">labeled</span><span class="p">:</span>
+                <span class="n">proposals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">label_and_sample_proposals</span><span class="p">(</span><span class="n">proposals</span><span class="p">,</span> <span class="n">targets</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">proposals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sample_unlabeled_proposals</span><span class="p">(</span><span class="n">proposals</span><span class="p">)</span>
+        <span class="k">del</span> <span class="n">targets</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">labeled</span><span class="p">:</span>
+                <span class="n">outputs</span><span class="p">,</span> <span class="n">losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_box</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+                <span class="c1"># Usually the original proposals used by the box head are used by the mask, keypoint</span>
+                <span class="c1"># heads. But when `self.train_on_pred_boxes is True`, proposals will contain boxes</span>
+                <span class="c1"># predicted by the box head.</span>
+                <span class="n">losses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_forward_mask</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">))</span>
+                <span class="n">losses</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_forward_keypoint</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">losses</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">return</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">losses</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_instances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_forward_box</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+            <span class="c1"># During inference cascaded prediction is used: the mask and keypoints heads are only</span>
+            <span class="c1"># applied to the top scoring box detections.</span>
+            <span class="n">pred_instances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward_with_given_boxes</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">pred_instances</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pred_instances</span><span class="p">,</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">_forward_box</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">],</span> <span class="n">proposals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Instances</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Forward logic of the box prediction branch. If `self.train_on_pred_boxes is True`,</span>
+<span class="sd">            the function puts predicted boxes in the `proposal_boxes` field of `proposals` argument.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            features (dict[str, Tensor]): mapping from feature map names to tensor.</span>
+<span class="sd">                Same as in :meth:`ROIHeads.forward`.</span>
+<span class="sd">            proposals (list[Instances]): the per-image object proposals with</span>
+<span class="sd">                their matching ground truth.</span>
+<span class="sd">                Each has fields &quot;proposal_boxes&quot;, and &quot;objectness_logits&quot;,</span>
+<span class="sd">                &quot;gt_classes&quot;, &quot;gt_boxes&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            In training, a dict of losses.</span>
+<span class="sd">            In inference, a list of `Instances`, the predicted instances.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="n">features</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_in_features</span><span class="p">]</span>
+        <span class="n">box_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_pooler</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">proposal_boxes</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">proposals</span><span class="p">])</span>
+        <span class="n">box_features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_head</span><span class="p">(</span><span class="n">box_features</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="p">(</span><span class="n">box_features</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">:</span>
+            <span class="n">losses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="o">.</span><span class="n">losses</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+            <span class="c1"># proposals is modified in-place below, so losses must be computed first.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">train_on_pred_boxes</span><span class="p">:</span>
+                <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                    <span class="n">pred_boxes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="o">.</span><span class="n">predict_boxes_for_gt_classes</span><span class="p">(</span>
+                        <span class="n">predictions</span><span class="p">,</span> <span class="n">proposals</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">proposals_per_image</span><span class="p">,</span> <span class="n">pred_boxes_per_image</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">proposals</span><span class="p">,</span> <span class="n">pred_boxes</span><span class="p">):</span>
+                        <span class="n">proposals_per_image</span><span class="o">.</span><span class="n">proposal_boxes</span> <span class="o">=</span> <span class="n">Boxes</span><span class="p">(</span><span class="n">pred_boxes_per_image</span><span class="p">)</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;predictions&#39;</span><span class="p">:</span> <span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="s1">&#39;box_features&#39;</span><span class="p">:</span> <span class="n">box_features</span>
+            <span class="p">}</span>
+            <span class="k">return</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">losses</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pred_instances</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">box_predictor</span><span class="o">.</span><span class="n">inference</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">proposals</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pred_instances</span>
+
+<div class="viewcode-block" id="TLStandardROIHeads.sample_unlabeled_proposals"><a class="viewcode-back" href="../../../../../../tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads.sample_unlabeled_proposals">[docs]</a>    <span class="nd">@torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">sample_unlabeled_proposals</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">proposals</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Instances</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Instances</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prepare some unlabeled proposals.</span>
+<span class="sd">        It returns top ``self.batch_size_per_image`` samples from proposals</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            proposals (list[Instances]): length `N` list of `Instances`. The i-th</span>
+<span class="sd">                `Instances` contains object proposals for the i-th input image,</span>
+<span class="sd">                with fields &quot;proposal_boxes&quot; and &quot;objectness_logits&quot;.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            length `N` list of `Instances`s containing the proposals sampled for training.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">proposal</span><span class="p">[:</span><span class="bp">self</span><span class="o">.</span><span class="n">batch_size_per_image</span><span class="p">]</span> <span class="k">for</span> <span class="n">proposal</span> <span class="ow">in</span> <span class="n">proposals</span><span class="p">]</span></div></div>
+
+
+
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../../../../" src="../../../../../../_static/documentation_options.js"></script>
+         <script src="../../../../../../_static/jquery.js"></script>
+         <script src="../../../../../../_static/underscore.js"></script>
+         <script src="../../../../../../_static/doctools.js"></script>
+         <script src="../../../../../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../../../../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,769 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Regularization &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ranking" href="ranking.html" />
+    <link rel="prev" title="Normalization" href="normalization.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Regularization</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tllib/regularization.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="regularization">
+<h1>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="l2">
+<span id="id1"></span><h2>L2<a class="headerlink" href="#l2" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.delta.L2Regularization">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.delta.</code><code class="sig-name descname">L2Regularization</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/delta.html#L2Regularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.delta.L2Regularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>The L2 regularization of parameters <span class="math notranslate nohighlight">\(w\)</span> can be described as:</p>
+<div class="math notranslate nohighlight">
+\[{\Omega} (w) = \dfrac{1}{2}  \Vert w\Vert_2^2 ,\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The model to apply L2 penalty.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="l2-sp">
+<span id="l2sp"></span><h2>L2-SP<a class="headerlink" href="#l2-sp" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.delta.SPRegularization">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.delta.</code><code class="sig-name descname">SPRegularization</code><span class="sig-paren">(</span><em class="sig-param">source_model</em>, <em class="sig-param">target_model</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/delta.html#SPRegularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.delta.SPRegularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>The SP (Starting Point) regularization from <a class="reference external" href="https://arxiv.org/abs/1802.01483">Explicit inductive bias for transfer learning with convolutional networks
+(ICML 2018)</a></p>
+<p>The SP regularization of parameters <span class="math notranslate nohighlight">\(w\)</span> can be described as:</p>
+<div class="math notranslate nohighlight">
+\[{\Omega} (w) = \dfrac{1}{2}  \Vert w-w_0\Vert_2^2 ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_0\)</span> is the parameter vector of the model pretrained on the source problem, acting as the starting point (SP) in fine-tuning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The source (starting point) model.</p></li>
+<li><p><strong>target_model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The target (fine-tuning) model.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="delta-deep-learning-transfer-using-feature-map-with-attention">
+<span id="delta"></span><h2>DELTA: DEep Learning Transfer using Feature Map with Attention<a class="headerlink" href="#delta-deep-learning-transfer-using-feature-map-with-attention" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.delta.BehavioralRegularization">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.delta.</code><code class="sig-name descname">BehavioralRegularization</code><a class="reference internal" href="../_modules/tllib/regularization/delta.html#BehavioralRegularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.delta.BehavioralRegularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>The behavioral regularization from <a class="reference external" href="https://openreview.net/pdf?id=rkgbwsAcYm">DELTA:DEep Learning Transfer using Feature Map with Attention
+for convolutional networks (ICLR 2019)</a></p>
+<p>It can be described as:</p>
+<div class="math notranslate nohighlight">
+\[{\Omega} (w) = \sum_{j=1}^{N}   \Vert FM_j(w, \boldsymbol x)-FM_j(w^0, \boldsymbol x)\Vert_2^2 ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(w^0\)</span> is the parameter vector of the model pretrained on the source problem, acting as the starting point (SP) in fine-tuning,
+<span class="math notranslate nohighlight">\(FM_j(w, \boldsymbol x)\)</span> is feature maps generated from the <span class="math notranslate nohighlight">\(j\)</span>-th layer of the model parameterized with <span class="math notranslate nohighlight">\(w\)</span>, given the input <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.</p>
+<dl>
+<dt>Inputs:</dt><dd><p>layer_outputs_source (OrderedDict):  The dictionary for source model, where the keys are layer names and the values are feature maps correspondingly.</p>
+<p>layer_outputs_target (OrderedDict):  The dictionary for target model, where the keys are layer names and the values are feature maps correspondingly.</p>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.regularization.delta.AttentionBehavioralRegularization">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.delta.</code><code class="sig-name descname">AttentionBehavioralRegularization</code><span class="sig-paren">(</span><em class="sig-param">channel_attention</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/delta.html#AttentionBehavioralRegularization"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.delta.AttentionBehavioralRegularization" title="Permalink to this definition">¶</a></dt>
+<dd><p>The behavioral regularization with attention from <a class="reference external" href="https://openreview.net/pdf?id=rkgbwsAcYm">DELTA:DEep Learning Transfer using Feature Map with Attention
+for convolutional networks (ICLR 2019)</a></p>
+<p>It can be described as:</p>
+<div class="math notranslate nohighlight">
+\[{\Omega} (w) = \sum_{j=1}^{N}  W_j(w) \Vert FM_j(w, \boldsymbol x)-FM_j(w^0, \boldsymbol x)\Vert_2^2 ,\]</div>
+<p>where
+<span class="math notranslate nohighlight">\(w^0\)</span> is the parameter vector of the model pretrained on the source problem, acting as the starting point (SP) in fine-tuning.
+<span class="math notranslate nohighlight">\(FM_j(w, \boldsymbol x)\)</span> is feature maps generated from the <span class="math notranslate nohighlight">\(j\)</span>-th layer of the model parameterized with <span class="math notranslate nohighlight">\(w\)</span>, given the input <span class="math notranslate nohighlight">\(\boldsymbol x\)</span>.
+<span class="math notranslate nohighlight">\(W_j(w)\)</span> is the channel attention of the <span class="math notranslate nohighlight">\(j\)</span>-th layer of the model parameterized with <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>channel_attention</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – The channel attentions of feature maps generated by each selected layer. For the layer with C channels, the channel attention is a tensor of shape [C].</p>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><p>layer_outputs_source (OrderedDict):  The dictionary for source model, where the keys are layer names and the values are feature maps correspondingly.</p>
+<p>layer_outputs_target (OrderedDict):  The dictionary for target model, where the keys are layer names and the values are feature maps correspondingly.</p>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.regularization.delta.IntermediateLayerGetter">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.delta.</code><code class="sig-name descname">IntermediateLayerGetter</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">return_layers</em>, <em class="sig-param">keep_output=True</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/delta.html#IntermediateLayerGetter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.delta.IntermediateLayerGetter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wraps a model to get intermediate output values of selected layers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The model to collect intermediate layer feature maps.</p></li>
+<li><p><strong>return_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – The names of selected modules to return the output.</p></li>
+<li><p><strong>keep_output</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, <cite>model_output</cite> contains the final model’s output, else return None. Default: True</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>An OrderedDict of intermediate outputs. The keys are selected layer names in <cite>return_layers</cite> and the values are the feature map outputs. The order is the same as <cite>return_layers</cite>.</p></li>
+<li><p>The model’s final output. If <cite>keep_output</cite> is False, return None.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="lwf-learning-without-forgetting">
+<span id="lwf"></span><h2>LWF: Learning without Forgetting<a class="headerlink" href="#lwf-learning-without-forgetting" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.lwf.Classifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.lwf.</code><code class="sig-name descname">Classifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">head_source</em>, <em class="sig-param">head_target=None</em>, <em class="sig-param">bottleneck=None</em>, <em class="sig-param">bottleneck_dim=-1</em>, <em class="sig-param">finetune=True</em>, <em class="sig-param">pool_layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/lwf.html#Classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.lwf.Classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Classifier used in <a class="reference external" href="https://arxiv.org/abs/1606.09282">Learning Without Forgetting (ECCV 2016)</a>..</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 2-d features from data.</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes.</p></li>
+<li><p><strong>head_source</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Classifier head of source model.</p></li>
+<li><p><strong>head_target</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a><em>, </em><em>optional</em>) – Any classifier head. Use <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Linear.html#torch.nn.Linear" title="(in PyTorch v1.12)"><code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.Linear</span></code></a> by default</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether finetune the classifier or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (tensor): input data fed to backbone</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>y_s: predictions of source classifier head</p></li>
+<li><p>y_t: predictions of target classifier head</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: (b, <a href="#id3"><span class="problematic" id="id4">*</span></a>) where b is the batch size and * means any number of additional dimensions</p></li>
+<li><p>y_s: (b, N), where b is the batch size and N is the number of classes</p></li>
+<li><p>y_t: (b, N), where b is the batch size and N is the number of classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="co-tuning">
+<span id="cotuning"></span><h2>Co-Tuning<a class="headerlink" href="#co-tuning" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.co_tuning.CoTuningLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.co_tuning.</code><code class="sig-name descname">CoTuningLoss</code><a class="reference internal" href="../_modules/tllib/regularization/co_tuning.html#CoTuningLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.co_tuning.CoTuningLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Co-Tuning loss in <a class="reference external" href="http://ise.thss.tsinghua.edu.cn/~mlong/doc/co-tuning-for-transfer-learning-nips20.pdf">Co-Tuning for Transfer Learning (NIPS 2020)</a>.</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>input: p(y_s) predicted by source classifier.</p></li>
+<li><p>target: p(y_s|y_t), where y_t is the ground truth class label in target dataset.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>input:  (b, N_p), where b is the batch size and N_p is the number of classes in source dataset</p></li>
+<li><p>target: (b, N_p), where b is the batch size and N_p is the number of classes in source dataset</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.regularization.co_tuning.Relationship">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.co_tuning.</code><code class="sig-name descname">Relationship</code><span class="sig-paren">(</span><em class="sig-param">data_loader</em>, <em class="sig-param">classifier</em>, <em class="sig-param">device</em>, <em class="sig-param">cache=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/co_tuning.html#Relationship"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.co_tuning.Relationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learns the category relationship p(y_s|y_t) between source dataset and target dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_loader</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/data.html#torch.utils.data.DataLoader" title="(in PyTorch v1.12)"><em>torch.utils.data.DataLoader</em></a>) – A data loader of target dataset.</p></li>
+<li><p><strong>classifier</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – A classifier for Co-Tuning.</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The device to run classifier.</p></li>
+<li><p><strong>cache</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Path to find and save the relationship file.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="bi-tuning">
+<span id="bituning"></span><span id="stochnorm"></span><h2>Bi-Tuning<a class="headerlink" href="#bi-tuning" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.bi_tuning.BiTuning">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.bi_tuning.</code><code class="sig-name descname">BiTuning</code><span class="sig-paren">(</span><em class="sig-param">encoder_q</em>, <em class="sig-param">encoder_k</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">K=40</em>, <em class="sig-param">m=0.999</em>, <em class="sig-param">T=0.07</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/bi_tuning.html#BiTuning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.bi_tuning.BiTuning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bi-Tuning Module in <a class="reference external" href="https://arxiv.org/abs/2011.06182?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed%3A+arxiv%2FQSXk+%28ExcitingAds%21+cs+updates+on+arXiv.org%29">Bi-tuning of Pre-trained Representations</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>encoder_q</strong> (<a class="reference internal" href="modules.html#tllib.modules.classifier.Classifier" title="tllib.modules.classifier.Classifier"><em>Classifier</em></a>) – Query encoder.</p></li>
+<li><p><strong>encoder_k</strong> (<a class="reference internal" href="modules.html#tllib.modules.classifier.Classifier" title="tllib.modules.classifier.Classifier"><em>Classifier</em></a>) – Key encoder.</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Queue size. Default: 40</p></li>
+<li><p><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Momentum coefficient. Default: 0.999</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Temperature. Default: 0.07</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>im_q (tensor): input data fed to <cite>encoder_q</cite></p></li>
+<li><p>im_k (tensor): input data fed to <cite>encoder_k</cite></p></li>
+<li><p>labels (tensor): classification labels of input data</p></li>
+</ul>
+</dd>
+<dt>Outputs: y_q, logits_z, logits_y, labels_c</dt><dd><ul class="simple">
+<li><p>y_q: query classifier’s predictions</p></li>
+<li><p>logits_z: projector’s predictions on both positive and negative samples</p></li>
+<li><p>logits_y: classifier’s predictions on both positive and negative samples</p></li>
+<li><p>labels_c: contrastive labels</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>im_q, im_k: (minibatch, <a href="#id5"><span class="problematic" id="id6">*</span></a>) where * means, any number of additional dimensions</p></li>
+<li><p>labels: (minibatch, )</p></li>
+<li><p>y_q: (minibatch, <cite>num_classes</cite>)</p></li>
+<li><p>logits_z: (minibatch, 1 + <cite>num_classes</cite> x <cite>K</cite>, <cite>projection_dim</cite>)</p></li>
+<li><p>logits_y: (minibatch, 1 + <cite>num_classes</cite> x <cite>K</cite>, <cite>num_classes</cite>)</p></li>
+<li><p>labels_c: (minibatch, 1 + <cite>num_classes</cite> x <cite>K</cite>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="bss-batch-spectral-shrinkage">
+<span id="bss"></span><h2>BSS: Batch Spectral Shrinkage<a class="headerlink" href="#bss-batch-spectral-shrinkage" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.regularization.bss.BatchSpectralShrinkage">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.regularization.bss.</code><code class="sig-name descname">BatchSpectralShrinkage</code><span class="sig-paren">(</span><em class="sig-param">k=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/regularization/bss.html#BatchSpectralShrinkage"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.regularization.bss.BatchSpectralShrinkage" title="Permalink to this definition">¶</a></dt>
+<dd><p>The regularization term in <a class="reference external" href="https://proceedings.neurips.cc/paper/2019/file/c6bff625bdb0393992c9d4db0c6bbe45-Paper.pdf">Catastrophic Forgetting Meets Negative Transfer:
+Batch Spectral Shrinkage for Safe Transfer Learning (NIPS 2019)</a>.</p>
+<p>The BSS regularization of feature matrix <span class="math notranslate nohighlight">\(F\)</span> can be described as:</p>
+<div class="math notranslate nohighlight">
+\[L_{bss}(F) = \sum_{i=1}^{k} \sigma_{-i}^2 ,\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the number of singular values to be penalized, <span class="math notranslate nohighlight">\(\sigma_{-i}\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th smallest singular value of feature matrix <span class="math notranslate nohighlight">\(F\)</span>.</p>
+<p>All the singular values of feature matrix <span class="math notranslate nohighlight">\(F\)</span> are computed by <cite>SVD</cite>:</p>
+<div class="math notranslate nohighlight">
+\[F = U\Sigma V^T,\]</div>
+<p>where the main diagonal elements of the singular value matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> is <span class="math notranslate nohighlight">\([\sigma_1, \sigma_2, ..., \sigma_b]\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>k</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The number of singular values to be penalized. Default: 1</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((b, |\mathcal{f}|)\)</span> where <span class="math notranslate nohighlight">\(b\)</span> is the batch size and <span class="math notranslate nohighlight">\(|\mathcal{f}|\)</span> is feature dimension.</p></li>
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ranking.html" class="btn btn-neutral float-right" title="Ranking" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="normalization.html" class="btn btn-neutral" title="Normalization" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Regularization</a><ul>
+<li><a class="reference internal" href="#l2">L2</a></li>
+<li><a class="reference internal" href="#l2-sp">L2-SP</a></li>
+<li><a class="reference internal" href="#delta-deep-learning-transfer-using-feature-map-with-attention">DELTA: DEep Learning Transfer using Feature Map with Attention</a></li>
+<li><a class="reference internal" href="#lwf-learning-without-forgetting">LWF: Learning without Forgetting</a></li>
+<li><a class="reference internal" href="#co-tuning">Co-Tuning</a></li>
+<li><a class="reference internal" href="#bi-tuning">Bi-Tuning</a></li>
+<li><a class="reference internal" href="#bss-batch-spectral-shrinkage">BSS: Batch Spectral Shrinkage</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Domain Translation &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Self Training Methods" href="self_training.html" />
+    <link rel="prev" title="Hypothesis Adversarial Learning" href="alignment/hypothesis_adversarial.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Domain Translation</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tllib/translation.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="domain-translation">
+<h1>Domain Translation<a class="headerlink" href="#domain-translation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cyclegan-cycle-consistent-adversarial-networks">
+<span id="cyclegan"></span><h2>CycleGAN: Cycle-Consistent Adversarial Networks<a class="headerlink" href="#cyclegan-cycle-consistent-adversarial-networks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="discriminator">
+<h3>Discriminator<a class="headerlink" href="#discriminator" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="tllib.translation.cyclegan.pixel">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">pixel</code><span class="sig-paren">(</span><em class="sig-param">ndf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/discriminator.html#pixel"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.pixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>1x1 PixelGAN discriminator can classify whether a pixel is real or not.
+It encourages greater color diversity but has no effect on spatial statistics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ndf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the first conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.cyclegan.patch">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">patch</code><span class="sig-paren">(</span><em class="sig-param">ndf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">n_layers=3</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/discriminator.html#patch"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.patch" title="Permalink to this definition">¶</a></dt>
+<dd><p>PatchGAN classifier described in the original pix2pix paper.
+It can classify whether 70×70 overlapping patches are real or fake.
+Such a patch-level discriminator architecture has fewer parameters
+than a full-image discriminator and can work on arbitrarily-sized images
+in a fully convolutional fashion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ndf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the first conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>n_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of conv layers in the discriminator. Default: 3</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="generator">
+<h3>Generator<a class="headerlink" href="#generator" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="tllib.translation.cyclegan.resnet_9">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">resnet_9</code><span class="sig-paren">(</span><em class="sig-param">ngf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">output_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">use_dropout=False</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/generator.html#resnet_9"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.resnet_9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resnet-based generator with 9 Resnet blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ngf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the last conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>output_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in output images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>use_dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use dropout. Default: False</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.cyclegan.resnet_6">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">resnet_6</code><span class="sig-paren">(</span><em class="sig-param">ngf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">output_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">use_dropout=False</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/generator.html#resnet_6"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.resnet_6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resnet-based generator with 6 Resnet blocks.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ngf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the last conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>output_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in output images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>use_dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use dropout. Default: False</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.cyclegan.unet_256">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">unet_256</code><span class="sig-paren">(</span><em class="sig-param">ngf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">output_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">use_dropout=False</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/generator.html#unet_256"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.unet_256" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/abs/1505.04597">U-Net</a> generator for 256x256 input images.
+The size of the input image should be a multiple of 256.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ngf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the last conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>output_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in output images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>use_dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use dropout. Default: False</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.cyclegan.unet_128">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">unet_128</code><span class="sig-paren">(</span><em class="sig-param">ngf</em>, <em class="sig-param">input_nc=3</em>, <em class="sig-param">output_nc=3</em>, <em class="sig-param">norm='batch'</em>, <em class="sig-param">use_dropout=False</em>, <em class="sig-param">init_type='normal'</em>, <em class="sig-param">init_gain=0.02</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/generator.html#unet_128"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.unet_128" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/abs/1505.04597">U-Net</a> generator for 128x128 input images.
+The size of the input image should be a multiple of 128.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ngf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of filters in the last conv layer</p></li>
+<li><p><strong>input_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in input images. Default: 3</p></li>
+<li><p><strong>output_nc</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the number of channels in output images. Default: 3</p></li>
+<li><p><strong>norm</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the type of normalization layers used in the network. Default: ‘batch’</p></li>
+<li><p><strong>use_dropout</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use dropout. Default: False</p></li>
+<li><p><strong>init_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – the name of the initialization method. Choices includes: <code class="docutils literal notranslate"><span class="pre">normal</span></code> |
+<code class="docutils literal notranslate"><span class="pre">xavier</span></code> | <code class="docutils literal notranslate"><span class="pre">kaiming</span></code> | <code class="docutils literal notranslate"><span class="pre">orthogonal</span></code>. Default: ‘normal’</p></li>
+<li><p><strong>init_gain</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling factor for normal, xavier and orthogonal. Default: 0.02</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="gan-loss">
+<h3>GAN Loss<a class="headerlink" href="#gan-loss" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.translation.cyclegan.LeastSquaresGenerativeAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">LeastSquaresGenerativeAdversarialLoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/loss.html#LeastSquaresGenerativeAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.LeastSquaresGenerativeAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loss for <a class="reference external" href="https://arxiv.org/abs/1611.04076">Least Squares Generative Adversarial Network (LSGAN)</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>prediction (tensor): unnormalized discriminator predictions</p></li>
+<li><p>real (bool): if the ground truth label is for real images or fake images. Default: true</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use sigmoid as the last layer of Discriminator.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.translation.cyclegan.VanillaGenerativeAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">VanillaGenerativeAdversarialLoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/loss.html#VanillaGenerativeAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.VanillaGenerativeAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loss for <a class="reference external" href="https://arxiv.org/abs/1406.2661">Vanilla Generative Adversarial Network</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>prediction (tensor): unnormalized discriminator predictions</p></li>
+<li><p>real (bool): if the ground truth label is for real images or fake images. Default: true</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use sigmoid as the last layer of Discriminator.</p>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.translation.cyclegan.WassersteinGenerativeAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">WassersteinGenerativeAdversarialLoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/loss.html#WassersteinGenerativeAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.WassersteinGenerativeAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loss for <a class="reference external" href="https://arxiv.org/abs/1701.07875">Wasserstein Generative Adversarial Network</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>prediction (tensor): unnormalized discriminator predictions</p></li>
+<li><p>real (bool): if the ground truth label is for real images or fake images. Default: true</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use sigmoid as the last layer of Discriminator.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="translation">
+<h3>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.translation.cyclegan.Translation">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cyclegan.</code><code class="sig-name descname">Translation</code><span class="sig-paren">(</span><em class="sig-param">generator</em>, <em class="sig-param">device=device(type='cpu')</em>, <em class="sig-param">mean=(0.5</em>, <em class="sig-param">0.5</em>, <em class="sig-param">0.5)</em>, <em class="sig-param">std=(0.5</em>, <em class="sig-param">0.5</em>, <em class="sig-param">0.5)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/transform.html#Translation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.Translation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image Translation Transform Module</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>generator</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – An image generator, e.g. <code class="xref py py-meth docutils literal notranslate"><span class="pre">resnet_9_generator()</span></code></p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(in PyTorch v1.12)"><em>torch.device</em></a>) – device to put the generator. Default: ‘cpu’</p></li>
+<li><p><strong>mean</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – the normalized mean for image</p></li>
+<li><p><strong>std</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a>) – the normalized std for image</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>image (PIL.Image): raw image in shape H x W x C</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><p>raw image in shape H x W x 3</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="util">
+<h3>Util<a class="headerlink" href="#util" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.translation.cyclegan.util.ImagePool">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cyclegan.util.</code><code class="sig-name descname">ImagePool</code><span class="sig-paren">(</span><em class="sig-param">pool_size</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/util.html#ImagePool"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.util.ImagePool" title="Permalink to this definition">¶</a></dt>
+<dd><p>An image buffer that stores previously generated images.</p>
+<p>This buffer enables us to update discriminators using a history of generated images
+rather than the ones produced by the latest generators.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pool_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – the size of image buffer, if pool_size=0, no buffer will be created</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.translation.cyclegan.util.ImagePool.query">
+<code class="sig-name descname">query</code><span class="sig-paren">(</span><em class="sig-param">images</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/util.html#ImagePool.query"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.util.ImagePool.query" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an image from the pool.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>images</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><em>torch.Tensor</em></a>) – the latest generated images from the generator</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>By 50/100, the buffer will return input images.
+By 50/100, the buffer will return images previously stored in the buffer,
+and insert the current images to the buffer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.cyclegan.util.set_requires_grad">
+<code class="sig-prename descclassname">tllib.translation.cyclegan.util.</code><code class="sig-name descname">set_requires_grad</code><span class="sig-paren">(</span><em class="sig-param">net</em>, <em class="sig-param">requires_grad=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cyclegan/util.html#set_requires_grad"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cyclegan.util.set_requires_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set requies_grad=Fasle for all the networks to avoid unnecessary computations</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="cycada-cycle-consistent-adversarial-domain-adaptation">
+<span id="cycada"></span><h2>CyCADA: Cycle-Consistent Adversarial Domain Adaptation<a class="headerlink" href="#cycada-cycle-consistent-adversarial-domain-adaptation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.translation.cycada.SemanticConsistency">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.cycada.</code><code class="sig-name descname">SemanticConsistency</code><span class="sig-paren">(</span><em class="sig-param">ignore_index=()</em>, <em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/cycada.html#SemanticConsistency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.cycada.SemanticConsistency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Semantic consistency loss is introduced by
+<a class="reference external" href="https://arxiv.org/abs/1711.03213">CyCADA: Cycle-Consistent Adversarial Domain Adaptation (ICML 2018)</a></p>
+<p>This helps to prevent label flipping during image translation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ignore_index</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>, </em><em>optional</em>) – Specifies target values that are ignored
+and do not contribute to the input gradient. When <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code> is
+<code class="docutils literal notranslate"><span class="pre">True</span></code>, the loss is averaged over non-ignored targets. Default: ().</p></li>
+<li><p><strong>reduction</strong> (<em>string</em><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will
+be applied, <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the weighted mean of the output is taken,
+<code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Note: <code class="xref py py-attr docutils literal notranslate"><span class="pre">size_average</span></code>
+and <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduce</span></code> are in the process of being deprecated, and in
+the meantime, specifying either of those two args will override
+<code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code>. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((N, C)\)</span> where <cite>C = number of classes</cite>, or
+<span class="math notranslate nohighlight">\((N, C, d_1, d_2, ..., d_K)\)</span> with <span class="math notranslate nohighlight">\(K \geq 1\)</span>
+in the case of <cite>K</cite>-dimensional loss.</p></li>
+<li><p>Target: <span class="math notranslate nohighlight">\((N)\)</span> where each value is <span class="math notranslate nohighlight">\(0 \leq         ext{targets}[i] \leq C-1\)</span>, or
+<span class="math notranslate nohighlight">\((N, d_1, d_2, ..., d_K)\)</span> with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of
+K-dimensional loss.</p></li>
+<li><p>Output: scalar.
+If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then the same size as the target:
+<span class="math notranslate nohighlight">\((N)\)</span>, or
+<span class="math notranslate nohighlight">\((N, d_1, d_2, ..., d_K)\)</span> with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case
+of K-dimensional loss.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">SemanticConsistency</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span><span class="o">.</span><span class="n">random_</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="spgan-similarity-preserving-generative-adversarial-network">
+<span id="spgan"></span><h2>SPGAN: Similarity Preserving Generative Adversarial Network<a class="headerlink" href="#spgan-similarity-preserving-generative-adversarial-network" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://arxiv.org/pdf/1711.07027.pdf">Image-Image Domain Adaptation with Preserved Self-Similarity and Domain-Dissimilarity for Person Re-identification</a>. SPGAN is based on CycleGAN. An additional Siamese network is adopted to force
+the generator to produce images different from identities in target dataset.</p>
+<div class="section" id="siamese-network">
+<h3>Siamese Network<a class="headerlink" href="#siamese-network" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.translation.spgan.siamese.SiameseNetwork">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.spgan.siamese.</code><code class="sig-name descname">SiameseNetwork</code><span class="sig-paren">(</span><em class="sig-param">nsf=64</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/spgan/siamese.html#SiameseNetwork"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.spgan.siamese.SiameseNetwork" title="Permalink to this definition">¶</a></dt>
+<dd><p>Siamese network whose input is an image of shape <span class="math notranslate nohighlight">\((3,H,W)\)</span> and output is an one-dimensional feature vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>nsf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – dimension of output feature representation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="contrastive-loss">
+<h3>Contrastive Loss<a class="headerlink" href="#contrastive-loss" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.translation.spgan.loss.ContrastiveLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.spgan.loss.</code><code class="sig-name descname">ContrastiveLoss</code><span class="sig-paren">(</span><em class="sig-param">margin=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/spgan/loss.html#ContrastiveLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.spgan.loss.ContrastiveLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contrastive loss from <a class="reference external" href="http://www.cs.toronto.edu/~hinton/csc2535/readings/hadsell-chopra-lecun-06-1.pdf">Dimensionality Reduction by Learning an Invariant Mapping (CVPR 2006)</a>.</p>
+<p>Given output features <span class="math notranslate nohighlight">\(f_1, f_2\)</span>, we use <span class="math notranslate nohighlight">\(D\)</span> to denote the pairwise euclidean distance between them,
+<span class="math notranslate nohighlight">\(Y\)</span> to denote the ground truth labels, <span class="math notranslate nohighlight">\(m\)</span> to denote a pre-defined margin, then contrastive loss is
+calculated as</p>
+<div class="math notranslate nohighlight">
+\[(1 - Y)\frac{1}{2}D^2 + (Y)\frac{1}{2}\{\text{max}(0, m-D)^2\}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – margin for contrastive loss. Default: 2.0</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>output1 (tensor): feature representations of the first set of samples (<span class="math notranslate nohighlight">\(f_1\)</span> here).</p></li>
+<li><p>output2 (tensor): feature representations of the second set of samples (<span class="math notranslate nohighlight">\(f_2\)</span> here).</p></li>
+<li><p>label (tensor): labels (<span class="math notranslate nohighlight">\(Y\)</span> here).</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>output1, output2: <span class="math notranslate nohighlight">\((minibatch, F)\)</span> where F means the dimension of input features.</p></li>
+<li><p>label: <span class="math notranslate nohighlight">\((minibatch, )\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="fda-fourier-domain-adaptation">
+<span id="fda"></span><h2>FDA: Fourier Domain Adaptation<a class="headerlink" href="#fda-fourier-domain-adaptation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.translation.fourier_transform.FourierTransform">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.translation.fourier_transform.</code><code class="sig-name descname">FourierTransform</code><span class="sig-paren">(</span><em class="sig-param">image_list</em>, <em class="sig-param">amplitude_dir</em>, <em class="sig-param">beta=1</em>, <em class="sig-param">rebuild=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/fourier_transform.html#FourierTransform"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.fourier_transform.FourierTransform" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fourier Transform is introduced by <a class="reference external" href="https://arxiv.org/abs/2004.05498">FDA: Fourier Domain Adaptation for Semantic Segmentation (CVPR 2020)</a></p>
+<p>Fourier Transform replace the low frequency component of the amplitude of the source image to that of the target image.
+Denote with <span class="math notranslate nohighlight">\(M_{β}\)</span> a mask, whose value is zero except for the center region:</p>
+<div class="math notranslate nohighlight">
+\[M_{β}(h,w) = \mathbb{1}_{(h, w)\in [-β,β, -β, β]}\]</div>
+<p>Given images <span class="math notranslate nohighlight">\(x^s\)</span> from source domain and <span class="math notranslate nohighlight">\(x^t\)</span> from target domain, the source image in the target style is</p>
+<div class="math notranslate nohighlight">
+\[x^{s→t} = \mathcal{F}^{-1}([ M_{β}\circ\mathcal{F}^A(x^t) + (1-M_{β})\circ\mathcal{F}^A(x^s), \mathcal{F}^P(x^s) ])\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{F}^A\)</span>, <span class="math notranslate nohighlight">\(\mathcal{F}^P\)</span> are the amplitude and phase component of the Fourier
+Transform <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> of an RGB image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_list</strong> (<em>sequence</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – A sequence of image list from the target domain.</p></li>
+<li><p><strong>amplitude_dir</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Specifies the directory to put the amplitude component of the target image.</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – <span class="math notranslate nohighlight">\(β\)</span>. Default: 1.</p></li>
+<li><p><strong>rebuild</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – whether rebuild the amplitude component of the target image in the given directory.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>image (PIL Image): image from the source domain, <span class="math notranslate nohighlight">\(x^t\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.translation.fourier_transform</span> <span class="kn">import</span> <span class="n">FourierTransform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">image_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;target_image_path1&quot;</span><span class="p">,</span> <span class="s2">&quot;target_image_path2&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amplitude_dir</span> <span class="o">=</span> <span class="s2">&quot;path/to/amplitude_dir&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fourier_transform</span> <span class="o">=</span> <span class="n">FourierTransform</span><span class="p">(</span><span class="n">image_list</span><span class="p">,</span> <span class="n">amplitude_dir</span><span class="p">,</span> <span class="n">beta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rebuild</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="mi">256</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1"># image form source domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source_image_in_target_style</span> <span class="o">=</span> <span class="n">fourier_transform</span><span class="p">(</span><span class="n">source_image</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The meaning of <span class="math notranslate nohighlight">\(β\)</span> is different from that of the origin paper. Experimentally, we found that the size of
+the center region in the frequency space should be constant when the image size increases. Thus we make the size
+of the center region independent of the image size. A recommended value for <span class="math notranslate nohighlight">\(β\)</span> is 1.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The image structure of the source domain and target domain should be as similar as possible,
+thus for segemntation tasks, FourierTransform should be used before RandomResizeCrop and other transformations.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The image size of the source domain and the target domain need to be the same, thus before FourierTransform,
+you should use Resize to convert the source image to the target image size.</p>
+</div>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.translation.fourier_transform</span> <span class="kn">import</span> <span class="n">FourierTransform</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">tllibvision.datasets.segmentation.transforms</span> <span class="k">as</span> <span class="nn">T</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target_image_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;target_image_path1&quot;</span><span class="p">,</span> <span class="s2">&quot;target_image_path2&quot;</span><span class="p">]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">amplitude_dir</span> <span class="o">=</span> <span class="s2">&quot;path/to/amplitude_dir&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># build a fourier transform that translate source images to the target style</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fourier_transform</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">FourierTransform</span><span class="p">)(</span><span class="n">target_image_list</span><span class="p">,</span> <span class="n">amplitude_dir</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">transforms</span><span class="o">=</span><span class="n">T</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
+<span class="gp">... </span>    <span class="c1"># convert source image to the size of the target image before fourier transform</span>
+<span class="gp">... </span>    <span class="n">T</span><span class="o">.</span><span class="n">Resize</span><span class="p">((</span><span class="mi">2048</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)),</span>
+<span class="gp">... </span>    <span class="n">fourier_transform</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">T</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">((</span><span class="mi">1024</span><span class="p">,</span> <span class="mi">512</span><span class="p">)),</span>
+<span class="gp">... </span>    <span class="n">T</span><span class="o">.</span><span class="n">RandomHorizontalFlip</span><span class="p">(),</span>
+<span class="gp">... </span><span class="p">])</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;path/to/source_image&quot;</span><span class="p">)</span> <span class="c1"># image form source domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">source_image_in_target_style</span> <span class="o">=</span> <span class="n">transforms</span><span class="p">(</span><span class="n">source_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.translation.fourier_transform.low_freq_mutate">
+<code class="sig-prename descclassname">tllib.translation.fourier_transform.</code><code class="sig-name descname">low_freq_mutate</code><span class="sig-paren">(</span><em class="sig-param">amp_src</em>, <em class="sig-param">amp_trg</em>, <em class="sig-param">beta=1</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/translation/fourier_transform.html#low_freq_mutate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.translation.fourier_transform.low_freq_mutate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>amp_src</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a>) – amplitude component of the Fourier transform of source image</p></li>
+<li><p><strong>amp_trg</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a>) – amplitude component of the Fourier transform of target image</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – the size of the center region to be replace. Default: 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>amplitude component of the Fourier transform of source image
+whose low-frequency component is replaced by that of the target image.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="self_training.html" class="btn btn-neutral float-right" title="Self Training Methods" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="alignment/hypothesis_adversarial.html" class="btn btn-neutral" title="Hypothesis Adversarial Learning" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Domain Translation</a><ul>
+<li><a class="reference internal" href="#cyclegan-cycle-consistent-adversarial-networks">CycleGAN: Cycle-Consistent Adversarial Networks</a><ul>
+<li><a class="reference internal" href="#discriminator">Discriminator</a></li>
+<li><a class="reference internal" href="#generator">Generator</a></li>
+<li><a class="reference internal" href="#gan-loss">GAN Loss</a></li>
+<li><a class="reference internal" href="#translation">Translation</a></li>
+<li><a class="reference internal" href="#util">Util</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cycada-cycle-consistent-adversarial-domain-adaptation">CyCADA: Cycle-Consistent Adversarial Domain Adaptation</a></li>
+<li><a class="reference internal" href="#spgan-similarity-preserving-generative-adversarial-network">SPGAN: Similarity Preserving Generative Adversarial Network</a><ul>
+<li><a class="reference internal" href="#siamese-network">Siamese Network</a></li>
+<li><a class="reference internal" href="#contrastive-loss">Contrastive Loss</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fda-fourier-domain-adaptation">FDA: Fourier Domain Adaptation</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

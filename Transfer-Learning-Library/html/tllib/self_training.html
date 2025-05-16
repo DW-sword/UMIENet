@@ -1,0 +1,1039 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Self Training Methods &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Re-weighting" href="reweight.html" />
+    <link rel="prev" title="Domain Translation" href="translation.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Domain Translation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Self Training Methods</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tllib/self_training.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="self-training-methods">
+<h1>Self Training Methods<a class="headerlink" href="#self-training-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="pseudo-label">
+<span id="pseudolabel"></span><h2>Pseudo Label<a class="headerlink" href="#pseudo-label" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.pseudo_label.ConfidenceBasedSelfTrainingLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.pseudo_label.</code><code class="sig-name descname">ConfidenceBasedSelfTrainingLoss</code><span class="sig-paren">(</span><em class="sig-param">threshold</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/pseudo_label.html#ConfidenceBasedSelfTrainingLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.pseudo_label.ConfidenceBasedSelfTrainingLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self training loss that adopts confidence threshold to select reliable pseudo labels from
+<a class="reference external" href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.664.3543&amp;rep=rep1&amp;type=pdf">Pseudo-Label : The Simple and Efficient Semi-Supervised Learning Method for Deep Neural Networks (ICML 2013)</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Confidence threshold.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y: unnormalized classifier predictions.</p></li>
+<li><p>y_target: unnormalized classifier predictions which will used for generating pseudo labels.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A tuple, including</dt><dd><ul class="simple">
+<li><p>self_training_loss: self training loss with pseudo labels.</p></li>
+<li><p>mask: binary mask that indicates which samples are retained (whose confidence is above the threshold).</p></li>
+<li><p>pseudo_labels: generated pseudo labels.</p></li>
+</ul>
+</dd>
+</dl>
+</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>y, y_target: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C means the number of classes.</p></li>
+<li><p>self_training_loss: scalar.</p></li>
+<li><p>mask, pseudo_labels <span class="math notranslate nohighlight">\((minibatch, )\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="pi-model">
+<span id="pimodel"></span><h2><span class="math notranslate nohighlight">\(\Pi\)</span> Model<a class="headerlink" href="#pi-model" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.pi_model.ConsistencyLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.pi_model.</code><code class="sig-name descname">ConsistencyLoss</code><span class="sig-paren">(</span><em class="sig-param">distance_measure</em>, <em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/pi_model.html#ConsistencyLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.pi_model.ConsistencyLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consistency loss between two predictions. Given distance measure <span class="math notranslate nohighlight">\(D\)</span>, predictions <span class="math notranslate nohighlight">\(p_1, p_2\)</span>,
+binary mask <span class="math notranslate nohighlight">\(mask\)</span>, the consistency loss is</p>
+<div class="math notranslate nohighlight">
+\[D(p_1, p_2) * mask\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distance_measure</strong> (<em>callable</em>) – Distance measure function.</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>p1: the first prediction</p></li>
+<li><p>p2: the second prediction</p></li>
+<li><p>mask: binary mask. Default: 1. (use all samples when calculating loss)</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>p1, p2: <span class="math notranslate nohighlight">\((N, C)\)</span> where C means the number of classes.</p></li>
+<li><p>mask: <span class="math notranslate nohighlight">\((N, )\)</span> where N means mini-batch size.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.self_training.pi_model.L2ConsistencyLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.pi_model.</code><code class="sig-name descname">L2ConsistencyLoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/pi_model.html#L2ConsistencyLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.pi_model.L2ConsistencyLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>L2 consistency loss. Given two predictions <span class="math notranslate nohighlight">\(p_1, p_2\)</span> and binary mask <span class="math notranslate nohighlight">\(mask\)</span>, the
+L2 consistency loss is</p>
+<div class="math notranslate nohighlight">
+\[\text{MSELoss}(p_1, p_2) * mask\]</div>
+</dd></dl>
+
+</div>
+<div class="section" id="mean-teacher">
+<span id="meanteacher"></span><h2>Mean Teacher<a class="headerlink" href="#mean-teacher" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.mean_teacher.EMATeacher">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.mean_teacher.</code><code class="sig-name descname">EMATeacher</code><span class="sig-paren">(</span><em class="sig-param">model</em>, <em class="sig-param">alpha</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/mean_teacher.html#EMATeacher"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.mean_teacher.EMATeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exponential moving average model from <a class="reference external" href="https://arxiv.org/abs/1703.01780">Mean teachers are better role models: Weight-averaged consistency targets
+improve semi-supervised deep learning results (NIPS 2017)</a></p>
+<p>We use <span class="math notranslate nohighlight">\(\theta_t'\)</span> to denote parameters of the teacher model at training step t, use <span class="math notranslate nohighlight">\(\theta_t\)</span> to
+denote parameters of the student model at training step t. Given decay factor <span class="math notranslate nohighlight">\(\alpha\)</span>,
+we update the teacher model in an exponential moving average manner</p>
+<div class="math notranslate nohighlight">
+\[\theta_t'=\alpha \theta_{t-1}' + (1-\alpha)\theta_t\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – the student model</p></li>
+<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – decay factor for EMA.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><p>x (tensor): input tensor</p>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">classifier</span> <span class="o">=</span> <span class="n">ImageClassifier</span><span class="p">(</span><span class="n">backbone</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">bottleneck_dim</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># initialize teacher model</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">teacher</span> <span class="o">=</span> <span class="n">EMATeacher</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_iterations</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_iterations</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># x denotes input of one mini-batch</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># you can get teacher model&#39;s output by teacher(x)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">y_teacher</span> <span class="o">=</span> <span class="n">teacher</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="c1"># when you want to update teacher, you should call teacher.update()</span>
+<span class="gp">&gt;&gt;&gt; </span>    <span class="n">teacher</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="self-ensemble">
+<span id="selfensemble"></span><h2>Self Ensemble<a class="headerlink" href="#self-ensemble" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.self_ensemble.ClassBalanceLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.self_ensemble.</code><code class="sig-name descname">ClassBalanceLoss</code><span class="sig-paren">(</span><em class="sig-param">num_classes</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/self_ensemble.html#ClassBalanceLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.self_ensemble.ClassBalanceLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class balance loss that penalises the network for making predictions that exhibit large class imbalance.
+Given predictions <span class="math notranslate nohighlight">\(p\)</span> with dimension <span class="math notranslate nohighlight">\((N, C)\)</span>, we first calculate
+the mini-batch mean per-class probability <span class="math notranslate nohighlight">\(p_{mean}\)</span> with dimension <span class="math notranslate nohighlight">\((C, )\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[p_{mean}^j = \frac{1}{N} \sum_{i=1}^N p_i^j\]</div>
+<p>Then we calculate binary cross entropy loss between <span class="math notranslate nohighlight">\(p_{mean}\)</span> and uniform probability vector <span class="math notranslate nohighlight">\(u\)</span> with
+the same dimension where <span class="math notranslate nohighlight">\(u^j\)</span> = <span class="math notranslate nohighlight">\(\frac{1}{C}\)</span></p>
+<div class="math notranslate nohighlight">
+\[loss = \text{BCELoss}(p_{mean}, u)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>p (tensor): predictions from classifier</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>p: <span class="math notranslate nohighlight">\((N, C)\)</span> where C means the number of classes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="uda">
+<span id="id1"></span><h2>UDA<a class="headerlink" href="#uda" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.uda.StrongWeakConsistencyLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.uda.</code><code class="sig-name descname">StrongWeakConsistencyLoss</code><span class="sig-paren">(</span><em class="sig-param">threshold</em>, <em class="sig-param">temperature</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/uda.html#StrongWeakConsistencyLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.uda.StrongWeakConsistencyLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Consistency loss between strong and weak augmented samples from <a class="reference external" href="https://arxiv.org/pdf/1904.12848v4.pdf">Unsupervised Data Augmentation for
+Consistency Training (NIPS 2020)</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Confidence threshold.</p></li>
+<li><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Temperature.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y_strong: unnormalized classifier predictions on strong augmented samples.</p></li>
+<li><p>y: unnormalized classifier predictions on weak augmented samples.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>y, y_strong: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C means the number of classes.</p></li>
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="mcc-minimum-class-confusion">
+<span id="mcc"></span><h2>MCC: Minimum Class Confusion<a class="headerlink" href="#mcc-minimum-class-confusion" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.mcc.MinimumClassConfusionLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.mcc.</code><code class="sig-name descname">MinimumClassConfusionLoss</code><span class="sig-paren">(</span><em class="sig-param">temperature</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/mcc.html#MinimumClassConfusionLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.mcc.MinimumClassConfusionLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Minimum Class Confusion loss minimizes the class confusion in the target predictions.</p>
+<p>You can see more details in <a class="reference external" href="https://arxiv.org/abs/1912.03699">Minimum Class Confusion for Versatile Domain Adaptation (ECCV 2020)</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>temperature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The temperature for rescaling, the prediction will shrink to vanilla softmax if
+temperature is 1.0.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that temperature is larger than 0.</p>
+</div>
+<dl>
+<dt>Inputs: g_t</dt><dd><ul class="simple">
+<li><p>g_t (tensor): unnormalized classifier predictions on target domain, <span class="math notranslate nohighlight">\(g^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>g_t: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C means the number of classes.</p></li>
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+<dt>Examples::</dt><dd><div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">MinimumClassConfusionLoss</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># logits output from target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">g_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>MCC can also serve as a regularizer for existing methods.
+Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.modules.domain_discriminator</span> <span class="kn">import</span> <span class="n">DomainDiscriminator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature_dim</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">temperature</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">discriminator</span> <span class="o">=</span> <span class="n">DomainDiscriminator</span><span class="p">(</span><span class="n">in_feature</span><span class="o">=</span><span class="n">feature_dim</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cdan_loss</span> <span class="o">=</span> <span class="n">ConditionalDomainAdversarialLoss</span><span class="p">(</span><span class="n">discriminator</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">mcc_loss</span> <span class="o">=</span> <span class="n">MinimumClassConfusionLoss</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_s</span><span class="p">,</span> <span class="n">f_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># logits output from source domain adn target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g_s</span><span class="p">,</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">total_loss</span> <span class="o">=</span> <span class="n">cdan_loss</span><span class="p">(</span><span class="n">g_s</span><span class="p">,</span> <span class="n">f_s</span><span class="p">,</span> <span class="n">g_t</span><span class="p">,</span> <span class="n">f_t</span><span class="p">)</span> <span class="o">+</span> <span class="n">mcc_loss</span><span class="p">(</span><span class="n">g_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="mmt-mutual-mean-teaching">
+<span id="mmt"></span><h2>MMT: Mutual Mean-Teaching<a class="headerlink" href="#mmt-mutual-mean-teaching" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://arxiv.org/pdf/2001.01526.pdf">Mutual Mean-Teaching: Pseudo Label Refinery for Unsupervised
+Domain Adaptation on Person Re-identification (ICLR 2020)</a></p>
+<p>State of the art unsupervised domain adaptation methods utilize clustering algorithms to generate pseudo labels on target
+domain, which are noisy and thus harmful for training. Inspired by the teacher-student approaches, MMT framework
+provides robust soft pseudo labels in an on-line peer-teaching manner.</p>
+<p>We denote two networks as <span class="math notranslate nohighlight">\(f_1,f_2\)</span>, their parameters as <span class="math notranslate nohighlight">\(\theta_1,\theta_2\)</span>. The authors also
+propose to use the temporally average model of each network <span class="math notranslate nohighlight">\(\text{ensemble}(f_1),\text{ensemble}(f_2)\)</span> to generate more reliable
+soft pseudo labels for supervising the other network. Specifically, the parameters of the temporally
+average models of the two networks at current iteration <span class="math notranslate nohighlight">\(T\)</span> are denoted as <span class="math notranslate nohighlight">\(E^{(T)}[\theta_1]\)</span> and
+<span class="math notranslate nohighlight">\(E^{(T)}[\theta_2]\)</span> respectively, which can be calculated as</p>
+<div class="math notranslate nohighlight">
+\[E^{(T)}[\theta_1] = \alpha E^{(T-1)}[\theta_1] + (1-\alpha)\theta_1\]</div>
+<div class="math notranslate nohighlight">
+\[E^{(T)}[\theta_2] = \alpha E^{(T-1)}[\theta_2] + (1-\alpha)\theta_2\]</div>
+<p>where <span class="math notranslate nohighlight">\(E^{(T-1)}[\theta_1],E^{(T-1)}[\theta_2]\)</span> indicate the temporal average parameters of the two networks in
+the previous iteration <span class="math notranslate nohighlight">\((T-1)\)</span>, the initial temporal average parameters are
+<span class="math notranslate nohighlight">\(E^{(0)}[\theta_1]=\theta_1,E^{(0)}[\theta_2]=\theta_2\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> is the momentum.</p>
+<p>These two networks cooperate with each other in three ways:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>When running clustering algorithm, we average features produced by <span class="math notranslate nohighlight">\(\text{ensemble}(f_1)\)</span> and</dt><dd><p><span class="math notranslate nohighlight">\(\text{ensemble}(f_2)\)</span> instead of only considering one of them.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A <strong>soft triplet loss</strong> is optimized between <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(\text{ensemble}(f_2)\)</span> and vice versa</dt><dd><p>to force one network to learn from temporally average of another network.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A <strong>cross entropy loss</strong> is optimized between <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(\text{ensemble}(f_2)\)</span> and vice versa</dt><dd><p>to force one network to learn from temporally average of another network.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The above mentioned loss functions are listed below, more details can be found in training scripts.</p>
+<dl class="class">
+<dt id="tllib.vision.models.reid.loss.SoftTripletLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.reid.loss.</code><code class="sig-name descname">SoftTripletLoss</code><span class="sig-paren">(</span><em class="sig-param">margin=None</em>, <em class="sig-param">normalize_feature=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/vision/models/reid/loss.html#SoftTripletLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.loss.SoftTripletLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Soft triplet loss from <a class="reference external" href="https://arxiv.org/pdf/2001.01526.pdf">Mutual Mean-Teaching: Pseudo Label Refinery for Unsupervised
+Domain Adaptation on Person Re-identification (ICLR 2020)</a>.
+Consider a triplet <span class="math notranslate nohighlight">\(x,x_p,x_n\)</span> (anchor, positive, negative), corresponding features are <span class="math notranslate nohighlight">\(f,f_p,f_n\)</span>.
+We optimize for a smaller distance between <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(f_p\)</span> and a larger distance
+between <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(f_n\)</span>. Inner product is adopted as their similarity measure, soft triplet loss is thus
+defined as</p>
+<div class="math notranslate nohighlight">
+\[loss = \mathcal{L}_{\text{bce}}(\frac{\text{exp}(f^Tf_p)}{\text{exp}(f^Tf_p)+\text{exp}(f^Tf_n)}, 1)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{L}_{\text{bce}}\)</span> means binary cross entropy loss. We denote the first term in above loss function
+as <span class="math notranslate nohighlight">\(T\)</span>. When features from another teacher network can be obtained, we can calculate <span class="math notranslate nohighlight">\(T_{teacher}\)</span> as
+labels, resulting in the following soft version</p>
+<div class="math notranslate nohighlight">
+\[loss = \mathcal{L}_{\text{bce}}(T, T_{teacher})\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – margin of triplet loss. If None, soft labels from another network will be adopted when
+computing loss. Default: None.</p></li>
+<li><p><strong>normalize_feature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – if True, normalize features into unit norm first before computing loss.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.reid.loss.CrossEntropyLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.reid.loss.</code><code class="sig-name descname">CrossEntropyLoss</code><a class="reference internal" href="../_modules/tllib/vision/models/reid/loss.html#CrossEntropyLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.loss.CrossEntropyLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>We use <span class="math notranslate nohighlight">\(C\)</span> to denote the number of classes, <span class="math notranslate nohighlight">\(N\)</span> to denote mini-batch
+size, this criterion expects unnormalized predictions <span class="math notranslate nohighlight">\(y\_{logits}\)</span> of shape <span class="math notranslate nohighlight">\((N, C)\)</span> and
+<span class="math notranslate nohighlight">\(target\_{logits}\)</span> of the same shape <span class="math notranslate nohighlight">\((N, C)\)</span>. Then we first normalize them into
+probability distributions among classes</p>
+<div class="math notranslate nohighlight">
+\[y = \text{softmax}(y\_{logits})\]</div>
+<div class="math notranslate nohighlight">
+\[target = \text{softmax}(target\_{logits})\]</div>
+<p>Final objective is calculated as</p>
+<div class="math notranslate nohighlight">
+\[\text{loss} = \frac{1}{N} \sum_{i=1}^{N} \sum_{j=1}^C -target_i^j \times \text{log} (y_i^j)\]</div>
+</dd></dl>
+
+</div>
+<div class="section" id="self-tuning">
+<span id="selftuning"></span><h2>Self Tuning<a class="headerlink" href="#self-tuning" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.self_tuning.Classifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.self_tuning.</code><code class="sig-name descname">Classifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">projection_dim=1024</em>, <em class="sig-param">bottleneck_dim=1024</em>, <em class="sig-param">finetune=True</em>, <em class="sig-param">pool_layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/self_tuning.html#Classifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.self_tuning.Classifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifier class for Self-Tuning.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 2-d features from data</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes.</p></li>
+<li><p><strong>projection_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Dimension of the projector head. Default: 128</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether finetune the classifier or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (tensor): input data fed to <cite>backbone</cite></p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><dl class="simple">
+<dt>In the training mode,</dt><dd><ul class="simple">
+<li><p>h: projections</p></li>
+<li><p>y: classifier’s predictions</p></li>
+</ul>
+</dd>
+<dt>In the eval mode,</dt><dd><ul class="simple">
+<li><p>y: classifier’s predictions</p></li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: (minibatch, <a href="#id3"><span class="problematic" id="id4">*</span></a>) where * means, any number of additional dimensions</p></li>
+<li><p>y: (minibatch, <cite>num_classes</cite>)</p></li>
+<li><p>h: (minibatch, <cite>projection_dim</cite>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.self_training.self_tuning.SelfTuning">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.self_tuning.</code><code class="sig-name descname">SelfTuning</code><span class="sig-paren">(</span><em class="sig-param">encoder_q</em>, <em class="sig-param">encoder_k</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">K=32</em>, <em class="sig-param">m=0.999</em>, <em class="sig-param">T=0.07</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/self_tuning.html#SelfTuning"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.self_tuning.SelfTuning" title="Permalink to this definition">¶</a></dt>
+<dd><p>Self-Tuning module in <a class="reference external" href="http://ise.thss.tsinghua.edu.cn/~mlong/doc/Self-Tuning-for-Data-Efficient-Deep-Learning-icml21.pdf">Self-Tuning for Data-Efficient Deep Learning (self-tuning, ICML 2021)</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>encoder_q</strong> (<a class="reference internal" href="modules.html#tllib.modules.classifier.Classifier" title="tllib.modules.classifier.Classifier"><em>Classifier</em></a>) – Query encoder.</p></li>
+<li><p><strong>encoder_k</strong> (<a class="reference internal" href="modules.html#tllib.modules.classifier.Classifier" title="tllib.modules.classifier.Classifier"><em>Classifier</em></a>) – Key encoder.</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>K</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Queue size. Default: 32</p></li>
+<li><p><strong>m</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Momentum coefficient. Default: 0.999</p></li>
+<li><p><strong>T</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Temperature. Default: 0.07</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>im_q (tensor): input data fed to <cite>encoder_q</cite></p></li>
+<li><p>im_k (tensor): input data fed to <cite>encoder_k</cite></p></li>
+<li><p>labels (tensor): classification labels of input data</p></li>
+</ul>
+</dd>
+<dt>Outputs: pgc_logits, pgc_labels, y_q</dt><dd><ul class="simple">
+<li><p>pgc_logits: projector’s predictions on both positive and negative samples</p></li>
+<li><p>pgc_labels: contrastive labels</p></li>
+<li><p>y_q: query classifier’s predictions</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>im_q, im_k: (minibatch, <a href="#id5"><span class="problematic" id="id6">*</span></a>) where * means, any number of additional dimensions</p></li>
+<li><p>labels: (minibatch, )</p></li>
+<li><p>y_q: (minibatch, <cite>num_classes</cite>)</p></li>
+<li><p>pgc_logits: (minibatch, 1 + <cite>num_classes</cite> <span class="math notranslate nohighlight">\(\times\)</span> <cite>K</cite>, <cite>projection_dim</cite>)</p></li>
+<li><p>pgc_labels: (minibatch, 1 + <cite>num_classes</cite> <span class="math notranslate nohighlight">\(\times\)</span> <cite>K</cite>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="flexmatch">
+<span id="id7"></span><h2>FlexMatch<a class="headerlink" href="#flexmatch" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.flexmatch.DynamicThresholdingModule">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.flexmatch.</code><code class="sig-name descname">DynamicThresholdingModule</code><span class="sig-paren">(</span><em class="sig-param">threshold</em>, <em class="sig-param">warmup</em>, <em class="sig-param">mapping_func</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">n_unlabeled_samples</em>, <em class="sig-param">device</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/flexmatch.html#DynamicThresholdingModule"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.flexmatch.DynamicThresholdingModule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dynamic thresholding module from <a class="reference external" href="https://arxiv.org/abs/2110.08263">FlexMatch: Boosting Semi-Supervised Learning with Curriculum Pseudo Labeling</a>. At time <span class="math notranslate nohighlight">\(t\)</span>, for each category <span class="math notranslate nohighlight">\(c\)</span>,
+the learning status <span class="math notranslate nohighlight">\(\sigma_t(c)\)</span> is estimated by the number of samples whose predictions fall into this class
+and above a threshold (e.g. 0.95). Then, FlexMatch normalizes <span class="math notranslate nohighlight">\(\sigma_t(c)\)</span> to make its range between 0 and 1</p>
+<div class="math notranslate nohighlight">
+\[\beta_t(c) = \frac{\sigma_t(c)}{\underset{c'}{\text{max}}~\sigma_t(c')}.\]</div>
+<p>The dynamic threshold is formulated as</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{T}_t(c) = \mathcal{M}(\beta_t(c)) \cdot \tau,\]</div>
+<p>where tau denotes the pre-defined threshold (e.g. 0.95), <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> denotes a (possibly non-linear)
+mapping function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>threshold</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The pre-defined confidence threshold</p></li>
+<li><p><strong>warmup</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – Whether perform threshold warm-up. If True, the number of unlabeled data that have not been
+used will be considered when normalizing <span class="math notranslate nohighlight">\(\sigma_t(c)\)</span></p></li>
+<li><p><strong>mapping_func</strong> (<em>callable</em>) – An increasing mapping function. For example, this function can be (1) concave
+<span class="math notranslate nohighlight">\(\mathcal{M}(x)=\text{ln}(x+1)/\text{ln}2\)</span>, (2) linear <span class="math notranslate nohighlight">\(\mathcal{M}(x)=x\)</span>,
+and (3) convex <span class="math notranslate nohighlight">\(\mathcal{M}(x)=2/2-x\)</span></p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>n_unlabeled_samples</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Size of the unlabeled dataset</p></li>
+<li><p><strong>device</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensor_attributes.html#torch.device" title="(in PyTorch v1.12)"><em>torch.device</em></a>) – Device</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.self_training.flexmatch.DynamicThresholdingModule.get_threshold">
+<code class="sig-name descname">get_threshold</code><span class="sig-paren">(</span><em class="sig-param">pseudo_labels</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/flexmatch.html#DynamicThresholdingModule.get_threshold"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.flexmatch.DynamicThresholdingModule.get_threshold" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate and return dynamic threshold</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tllib.self_training.flexmatch.DynamicThresholdingModule.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param">idxes</em>, <em class="sig-param">selected_mask</em>, <em class="sig-param">pseudo_labels</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/flexmatch.html#DynamicThresholdingModule.update"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.flexmatch.DynamicThresholdingModule.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the learning status</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>idxes</strong> (<em>tensor</em>) – Indexes of corresponding samples</p></li>
+<li><p><strong>selected_mask</strong> (<em>tensor</em>) – A binary mask, a value of 1 indicates the prediction for this sample will be updated</p></li>
+<li><p><strong>pseudo_labels</strong> (<em>tensor</em>) – Network predictions</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="debiased-self-training">
+<span id="dst"></span><h2>Debiased Self-Training<a class="headerlink" href="#debiased-self-training" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.self_training.dst.ImageClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.dst.</code><code class="sig-name descname">ImageClassifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">bottleneck_dim=1024</em>, <em class="sig-param">width=2048</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/dst.html#ImageClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.dst.ImageClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifier with non-linear pseudo head <span class="math notranslate nohighlight">\(h_{\text{pseudo}}\)</span> and worst-case estimation head
+<span class="math notranslate nohighlight">\(h_{\text{worst}}\)</span> from <a class="reference external" href="https://arxiv.org/abs/2202.07136">Debiased Self-Training for Semi-Supervised Learning</a>.
+Both heads are directly connected to the feature extractor <span class="math notranslate nohighlight">\(\psi\)</span>. We implement end-to-end adversarial
+training procedure between <span class="math notranslate nohighlight">\(\psi\)</span> and <span class="math notranslate nohighlight">\(h_{\text{worst}}\)</span> by introducing a gradient reverse layer.
+Note that both heads can be safely discarded during inference, and thus will introduce no inference cost.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 2-d features from data</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer.</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Hidden dimension of the non-linear pseudo head and worst-case estimation head.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (tensor): input data fed to <cite>backbone</cite></p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: predictions of the main head <span class="math notranslate nohighlight">\(h\)</span></p></li>
+<li><p>outputs_adv: predictions of the worst-case estimation head <span class="math notranslate nohighlight">\(h_{\text{worst}}\)</span></p></li>
+<li><p>outputs_pseudo: predictions of the pseudo head <span class="math notranslate nohighlight">\(h_{\text{pseudo}}\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: (minibatch, <a href="#id8"><span class="problematic" id="id9">*</span></a>) where * means, any number of additional dimensions</p></li>
+<li><p>outputs, outputs_adv, outputs_pseudo: (minibatch, <cite>num_classes</cite>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.self_training.dst.WorstCaseEstimationLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.self_training.dst.</code><code class="sig-name descname">WorstCaseEstimationLoss</code><span class="sig-paren">(</span><em class="sig-param">eta_prime</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/self_training/dst.html#WorstCaseEstimationLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.self_training.dst.WorstCaseEstimationLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Worst-case Estimation loss from <a class="reference external" href="https://arxiv.org/abs/2202.07136">Debiased Self-Training for Semi-Supervised Learning</a>
+that forces the worst possible head <span class="math notranslate nohighlight">\(h_{\text{worst}}\)</span> to predict correctly on all labeled samples
+<span class="math notranslate nohighlight">\(\mathcal{L}\)</span> while making as many mistakes as possible on unlabeled data <span class="math notranslate nohighlight">\(\mathcal{U}\)</span>. In the
+classification task, it is defined as:</p>
+<div class="math notranslate nohighlight">
+\[loss(\mathcal{L}, \mathcal{U}) =
+\eta' \mathbb{E}_{y^l, y_{adv}^l \sim\hat{\mathcal{L}}} -\log\left(\frac{\exp(y_{adv}^l[h_{y^l}])}{\sum_j \exp(y_{adv}^l[j])}\right) +
+\mathbb{E}_{y^u, y_{adv}^u \sim\hat{\mathcal{U}}} -\log\left(1-\frac{\exp(y_{adv}^u[h_{y^u}])}{\sum_j \exp(y_{adv}^u[j])}\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(y^l\)</span> and <span class="math notranslate nohighlight">\(y^u\)</span> are logits output by the main head <span class="math notranslate nohighlight">\(h\)</span> on labeled data and unlabeled data,
+respectively. <span class="math notranslate nohighlight">\(y_{adv}^l\)</span> and <span class="math notranslate nohighlight">\(y_{adv}^u\)</span> are logits output by the worst-case estimation
+head <span class="math notranslate nohighlight">\(h_{\text{worst}}\)</span>. <span class="math notranslate nohighlight">\(h_y\)</span> refers to the predicted label when the logits output is <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>eta_prime</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – the trade-off hyper parameter <span class="math notranslate nohighlight">\(\eta'\)</span>.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y_l: logits output <span class="math notranslate nohighlight">\(y^l\)</span> by the main head on labeled data</p></li>
+<li><p>y_l_adv: logits output <span class="math notranslate nohighlight">\(y^l_{adv}\)</span> by the worst-case estimation head on labeled data</p></li>
+<li><p>y_u: logits output <span class="math notranslate nohighlight">\(y^u\)</span> by the main head on unlabeled data</p></li>
+<li><p>y_u_adv: logits output <span class="math notranslate nohighlight">\(y^u_{adv}\)</span> by the worst-case estimation head on unlabeled data</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C denotes the number of classes.</p></li>
+<li><p>Output: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="reweight.html" class="btn btn-neutral float-right" title="Re-weighting" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="translation.html" class="btn btn-neutral" title="Domain Translation" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Self Training Methods</a><ul>
+<li><a class="reference internal" href="#pseudo-label">Pseudo Label</a></li>
+<li><a class="reference internal" href="#pi-model"><span class="math notranslate nohighlight">\(\Pi\)</span> Model</a></li>
+<li><a class="reference internal" href="#mean-teacher">Mean Teacher</a></li>
+<li><a class="reference internal" href="#self-ensemble">Self Ensemble</a></li>
+<li><a class="reference internal" href="#uda">UDA</a></li>
+<li><a class="reference internal" href="#mcc-minimum-class-confusion">MCC: Minimum Class Confusion</a></li>
+<li><a class="reference internal" href="#mmt-mutual-mean-teaching">MMT: Mutual Mean-Teaching</a></li>
+<li><a class="reference internal" href="#self-tuning">Self Tuning</a></li>
+<li><a class="reference internal" href="#flexmatch">FlexMatch</a></li>
+<li><a class="reference internal" href="#debiased-self-training">Debiased Self-Training</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

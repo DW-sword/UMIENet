@@ -1,0 +1,41 @@
+VERBOSE: True
+
+MODEL:
+  NAME: 'UMIENet'
+  INPUT: 'input'
+  TARGET: 'target'
+  DEPTH: 'depth'
+  REAL: 'real'
+
+# Optimization arguments.
+OPTIM:
+  BATCH_SIZE: 4 
+  NUM_EPOCHS: 200 
+  LR_INITIAL: 1e-3
+  LR_MIN: 1e-6
+  SEED: 3407 
+  WANDB: False
+
+REAL_DIR: '/home/lvpin/Desktop/UMDKI/real_dir'
+TRAINING:
+  VAL_AFTER_EVERY: 1
+  PRETRAIN: False
+  WEIGHT: ''
+  PS_W: 256
+  PS_H: 256
+  ORI: False
+  WITH_DEP: false
+  TRAIN_DIR: '/home/lvpin/Desktop/UMDKI/train'
+  VAL_DIR: '/home/lvpin/Desktop/UMDKI/test'
+  SAVE_DIR: '/home/lvpin/Desktop/UMIENet/checkpoints'
+  LOG_NAME: 'train_log.log'
+
+TESTING:
+  TEST_DIR: '/home/lvpin/Desktop/UMIENet/test'
+  SAVE_DIR: '/home/lvpin/Desktop/UMIENet/test/result'
+  WEIGHT: '/home/lvpin/Desktop/UMIENet/checkpoints/checkpoint.pth'
+  PS_W: 256
+  PS_H: 256
+  ORI: False
+  WITH_DEP: False
+  

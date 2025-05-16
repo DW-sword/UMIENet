@@ -1,0 +1,654 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Statistics Matching &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Domain Adversarial Training" href="domain_adversarial.html" />
+    <link rel="prev" title="Feature Alignment" href="index.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Feature Alignment</a> &gt;</li>
+        
+      <li>Statistics Matching</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tllib/alignment/statistics_matching.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="statistics-matching">
+<h1>Statistics Matching<a class="headerlink" href="#statistics-matching" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dan-deep-adaptation-network">
+<span id="dan"></span><h2>DAN: Deep Adaptation Network<a class="headerlink" href="#dan-deep-adaptation-network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.dan.MultipleKernelMaximumMeanDiscrepancy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.dan.</code><code class="sig-name descname">MultipleKernelMaximumMeanDiscrepancy</code><span class="sig-paren">(</span><em class="sig-param">kernels</em>, <em class="sig-param">linear=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/dan.html#MultipleKernelMaximumMeanDiscrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.dan.MultipleKernelMaximumMeanDiscrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Multiple Kernel Maximum Mean Discrepancy (MK-MMD) used in
+<a class="reference external" href="https://arxiv.org/pdf/1502.02791">Learning Transferable Features with Deep Adaptation Networks (ICML 2015)</a></p>
+<p>Given source domain <span class="math notranslate nohighlight">\(\mathcal{D}_s\)</span> of <span class="math notranslate nohighlight">\(n_s\)</span> labeled points and target domain <span class="math notranslate nohighlight">\(\mathcal{D}_t\)</span>
+of <span class="math notranslate nohighlight">\(n_t\)</span> unlabeled points drawn i.i.d. from P and Q respectively, the deep networks will generate
+activations as <span class="math notranslate nohighlight">\(\{z_i^s\}_{i=1}^{n_s}\)</span> and <span class="math notranslate nohighlight">\(\{z_i^t\}_{i=1}^{n_t}\)</span>.
+The MK-MMD <span class="math notranslate nohighlight">\(D_k (P, Q)\)</span> between probability distributions P and Q is defined as</p>
+<div class="math notranslate nohighlight">
+\[D_k(P, Q) \triangleq \| E_p [\phi(z^s)] - E_q [\phi(z^t)] \|^2_{\mathcal{H}_k},\]</div>
+<p><span class="math notranslate nohighlight">\(k\)</span> is a kernel function in the function space</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{K} \triangleq \{ k=\sum_{u=1}^{m}\beta_{u} k_{u} \}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k_{u}\)</span> is a single kernel.</p>
+<p>Using kernel trick, MK-MMD can be computed as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{D}_k(P, Q) &amp;=
+\dfrac{1}{n_s^2} \sum_{i=1}^{n_s}\sum_{j=1}^{n_s} k(z_i^{s}, z_j^{s})\\
+&amp;+ \dfrac{1}{n_t^2} \sum_{i=1}^{n_t}\sum_{j=1}^{n_t} k(z_i^{t}, z_j^{t})\\
+&amp;- \dfrac{2}{n_s n_t} \sum_{i=1}^{n_s}\sum_{j=1}^{n_t} k(z_i^{s}, z_j^{t}).\\\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kernels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a><em>)</em>) – kernel functions.</p></li>
+<li><p><strong>linear</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use the linear version of DAN. Default: False</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>z_s (tensor): activations from the source domain, <span class="math notranslate nohighlight">\(z^s\)</span></p></li>
+<li><p>z_t (tensor): activations from the target domain, <span class="math notranslate nohighlight">\(z^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, *)\)</span>  where * means any dimension</p></li>
+<li><p>Outputs: scalar</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Activations <span class="math notranslate nohighlight">\(z^{s}\)</span> and <span class="math notranslate nohighlight">\(z^{t}\)</span> must have the same shape.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The kernel values will add up when there are multiple kernels.</p>
+</div>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.modules.kernels</span> <span class="kn">import</span> <span class="n">GaussianKernel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature_dim</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kernels</span> <span class="o">=</span> <span class="p">(</span><span class="n">GaussianKernel</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">GaussianKernel</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">1.</span><span class="p">),</span> <span class="n">GaussianKernel</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">2.</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">MultipleKernelMaximumMeanDiscrepancy</span><span class="p">(</span><span class="n">kernels</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z_s</span><span class="p">,</span> <span class="n">z_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">z_s</span><span class="p">,</span> <span class="n">z_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="deep-coral-correlation-alignment-for-deep-domain-adaptation">
+<span id="coral"></span><h2>Deep CORAL: Correlation Alignment for Deep Domain Adaptation<a class="headerlink" href="#deep-coral-correlation-alignment-for-deep-domain-adaptation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.coral.CorrelationAlignmentLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.coral.</code><code class="sig-name descname">CorrelationAlignmentLoss</code><a class="reference internal" href="../../_modules/tllib/alignment/coral.html#CorrelationAlignmentLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.coral.CorrelationAlignmentLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>Correlation Alignment Loss</cite> in
+<a class="reference external" href="https://arxiv.org/pdf/1607.01719.pdf">Deep CORAL: Correlation Alignment for Deep Domain Adaptation (ECCV 2016)</a>.</p>
+<p>Given source features <span class="math notranslate nohighlight">\(f_S\)</span> and target features <span class="math notranslate nohighlight">\(f_T\)</span>, the covariance matrices are given by</p>
+<div class="math notranslate nohighlight">
+\[C_S = \frac{1}{n_S-1}(f_S^Tf_S-\frac{1}{n_S}(\textbf{1}^Tf_S)^T(\textbf{1}^Tf_S))\]</div>
+<div class="math notranslate nohighlight">
+\[C_T = \frac{1}{n_T-1}(f_T^Tf_T-\frac{1}{n_T}(\textbf{1}^Tf_T)^T(\textbf{1}^Tf_T))\]</div>
+<p>where <span class="math notranslate nohighlight">\(\textbf{1}\)</span> denotes a column vector with all elements equal to 1, <span class="math notranslate nohighlight">\(n_S, n_T\)</span> denotes number of
+source and target samples, respectively. We use <span class="math notranslate nohighlight">\(d\)</span> to denote feature dimension, use
+<span class="math notranslate nohighlight">\({\Vert\cdot\Vert}^2_F\)</span> to denote the squared matrix <cite>Frobenius norm</cite>. The correlation alignment loss is
+given by</p>
+<div class="math notranslate nohighlight">
+\[l_{CORAL} = \frac{1}{4d^2}\Vert C_S-C_T \Vert^2_F\]</div>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>f_s (tensor): feature representations on source domain, <span class="math notranslate nohighlight">\(f^s\)</span></p></li>
+<li><p>f_t (tensor): feature representations on target domain, <span class="math notranslate nohighlight">\(f^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f_s, f_t: <span class="math notranslate nohighlight">\((N, d)\)</span> where d means the dimension of input features, <span class="math notranslate nohighlight">\(N=n_S=n_T\)</span> is mini-batch size.</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="jan-joint-adaptation-network">
+<span id="jan"></span><h2>JAN: Joint Adaptation Network<a class="headerlink" href="#jan-joint-adaptation-network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.jan.JointMultipleKernelMaximumMeanDiscrepancy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.jan.</code><code class="sig-name descname">JointMultipleKernelMaximumMeanDiscrepancy</code><span class="sig-paren">(</span><em class="sig-param">kernels</em>, <em class="sig-param">linear=True</em>, <em class="sig-param">thetas=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/jan.html#JointMultipleKernelMaximumMeanDiscrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.jan.JointMultipleKernelMaximumMeanDiscrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Joint Multiple Kernel Maximum Mean Discrepancy (JMMD) used in
+<a class="reference external" href="https://arxiv.org/abs/1605.06636">Deep Transfer Learning with Joint Adaptation Networks (ICML 2017)</a></p>
+<p>Given source domain <span class="math notranslate nohighlight">\(\mathcal{D}_s\)</span> of <span class="math notranslate nohighlight">\(n_s\)</span> labeled points and target domain <span class="math notranslate nohighlight">\(\mathcal{D}_t\)</span>
+of <span class="math notranslate nohighlight">\(n_t\)</span> unlabeled points drawn i.i.d. from P and Q respectively, the deep networks will generate
+activations in layers <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> as <span class="math notranslate nohighlight">\(\{(z_i^{s1}, ..., z_i^{s|\mathcal{L}|})\}_{i=1}^{n_s}\)</span> and
+<span class="math notranslate nohighlight">\(\{(z_i^{t1}, ..., z_i^{t|\mathcal{L}|})\}_{i=1}^{n_t}\)</span>. The empirical estimate of
+<span class="math notranslate nohighlight">\(\hat{D}_{\mathcal{L}}(P, Q)\)</span> is computed as the squared distance between the empirical kernel mean
+embeddings as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{D}_{\mathcal{L}}(P, Q) &amp;=
+\dfrac{1}{n_s^2} \sum_{i=1}^{n_s}\sum_{j=1}^{n_s} \prod_{l\in\mathcal{L}} k^l(z_i^{sl}, z_j^{sl}) \\
+&amp;+ \dfrac{1}{n_t^2} \sum_{i=1}^{n_t}\sum_{j=1}^{n_t} \prod_{l\in\mathcal{L}} k^l(z_i^{tl}, z_j^{tl}) \\
+&amp;- \dfrac{2}{n_s n_t} \sum_{i=1}^{n_s}\sum_{j=1}^{n_t} \prod_{l\in\mathcal{L}} k^l(z_i^{sl}, z_j^{tl}). \\\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kernels</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>(</em><a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a><em>)</em><em>)</em>) – kernel functions, where <cite>kernels[r]</cite> corresponds to kernel <span class="math notranslate nohighlight">\(k^{\mathcal{L}[r]}\)</span>.</p></li>
+<li><p><strong>linear</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether use the linear version of JAN. Default: False</p></li>
+<li><p><strong>thetas</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>(</em><em>Theta</em>) – use adversarial version JAN if not None. Default: None</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>z_s (tuple(tensor)): multiple layers’ activations from the source domain, <span class="math notranslate nohighlight">\(z^s\)</span></p></li>
+<li><p>z_t (tuple(tensor)): multiple layers’ activations from the target domain, <span class="math notranslate nohighlight">\(z^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(z^{sl}\)</span> and <span class="math notranslate nohighlight">\(z^{tl}\)</span>: <span class="math notranslate nohighlight">\((minibatch, *)\)</span>  where * means any dimension</p></li>
+<li><p>Outputs: scalar</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Activations <span class="math notranslate nohighlight">\(z^{sl}\)</span> and <span class="math notranslate nohighlight">\(z^{tl}\)</span> must have the same shape.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The kernel values will add up when there are multiple kernels for a certain layer.</p>
+</div>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">feature_dim</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer1_kernels</span> <span class="o">=</span> <span class="p">(</span><span class="n">GaussianKernel</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">),</span> <span class="n">GaussianKernel</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="n">GaussianKernel</span><span class="p">(</span><span class="mf">2.</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">layer2_kernels</span> <span class="o">=</span> <span class="p">(</span><span class="n">GaussianKernel</span><span class="p">(</span><span class="mf">1.</span><span class="p">),</span> <span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">JointMultipleKernelMaximumMeanDiscrepancy</span><span class="p">((</span><span class="n">layer1_kernels</span><span class="p">,</span> <span class="n">layer2_kernels</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># layer1 features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z1_s</span><span class="p">,</span> <span class="n">z1_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># layer2 features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">z2_s</span><span class="p">,</span> <span class="n">z2_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">((</span><span class="n">z1_s</span><span class="p">,</span> <span class="n">z2_s</span><span class="p">),</span> <span class="p">(</span><span class="n">z1_t</span><span class="p">,</span> <span class="n">z2_t</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="domain_adversarial.html" class="btn btn-neutral float-right" title="Domain Adversarial Training" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Feature Alignment" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Statistics Matching</a><ul>
+<li><a class="reference internal" href="#dan-deep-adaptation-network">DAN: Deep Adaptation Network</a></li>
+<li><a class="reference internal" href="#deep-coral-correlation-alignment-for-deep-domain-adaptation">Deep CORAL: Correlation Alignment for Deep Domain Adaptation</a></li>
+<li><a class="reference internal" href="#jan-joint-adaptation-network">JAN: Joint Adaptation Network</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

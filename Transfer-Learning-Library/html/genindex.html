@@ -1,0 +1,1371 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Index &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tllib/modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tllib/vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tllib/utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Index</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/utils/metric.html#tllib.utils.metric.accuracy">accuracy() (in module tllib.utils.metric)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.afn.AdaptiveFeatureNorm">AdaptiveFeatureNorm (class in tllib.normalization.afn)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.aircrafts.Aircraft">Aircraft (class in tllib.vision.datasets.aircrafts)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/regularization.html#tllib.regularization.delta.AttentionBehavioralRegularization">AttentionBehavioralRegularization (class in tllib.regularization.delta)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.pada.AutomaticUpdateClassWeightModule">AutomaticUpdateClassWeightModule (class in tllib.reweight.pada)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.groupdro.AutomaticUpdateDomainWeightModule">AutomaticUpdateDomainWeightModule (class in tllib.reweight.groupdro)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.meter.AverageMeter">AverageMeter (class in tllib.utils.meter)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.bsp.BatchSpectralPenalizationLoss">BatchSpectralPenalizationLoss (class in tllib.alignment.bsp)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.bss.BatchSpectralShrinkage">BatchSpectralShrinkage (class in tllib.regularization.bss)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.delta.BehavioralRegularization">BehavioralRegularization (class in tllib.regularization.delta)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/regularization.html#tllib.regularization.bi_tuning.BiTuning">BiTuning (class in tllib.regularization.bi_tuning)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.afn.Block">Block (class in tllib.normalization.afn)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.keypoint_dataset.Body16KeypointDataset">Body16KeypointDataset (class in tllib.vision.datasets.keypoint_detection.keypoint_dataset)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/utils/analysis.html#tllib.utils.analysis.a_distance.calculate">calculate() (in module tllib.utils.analysis.a_distance)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.caltech101.Caltech101">Caltech101 (class in tllib.vision.datasets.caltech101)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.partial.caltech_imagenet.CaltechImageNet">CaltechImageNet (class in tllib.vision.datasets.partial.caltech_imagenet)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.center_crop">center_crop() (in module tllib.vision.transforms.keypoint_detection)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.CenterCrop">CenterCrop (class in tllib.vision.transforms.keypoint_detection)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.cityscapes.Cityscapes">Cityscapes (class in tllib.vision.datasets.segmentation.cityscapes)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.self_ensemble.ClassBalanceLoss">ClassBalanceLoss (class in tllib.self_training.self_ensemble)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.ClassificationMarginDisparityDiscrepancy">ClassificationMarginDisparityDiscrepancy (class in tllib.alignment.mdd)</a>
+</li>
+      <li><a href="tllib/modules.html#tllib.modules.classifier.Classifier">Classifier (class in tllib.modules.classifier)</a>
+
+      <ul>
+        <li><a href="tllib/regularization.html#tllib.regularization.lwf.Classifier">(class in tllib.regularization.lwf)</a>
+</li>
+        <li><a href="tllib/self_training.html#tllib.self_training.self_tuning.Classifier">(class in tllib.self_training.self_tuning)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mcd.classifier_discrepancy">classifier_discrepancy() (in module tllib.alignment.mcd)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.pada.ClassWeightModule">ClassWeightModule (class in tllib.reweight.pada)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.coco70.COCO70">COCO70 (class in tllib.vision.datasets.coco70)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.pada.collect_classification_results">collect_classification_results() (in module tllib.reweight.pada)</a>
+</li>
+      <li><a href="tllib/utils/analysis.html#tllib.utils.analysis.collect_feature">collect_feature() (in module tllib.utils.analysis)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.collect_image_paths">collect_image_paths() (tllib.vision.datasets.segmentation.segmentation_list.SegmentationList method)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.ColorJitter">ColorJitter (in module tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.ColorJitter">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/utils/base.html#tllib.utils.data.CombineDataset">CombineDataset (class in tllib.utils.data)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.logger.CompleteLogger">CompleteLogger (class in tllib.utils.logger)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.Compose">Compose (class in tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.Compose">(class in tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/utils/metric.html#tllib.utils.metric.ConfusionMatrix.compute">compute() (tllib.utils.metric.ConfusionMatrix method)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.data.concatenate">concatenate() (in module tllib.utils.data)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.cdan.ConditionalDomainAdversarialLoss">ConditionalDomainAdversarialLoss (class in tllib.alignment.cdan)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.pseudo_label.ConfidenceBasedSelfTrainingLoss">ConfidenceBasedSelfTrainingLoss (class in tllib.self_training.pseudo_label)</a>
+</li>
+      <li><a href="tllib/utils/metric.html#tllib.utils.metric.ConfusionMatrix">ConfusionMatrix (class in tllib.utils.metric)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.pi_model.ConsistencyLoss">ConsistencyLoss (class in tllib.self_training.pi_model)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.spgan.loss.ContrastiveLoss">ContrastiveLoss (class in tllib.translation.spgan.loss)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.stochnorm.convert_model">convert_model() (in module tllib.normalization.stochnorm)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.ResNet.copy_head">copy_head() (tllib.vision.models.resnet.ResNet method)</a>
+</li>
+      <li><a href="tllib/alignment/statistics_matching.html#tllib.alignment.coral.CorrelationAlignmentLoss">CorrelationAlignmentLoss (class in tllib.alignment.coral)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.co_tuning.CoTuningLoss">CoTuningLoss (class in tllib.regularization.co_tuning)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.vision.models.reid.loss.CrossEntropyLoss">CrossEntropyLoss (class in tllib.vision.models.reid.loss)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.cub200.CUB200">CUB200 (class in tllib.vision.datasets.cub200)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.decode_target">decode_target() (tllib.vision.datasets.segmentation.segmentation_list.SegmentationList method)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.d_adapt.modeling.meta_arch.DecoupledGeneralizedRCNN">DecoupledGeneralizedRCNN (class in tllib.alignment.d_adapt.modeling.meta_arch)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.d_adapt.modeling.meta_arch.DecoupledRetinaNet">DecoupledRetinaNet (class in tllib.alignment.d_adapt.modeling.meta_arch)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.segmentation.deeplabv2.deeplabv2_resnet101">deeplabv2_resnet101() (in module tllib.vision.models.segmentation.deeplabv2)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.openset.default_open_set">default_open_set() (in module tllib.vision.datasets.openset)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.partial.default_partial">default_partial() (in module tllib.vision.datasets.partial)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.Denormalize">Denormalize (class in tllib.vision.transforms)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.DeNormalizeAndTranspose">DeNormalizeAndTranspose (class in tllib.vision.transforms)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.advent.Discriminator">Discriminator (class in tllib.alignment.advent)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.advent.DomainAdversarialEntropyLoss">DomainAdversarialEntropyLoss (class in tllib.alignment.advent)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.adda.DomainAdversarialLoss">DomainAdversarialLoss (class in tllib.alignment.adda)</a>
+
+      <ul>
+        <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.dann.DomainAdversarialLoss">(class in tllib.alignment.dann)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/modules.html#tllib.modules.domain_discriminator.DomainDiscriminator">DomainDiscriminator (class in tllib.modules.domain_discriminator)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet">DomainNet (class in tllib.vision.datasets.domainnet)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet.domains">domains() (tllib.vision.datasets.domainnet.DomainNet class method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.imagelist.ImageList.domains">(tllib.vision.datasets.imagelist.ImageList class method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.office31.Office31.domains">(tllib.vision.datasets.office31.Office31 class method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officehome.OfficeHome.domains">(tllib.vision.datasets.officehome.OfficeHome class method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.pacs.PACS.domains">(tllib.vision.datasets.pacs.PACS class method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.visda2017.VisDA2017.domains">(tllib.vision.datasets.visda2017.VisDA2017 class method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.regression.dsprites.DSprites">DSprites (class in tllib.vision.datasets.regression.dsprites)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.dtd.DTD">DTD (class in tllib.vision.datasets.dtd)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.dukemtmc.DukeMTMC">DukeMTMC (class in tllib.vision.datasets.reid.dukemtmc)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.flexmatch.DynamicThresholdingModule">DynamicThresholdingModule (class in tllib.self_training.flexmatch)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/self_training.html#tllib.self_training.mean_teacher.EMATeacher">EMATeacher (class in tllib.self_training.mean_teacher)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mcd.entropy">entropy() (in module tllib.alignment.mcd)</a>
+
+      <ul>
+        <li><a href="tllib/modules.html#tllib.modules.entropy.entropy">(in module tllib.modules.entropy)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.eurosat.EuroSAT">EuroSAT (class in tllib.vision.datasets.eurosat)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.advent.DomainAdversarialEntropyLoss.eval">eval() (tllib.alignment.advent.DomainAdversarialEntropyLoss method)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.evaluate_classes">evaluate_classes() (tllib.vision.datasets.segmentation.segmentation_list.SegmentationList property)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/modules.html#tllib.modules.classifier.Classifier.features_dim">features_dim() (tllib.modules.classifier.Classifier property)</a>
+
+      <ul>
+        <li><a href="tllib/modules.html#tllib.modules.regressor.Regressor.features_dim">(tllib.modules.regressor.Regressor property)</a>
+</li>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.reid.identifier.ReIdentifier.features_dim">(tllib.vision.models.reid.identifier.ReIdentifier property)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.cityscapes.FoggyCityscapes">FoggyCityscapes (class in tllib.vision.datasets.segmentation.cityscapes)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.food101.Food101">Food101 (class in tllib.vision.datasets.food101)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.data.ForeverDataIterator">ForeverDataIterator (class in tllib.utils.data)</a>
+</li>
+      <li><a href="tllib/utils/metric.html#tllib.utils.metric.ConfusionMatrix.format">format() (tllib.utils.metric.ConfusionMatrix method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.advent.DomainAdversarialEntropyLoss.forward">forward() (tllib.alignment.advent.DomainAdversarialEntropyLoss method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomCrop.forward">(tllib.vision.transforms.segmentation.RandomCrop method)</a>
+</li>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomHorizontalFlip.forward">(tllib.vision.transforms.segmentation.RandomHorizontalFlip method)</a>
+</li>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomResizedCrop.forward">(tllib.vision.transforms.segmentation.RandomResizedCrop method)</a>
+</li>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.Resize.forward">(tllib.vision.transforms.segmentation.Resize method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/translation.html#tllib.translation.fourier_transform.FourierTransform">FourierTransform (class in tllib.translation.fourier_transform)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.freihand.FreiHand">FreiHand (class in tllib.vision.datasets.keypoint_detection.freihand)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/modules.html#tllib.modules.kernels.GaussianKernel">GaussianKernel (class in tllib.modules.kernels)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.logger.CompleteLogger.get_checkpoint_path">get_checkpoint_path() (tllib.utils.logger.CompleteLogger method)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.pada.AutomaticUpdateClassWeightModule.get_class_weight_for_adversarial_loss">get_class_weight_for_adversarial_loss() (tllib.reweight.pada.AutomaticUpdateClassWeightModule method)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.pada.AutomaticUpdateClassWeightModule.get_class_weight_for_cross_entropy_loss">get_class_weight_for_cross_entropy_loss() (tllib.reweight.pada.AutomaticUpdateClassWeightModule method)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.groupdro.AutomaticUpdateDomainWeightModule.get_domain_weight">get_domain_weight() (tllib.reweight.groupdro.AutomaticUpdateDomainWeightModule method)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.logger.CompleteLogger.get_image_path">get_image_path() (tllib.utils.logger.CompleteLogger method)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.iwan.ImportanceWeightModule.get_importance_weight">get_importance_weight() (tllib.reweight.iwan.ImportanceWeightModule method)</a>
+</li>
+      <li><a href="tllib/modules.html#tllib.modules.classifier.Classifier.get_parameters">get_parameters() (tllib.modules.classifier.Classifier method)</a>
+
+      <ul>
+        <li><a href="tllib/modules.html#tllib.modules.regressor.Regressor.get_parameters">(tllib.modules.regressor.Regressor method)</a>
+</li>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN.get_parameters">(tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN method)</a>
+</li>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.meta_arch.TLRetinaNet.get_parameters">(tllib.vision.models.object_detection.meta_arch.TLRetinaNet method)</a>
+</li>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.reid.identifier.ReIdentifier.get_parameters">(tllib.vision.models.reid.identifier.ReIdentifier method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.RandomResizedCrop.get_params">get_params() (tllib.vision.transforms.keypoint_detection.RandomResizedCrop static method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.RandomRotation.get_params">(tllib.vision.transforms.keypoint_detection.RandomRotation static method)</a>
+</li>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomResizedCrop.get_params">(tllib.vision.transforms.segmentation.RandomResizedCrop static method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/reweight.html#tllib.reweight.iwan.ImportanceWeightModule.get_partial_classes_weight">get_partial_classes_weight() (tllib.reweight.iwan.ImportanceWeightModule method)</a>
+
+      <ul>
+        <li><a href="tllib/reweight.html#tllib.reweight.pada.AutomaticUpdateClassWeightModule.get_partial_classes_weight">(tllib.reweight.pada.AutomaticUpdateClassWeightModule method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/self_training.html#tllib.self_training.flexmatch.DynamicThresholdingModule.get_threshold">get_threshold() (tllib.self_training.flexmatch.DynamicThresholdingModule method)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.keypoint_dataset.KeypointDataset.group_accuracy">group_accuracy() (tllib.vision.datasets.keypoint_detection.keypoint_dataset.KeypointDataset method)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.gta5.GTA5">GTA5 (class in tllib.vision.datasets.segmentation.gta5)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/ranking.html#tllib.ranking.hscore.h_score">h_score() (in module tllib.ranking.hscore)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.keypoint_dataset.Hand21KeypointDataset">Hand21KeypointDataset (class in tllib.vision.datasets.keypoint_detection.keypoint_dataset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.hand_3d_studio.Hand3DStudio">Hand3DStudio (class in tllib.vision.datasets.keypoint_detection.hand_3d_studio)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.human36m.Human36M">Human36M (class in tllib.vision.datasets.keypoint_detection.human36m)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.IBNNet">IBNNet (class in tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.ignore_classes">ignore_classes() (tllib.vision.datasets.segmentation.segmentation_list.SegmentationList property)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.ImageClassifier">ImageClassifier (class in tllib.alignment.mdd)</a>
+
+      <ul>
+        <li><a href="tllib/normalization.html#tllib.normalization.afn.ImageClassifier">(class in tllib.normalization.afn)</a>
+</li>
+        <li><a href="tllib/self_training.html#tllib.self_training.dst.ImageClassifier">(class in tllib.self_training.dst)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mcd.ImageClassifierHead">ImageClassifierHead (class in tllib.alignment.mcd)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.imagelist.ImageList">ImageList (class in tllib.vision.datasets.imagelist)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.partial.imagenet_caltech.ImageNetCaltech">ImageNetCaltech (class in tllib.vision.datasets.partial.imagenet_caltech)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.util.ImagePool">ImagePool (class in tllib.translation.cyclegan.util)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.regression.image_regression.ImageRegression">ImageRegression (class in tllib.vision.datasets.regression.image_regression)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.ImageRegressor">ImageRegressor (class in tllib.alignment.mdd)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.iwan.ImportanceWeightModule">ImportanceWeightModule (class in tllib.reweight.iwan)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.InstanceBatchNorm2d">InstanceBatchNorm2d (class in tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.delta.IntermediateLayerGetter">IntermediateLayerGetter (class in tllib.regularization.delta)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/alignment/statistics_matching.html#tllib.alignment.jan.JointMultipleKernelMaximumMeanDiscrepancy">JointMultipleKernelMaximumMeanDiscrepancy (class in tllib.alignment.jan)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.keypoint_detection.loss.JointsKLLoss">JointsKLLoss (class in tllib.vision.models.keypoint_detection.loss)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.keypoint_detection.loss.JointsMSELoss">JointsMSELoss (class in tllib.vision.models.keypoint_detection.loss)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.keypoint_dataset.KeypointDataset">KeypointDataset (class in tllib.vision.datasets.keypoint_detection.keypoint_dataset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/modules.html#tllib.modules.loss.KnowledgeDistillationLoss">KnowledgeDistillationLoss (class in tllib.modules.loss)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/self_training.html#tllib.self_training.pi_model.L2ConsistencyLoss">L2ConsistencyLoss (class in tllib.self_training.pi_model)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.delta.L2Regularization">L2Regularization (class in tllib.regularization.delta)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.LeastSquaresGenerativeAdversarialLoss">LeastSquaresGenerativeAdversarialLoss (class in tllib.translation.cyclegan)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/ranking.html#tllib.ranking.leep.log_expected_empirical_prediction">log_expected_empirical_prediction() (in module tllib.ranking.leep)</a>
+</li>
+      <li><a href="tllib/ranking.html#tllib.ranking.logme.log_maximum_evidence">log_maximum_evidence() (in module tllib.ranking.logme)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.fourier_transform.low_freq_mutate">low_freq_mutate() (in module tllib.translation.fourier_transform)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.lsp.LSP">LSP (class in tllib.vision.datasets.keypoint_detection.lsp)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.MarginDisparityDiscrepancy">MarginDisparityDiscrepancy (class in tllib.alignment.mdd)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.market1501.Market1501">Market1501 (class in tllib.vision.datasets.reid.market1501)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.meter.Meter">Meter (class in tllib.utils.meter)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.mcc.MinimumClassConfusionLoss">MinimumClassConfusionLoss (class in tllib.self_training.mcc)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.mixstyle.MixStyle">MixStyle (class in tllib.normalization.mixstyle)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.digits.MNIST">MNIST (class in tllib.vision.datasets.digits)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.regression.mpi3d.MPI3D">MPI3D (class in tllib.vision.datasets.regression.mpi3d)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.msmt17.MSMT17">MSMT17 (class in tllib.vision.datasets.reid.msmt17)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.cdan.MultiLinearMap">MultiLinearMap (class in tllib.alignment.cdan)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.MultipleApply">MultipleApply (class in tllib.vision.transforms)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.MultipleApply">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/alignment/statistics_matching.html#tllib.alignment.dan.MultipleKernelMaximumMeanDiscrepancy">MultipleKernelMaximumMeanDiscrepancy (class in tllib.alignment.dan)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/ranking.html#tllib.ranking.nce.negative_conditional_entropy">negative_conditional_entropy() (in module tllib.ranking.nce)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.Normalize">Normalize (in module tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.Normalize">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.NormalizeAndTranspose">NormalizeAndTranspose (class in tllib.vision.transforms)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.NormalizeAndTranspose">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet.num_classes">num_classes() (tllib.vision.datasets.domainnet.DomainNet property)</a>
+
+      <ul>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.imagelist.ImageList.num_classes">(tllib.vision.datasets.imagelist.ImageList property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.office31.Office31.num_classes">(tllib.vision.datasets.office31.Office31 property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officecaltech.OfficeCaltech.num_classes">(tllib.vision.datasets.officecaltech.OfficeCaltech property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officehome.OfficeHome.num_classes">(tllib.vision.datasets.officehome.OfficeHome property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.resisc45.Resisc45.num_classes">(tllib.vision.datasets.resisc45.Resisc45 property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.num_classes">(tllib.vision.datasets.segmentation.segmentation_list.SegmentationList property)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.visda2017.VisDA2017.num_classes">(tllib.vision.datasets.visda2017.VisDA2017 property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.office31.Office31">Office31 (class in tllib.vision.datasets.office31)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officecaltech.OfficeCaltech">OfficeCaltech (class in tllib.vision.datasets.officecaltech)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officehome.OfficeHome">OfficeHome (class in tllib.vision.datasets.officehome)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.openset.open_set">open_set() (in module tllib.vision.datasets.openset)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.IBNNet.out_features">out_features() (tllib.normalization.ibn.IBNNet property)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.ResNet.out_features">(tllib.vision.models.resnet.ResNet property)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.oxfordflowers.OxfordFlowers102">OxfordFlowers102 (class in tllib.vision.datasets.oxfordflowers)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.oxfordpets.OxfordIIITPets">OxfordIIITPets (class in tllib.vision.datasets.oxfordpets)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.pacs.PACS">PACS (class in tllib.vision.datasets.pacs)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.domainnet.DomainNet.parse_data_file">parse_data_file() (tllib.vision.datasets.domainnet.DomainNet method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.imagelist.ImageList.parse_data_file">(tllib.vision.datasets.imagelist.ImageList method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.office31.Office31.parse_data_file">(tllib.vision.datasets.office31.Office31 method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.officehome.OfficeHome.parse_data_file">(tllib.vision.datasets.officehome.OfficeHome method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.regression.image_regression.ImageRegression.parse_data_file">(tllib.vision.datasets.regression.image_regression.ImageRegression method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.parse_data_file">(tllib.vision.datasets.segmentation.segmentation_list.SegmentationList method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.visda2017.VisDA2017.parse_data_file">(tllib.vision.datasets.visda2017.VisDA2017 method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.parse_label_file">parse_label_file() (tllib.vision.datasets.segmentation.segmentation_list.SegmentationList method)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.partial.partial">partial() (in module tllib.vision.datasets.partial)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.patch">patch() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.patchcamelyon.PatchCamelyon">PatchCamelyon (class in tllib.vision.datasets.patchcamelyon)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.d_adapt.proposal.PersistentProposalList">PersistentProposalList (class in tllib.alignment.d_adapt.proposal)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.pixel">pixel() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.keypoint_detection.pose_resnet.pose_resnet101">pose_resnet101() (in module tllib.vision.models.keypoint_detection.pose_resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.keypoint_detection.pose_resnet.PoseResNet">PoseResNet (class in tllib.vision.models.keypoint_detection.pose_resnet)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.regda.PoseResNet2d">PoseResNet2d (class in tllib.alignment.regda)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.meter.ProgressMeter">ProgressMeter (class in tllib.utils.meter)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.d_adapt.proposal.Proposal">Proposal (class in tllib.alignment.d_adapt.proposal)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.d_adapt.proposal.ProposalDataset">ProposalDataset (class in tllib.alignment.d_adapt.proposal)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.regda.PseudoLabelGenerator2d">PseudoLabelGenerator2d (class in tllib.alignment.regda)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.util.ImagePool.query">query() (tllib.translation.cyclegan.util.ImagePool method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.RandomApply">RandomApply (class in tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomApply">(class in tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomChoice">RandomChoice (class in tllib.vision.transforms.segmentation)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomCrop">RandomCrop (class in tllib.vision.transforms.segmentation)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.RandomErasing">RandomErasing (class in tllib.vision.transforms)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomHorizontalFlip">RandomHorizontalFlip (class in tllib.vision.transforms.segmentation)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.cdan.RandomizedMultiLinearMap">RandomizedMultiLinearMap (class in tllib.alignment.cdan)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.utils.data.RandomMultipleGallerySampler">RandomMultipleGallerySampler (class in tllib.utils.data)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.RandomResizedCrop">RandomResizedCrop (class in tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.RandomResizedCrop">(class in tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.RandomRotation">RandomRotation (class in tllib.vision.transforms.keypoint_detection)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.regda.RegressionDisparity">RegressionDisparity (class in tllib.alignment.regda)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.RegressionMarginDisparityDiscrepancy">RegressionMarginDisparityDiscrepancy (class in tllib.alignment.mdd)</a>
+</li>
+      <li><a href="tllib/modules.html#tllib.modules.regressor.Regressor">Regressor (class in tllib.modules.regressor)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.resnet.reid_resnet101">reid_resnet101() (in module tllib.vision.models.reid.resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.resnet.reid_resnet18">reid_resnet18() (in module tllib.vision.models.reid.resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.resnet.reid_resnet34">reid_resnet34() (in module tllib.vision.models.reid.resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.resnet.reid_resnet50">reid_resnet50() (in module tllib.vision.models.reid.resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.identifier.ReIdentifier">ReIdentifier (class in tllib.vision.models.reid.identifier)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.resnet.ReidResNet">ReidResNet (class in tllib.vision.models.reid.resnet)</a>
+</li>
+      <li><a href="tllib/regularization.html#tllib.regularization.co_tuning.Relationship">Relationship (class in tllib.regularization.co_tuning)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.rendered_hand_pose.RenderedHandPose">RenderedHandPose (class in tllib.vision.datasets.keypoint_detection.rendered_hand_pose)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.resisc45.Resisc45">Resisc45 (class in tllib.vision.datasets.resisc45)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.Resize">Resize (class in tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.Resize">(class in tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.resized_crop">resized_crop() (in module tllib.vision.transforms.keypoint_detection)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.ResizeImage">ResizeImage (class in tllib.vision.transforms)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.ResizePad">ResizePad (class in tllib.vision.transforms.keypoint_detection)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.ResNet">ResNet (class in tllib.vision.models.resnet)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.mixstyle.resnet.resnet101">resnet101() (in module tllib.normalization.mixstyle.resnet)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnet101">(in module tllib.vision.models.resnet)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet101_ibn_a">resnet101_ibn_a() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet101_ibn_b">resnet101_ibn_b() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnet152">resnet152() (in module tllib.vision.models.resnet)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.mixstyle.resnet.resnet18">resnet18() (in module tllib.normalization.mixstyle.resnet)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnet18">(in module tllib.vision.models.resnet)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet18_ibn_a">resnet18_ibn_a() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet18_ibn_b">resnet18_ibn_b() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.mixstyle.resnet.resnet34">resnet34() (in module tllib.normalization.mixstyle.resnet)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnet34">(in module tllib.vision.models.resnet)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet34_ibn_a">resnet34_ibn_a() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet34_ibn_b">resnet34_ibn_b() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.mixstyle.resnet.resnet50">resnet50() (in module tllib.normalization.mixstyle.resnet)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnet50">(in module tllib.vision.models.resnet)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet50_ibn_a">resnet50_ibn_a() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.ibn.resnet50_ibn_b">resnet50_ibn_b() (in module tllib.normalization.ibn)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.resnet_6">resnet_6() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.resnet_9">resnet_9() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnext101_32x8d">resnext101_32x8d() (in module tllib.vision.models.resnet)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.resnext50_32x4d">resnext50_32x4d() (in module tllib.vision.models.resnet)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.retinopathy.Retinopathy">Retinopathy (class in tllib.vision.datasets.retinopathy)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads.sample_unlabeled_proposals">sample_unlabeled_proposals() (tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads.sample_unlabeled_proposals">(tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList">SegmentationList (class in tllib.vision.datasets.segmentation.segmentation_list)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.self_tuning.SelfTuning">SelfTuning (class in tllib.self_training.self_tuning)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cycada.SemanticConsistency">SemanticConsistency (class in tllib.translation.cycada)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.data.send_to_device">send_to_device() (in module tllib.utils.data)</a>
+</li>
+      <li><a href="tllib/utils/base.html#tllib.utils.logger.CompleteLogger.set_epoch">set_epoch() (tllib.utils.logger.CompleteLogger method)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.util.set_requires_grad">set_requires_grad() (in module tllib.translation.cyclegan.util)</a>
+</li>
+      <li><a href="tllib/alignment/hypothesis_adversarial.html#tllib.alignment.mdd.shift_log">shift_log() (in module tllib.alignment.mdd)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.spgan.siamese.SiameseNetwork">SiameseNetwork (class in tllib.translation.spgan.siamese)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.vision.models.reid.loss.SoftTripletLoss">SoftTripletLoss (class in tllib.vision.models.reid.loss)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/regularization.html#tllib.regularization.delta.SPRegularization">SPRegularization (class in tllib.regularization.delta)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.stanford_cars.StanfordCars">StanfordCars (class in tllib.vision.datasets.stanford_cars)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.stanford_dogs.StanfordDogs">StanfordDogs (class in tllib.vision.datasets.stanford_dogs)</a>
+</li>
+      <li><a href="tllib/modules.html#tllib.modules.grl.WarmStartGradientReverseLayer.step">step() (tllib.modules.grl.WarmStartGradientReverseLayer method)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.stochnorm.StochNorm1d">StochNorm1d (class in tllib.normalization.stochnorm)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.stochnorm.StochNorm2d">StochNorm2d (class in tllib.normalization.stochnorm)</a>
+</li>
+      <li><a href="tllib/normalization.html#tllib.normalization.stochnorm.StochNorm3d">StochNorm3d (class in tllib.normalization.stochnorm)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.uda.StrongWeakConsistencyLoss">StrongWeakConsistencyLoss (class in tllib.self_training.uda)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.sun397.SUN397">SUN397 (class in tllib.vision.datasets.sun397)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.surreal.SURREAL">SURREAL (class in tllib.vision.datasets.keypoint_detection.surreal)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.digits.SVHN">SVHN (class in tllib.vision.datasets.digits)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.synthia.Synthia">Synthia (class in tllib.vision.datasets.segmentation.synthia)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/utils/base.html#tllib.utils.logger.TextLogger">TextLogger (class in tllib.utils.logger)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN">TLGeneralizedRCNN (class in tllib.vision.models.object_detection.meta_arch)</a>
+</li>
+      <li><a href="tllib/normalization.html#module-tllib.normalization.ibn">tllib.normalization.ibn (module)</a>
+</li>
+      <li><a href="tllib/normalization.html#module-tllib.normalization.mixstyle.resnet">tllib.normalization.mixstyle.resnet (module)</a>
+</li>
+      <li><a href="tllib/vision/models.html#module-tllib.vision.models.digits.dtn">tllib.vision.models.digits.dtn (module)</a>
+</li>
+      <li><a href="tllib/vision/models.html#module-tllib.vision.models.digits.lenet">tllib.vision.models.digits.lenet (module)</a>
+</li>
+      <li><a href="tllib/vision/models.html#module-tllib.vision.models.reid.resnet">tllib.vision.models.reid.resnet (module)</a>
+</li>
+      <li><a href="tllib/vision/models.html#module-tllib.vision.models.resnet">tllib.vision.models.resnet (module)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#module-tllib.vision.transforms">tllib.vision.transforms (module)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#module-tllib.vision.transforms.keypoint_detection">tllib.vision.transforms.keypoint_detection (module)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#module-tllib.vision.transforms.segmentation">tllib.vision.transforms.segmentation (module)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads">TLRes5ROIHeads (class in tllib.vision.models.object_detection.roi_heads)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.meta_arch.TLRetinaNet">TLRetinaNet (class in tllib.vision.models.object_detection.meta_arch)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.proposal_generator.rpn.TLRPN">TLRPN (class in tllib.vision.models.object_detection.proposal_generator.rpn)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads">TLStandardROIHeads (class in tllib.vision.models.object_detection.roi_heads)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.ToPILImage">ToPILImage (in module tllib.vision.transforms.segmentation)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.ToTensor">ToTensor (in module tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.ToTensor">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.advent.DomainAdversarialEntropyLoss.train">train() (tllib.alignment.advent.DomainAdversarialEntropyLoss method)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.dukemtmc.DukeMTMC.translate">translate() (tllib.vision.datasets.reid.dukemtmc.DukeMTMC method)</a>
+
+      <ul>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.market1501.Market1501.translate">(tllib.vision.datasets.reid.market1501.Market1501 method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.reid.msmt17.MSMT17.translate">(tllib.vision.datasets.reid.msmt17.MSMT17 method)</a>
+</li>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.segmentation.segmentation_list.SegmentationList.translate">(tllib.vision.datasets.segmentation.segmentation_list.SegmentationList method)</a>
+</li>
+      </ul></li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.Translation">Translation (class in tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.reid.loss.TripletLoss">TripletLoss (class in tllib.vision.models.reid.loss)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.unet_128">unet_128() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.unet_256">unet_256() (in module tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/alignment/domain_adversarial.html#tllib.alignment.osbp.UnknownClassBinaryCrossEntropy">UnknownClassBinaryCrossEntropy (class in tllib.alignment.osbp)</a>
+</li>
+      <li><a href="tllib/reweight.html#tllib.reweight.groupdro.AutomaticUpdateDomainWeightModule.update">update() (tllib.reweight.groupdro.AutomaticUpdateDomainWeightModule method)</a>
+
+      <ul>
+        <li><a href="tllib/self_training.html#tllib.self_training.flexmatch.DynamicThresholdingModule.update">(tllib.self_training.flexmatch.DynamicThresholdingModule method)</a>
+</li>
+        <li><a href="tllib/utils/metric.html#tllib.utils.metric.ConfusionMatrix.update">(tllib.utils.metric.ConfusionMatrix method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.keypoint_detection.pose_resnet.Upsampling">Upsampling (class in tllib.vision.models.keypoint_detection.pose_resnet)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.digits.USPS">USPS (class in tllib.vision.datasets.digits)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.VanillaGenerativeAdversarialLoss">VanillaGenerativeAdversarialLoss (class in tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.visda2017.VisDA2017">VisDA2017 (class in tllib.vision.datasets.visda2017)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/utils/analysis.html#tllib.utils.analysis.tsne.visualize">visualize() (in module tllib.utils.analysis.tsne)</a>
+
+      <ul>
+        <li><a href="tllib/vision/datasets.html#tllib.vision.datasets.keypoint_detection.keypoint_dataset.KeypointDataset.visualize">(tllib.vision.datasets.keypoint_detection.keypoint_dataset.KeypointDataset method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/modules.html#tllib.modules.grl.WarmStartGradientReverseLayer">WarmStartGradientReverseLayer (class in tllib.modules.grl)</a>
+</li>
+      <li><a href="tllib/translation.html#tllib.translation.cyclegan.WassersteinGenerativeAdversarialLoss">WassersteinGenerativeAdversarialLoss (class in tllib.translation.cyclegan)</a>
+</li>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.wide_resnet101_2">wide_resnet101_2() (in module tllib.vision.models.resnet)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tllib/vision/models.html#tllib.vision.models.resnet.wide_resnet50_2">wide_resnet50_2() (in module tllib.vision.models.resnet)</a>
+</li>
+      <li><a href="tllib/self_training.html#tllib.self_training.dst.WorstCaseEstimationLoss">WorstCaseEstimationLoss (class in tllib.self_training.dst)</a>
+</li>
+      <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.keypoint_detection.wrapper">wrapper() (in module tllib.vision.transforms.keypoint_detection)</a>
+
+      <ul>
+        <li><a href="tllib/vision/transforms.html#tllib.vision.transforms.segmentation.wrapper">(in module tllib.vision.transforms.segmentation)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+         <script src="_static/jquery.js"></script>
+         <script src="_static/underscore.js"></script>
+         <script src="_static/doctools.js"></script>
+         <script src="_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

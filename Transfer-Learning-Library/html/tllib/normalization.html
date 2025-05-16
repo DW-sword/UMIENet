@@ -1,0 +1,937 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Normalization &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Regularization" href="regularization.html" />
+    <link rel="prev" title="Re-weighting" href="reweight.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reweight.html">Re-weighting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+      <li>Normalization</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tllib/normalization.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="normalization">
+<h1>Normalization<a class="headerlink" href="#normalization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="afn-adaptive-feature-norm">
+<span id="afn"></span><h2>AFN: Adaptive Feature Norm<a class="headerlink" href="#afn-adaptive-feature-norm" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.normalization.afn.AdaptiveFeatureNorm">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.afn.</code><code class="sig-name descname">AdaptiveFeatureNorm</code><span class="sig-paren">(</span><em class="sig-param">delta</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/afn.html#AdaptiveFeatureNorm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.afn.AdaptiveFeatureNorm" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference external" href="https://arxiv.org/pdf/1811.07456v2.pdf">Stepwise Adaptive Feature Norm loss (ICCV 2019)</a></p>
+<p>Instead of using restrictive scalar R to match the corresponding feature norm, Stepwise Adaptive Feature Norm
+is used in order to learn task-specific features with large norms in a progressive manner.
+We denote parameters of backbone <span class="math notranslate nohighlight">\(G\)</span> as <span class="math notranslate nohighlight">\(\theta_g\)</span>, parameters of bottleneck <span class="math notranslate nohighlight">\(F_f\)</span> as <span class="math notranslate nohighlight">\(\theta_f\)</span>
+, parameters of classifier head <span class="math notranslate nohighlight">\(F_y\)</span> as <span class="math notranslate nohighlight">\(\theta_y\)</span>, and features extracted from sample <span class="math notranslate nohighlight">\(x_i\)</span> as
+<span class="math notranslate nohighlight">\(h(x_i;\theta)\)</span>. Full loss is calculated as follows</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}L(\theta_g,\theta_f,\theta_y)=\frac{1}{n_s}\sum_{(x_i,y_i)\in D_s}L_y(x_i,y_i)+\frac{\lambda}{n_s+n_t}
+\sum_{x_i\in D_s\cup D_t}L_d(h(x_i;\theta_0)+\Delta_r,h(x_i;\theta))\\\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L_y\)</span> denotes classification loss, <span class="math notranslate nohighlight">\(L_d\)</span> denotes norm loss, <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>
+represent the updated and updating model parameters in the last and current iterations respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – positive residual scalar to control the feature norm enlargement.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>f (tensor): feature representations on source or target domain.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f: <span class="math notranslate nohighlight">\((N, F)\)</span> where F means the dimension of input features.</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">adaptive_feature_norm</span> <span class="o">=</span> <span class="n">AdaptiveFeatureNorm</span><span class="p">(</span><span class="n">delta</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_s</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">norm_loss</span> <span class="o">=</span> <span class="n">adaptive_feature_norm</span><span class="p">(</span><span class="n">f_s</span><span class="p">)</span> <span class="o">+</span> <span class="n">adaptive_feature_norm</span><span class="p">(</span><span class="n">f_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.normalization.afn.Block">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.afn.</code><code class="sig-name descname">Block</code><span class="sig-paren">(</span><em class="sig-param">in_features</em>, <em class="sig-param">bottleneck_dim=1000</em>, <em class="sig-param">dropout_p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/afn.html#Block"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.afn.Block" title="Permalink to this definition">¶</a></dt>
+<dd><p>Basic building block for Image Classifier with structure: FC-BN-ReLU-Dropout.
+We use <span class="math notranslate nohighlight">\(L_2\)</span> preserved dropout layers.
+Given mask probability <span class="math notranslate nohighlight">\(p\)</span>, input <span class="math notranslate nohighlight">\(x_k\)</span>, generated mask <span class="math notranslate nohighlight">\(a_k\)</span>,
+vanilla dropout layers calculate</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{x}_k = a_k\frac{1}{1-p}x_k\\\end{split}\]</div>
+<p>While in <span class="math notranslate nohighlight">\(L_2\)</span> preserved dropout layers</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{x}_k = a_k\frac{1}{\sqrt{1-p}}x_k\\\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Dimension of input features</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer. Default: 1000</p></li>
+<li><p><strong>dropout_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – dropout probability. Default: 0.5</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.normalization.afn.ImageClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.afn.</code><code class="sig-name descname">ImageClassifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">num_blocks=1</em>, <em class="sig-param">bottleneck_dim=1000</em>, <em class="sig-param">dropout_p=0.5</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/afn.html#ImageClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.afn.ImageClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>ImageClassifier for AFN.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 2-d features from data</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>num_blocks</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Number of basic blocks. Default: 1</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer. Default: 1000</p></li>
+<li><p><strong>dropout_p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – dropout probability. Default: 0.5</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="stochnorm-stochastic-normalization">
+<h2>StochNorm: Stochastic Normalization<a class="headerlink" href="#stochnorm-stochastic-normalization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.normalization.stochnorm.StochNorm1d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.stochnorm.</code><code class="sig-name descname">StochNorm1d</code><span class="sig-paren">(</span><em class="sig-param">num_features</em>, <em class="sig-param">eps=1e-05</em>, <em class="sig-param">momentum=0.1</em>, <em class="sig-param">affine=True</em>, <em class="sig-param">track_running_stats=True</em>, <em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/stochnorm.html#StochNorm1d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.stochnorm.StochNorm1d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies Stochastic Normalization over a 2D or 3D input (a mini-batch of 1D inputs with optional additional channel dimension)</p>
+<p>Stochastic  Normalization is proposed in <a class="reference external" href="https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf">Stochastic Normalization (NIPS 2020)</a></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}\\\hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}\\\hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}\\ y_i = \gamma \hat{x}_i + \beta\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are mean and variance of current mini-batch data.</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\mu}\)</span> and <span class="math notranslate nohighlight">\(\tilde{\sigma}\)</span> are current moving statistics of training data.</p>
+<p><span class="math notranslate nohighlight">\(s\)</span> is a branch-selection variable generated from a Bernoulli distribution, where <span class="math notranslate nohighlight">\(P(s=1)=p\)</span>.</p>
+<p>During training, there are two normalization branches. One uses mean and
+variance of current mini-batch data, while the other uses current moving
+statistics of the training data as usual batch normalization.</p>
+<p>During evaluation, the moving statistics is used for normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – <span class="math notranslate nohighlight">\(c\)</span> from an expected input of size <span class="math notranslate nohighlight">\((b, c, l)\)</span> or  <span class="math notranslate nohighlight">\(l\)</span> from an expected input of size <span class="math notranslate nohighlight">\((b, l)\)</span>.</p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – A value added to the denominator for numerical stability.
+Default: 1e-5</p></li>
+<li><p><strong>momentum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The value used for the running_mean and running_var
+computation. Default: 0.1</p></li>
+<li><p><strong>affine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, gives the layer learnable
+affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>track_running_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to True, this module tracks
+the running mean and variance, and when set to False, this module does not
+track such statistics, and initializes statistics buffers running_mean and
+running_var as None. When these buffers are None, this module always uses
+batch statistics in both training and eval modes. Default: True
+p (float): The probability to choose the second branch (usual BN). Default: 0.5</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((b, l)\)</span> or <span class="math notranslate nohighlight">\((b, c, l)\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((b, l)\)</span> or <span class="math notranslate nohighlight">\((b, c, l)\)</span> (same shape as input)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.normalization.stochnorm.StochNorm2d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.stochnorm.</code><code class="sig-name descname">StochNorm2d</code><span class="sig-paren">(</span><em class="sig-param">num_features</em>, <em class="sig-param">eps=1e-05</em>, <em class="sig-param">momentum=0.1</em>, <em class="sig-param">affine=True</em>, <em class="sig-param">track_running_stats=True</em>, <em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/stochnorm.html#StochNorm2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.stochnorm.StochNorm2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies Stochastic  Normalization over a 4D input (a mini-batch of 2D inputs with additional channel dimension)</p>
+<p>Stochastic  Normalization is proposed in <a class="reference external" href="https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf">Stochastic Normalization (NIPS 2020)</a></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}\\\hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}\\\hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}\\ y_i = \gamma \hat{x}_i + \beta\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are mean and variance of current mini-batch data.</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\mu}\)</span> and <span class="math notranslate nohighlight">\(\tilde{\sigma}\)</span> are current moving statistics of training data.</p>
+<p><span class="math notranslate nohighlight">\(s\)</span> is a branch-selection variable generated from a Bernoulli distribution, where <span class="math notranslate nohighlight">\(P(s=1)=p\)</span>.</p>
+<p>During training, there are two normalization branches. One uses mean and
+variance of current mini-batch data, while the other uses current moving
+statistics of the training data as usual batch normalization.</p>
+<p>During evaluation, the moving statistics is used for normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – <span class="math notranslate nohighlight">\(c\)</span> from an expected input of size <span class="math notranslate nohighlight">\((b, c, h, w)\)</span>.</p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – A value added to the denominator for numerical stability.
+Default: 1e-5</p></li>
+<li><p><strong>momentum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The value used for the running_mean and running_var
+computation. Default: 0.1</p></li>
+<li><p><strong>affine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, gives the layer learnable
+affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>track_running_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to True, this module tracks
+the running mean and variance, and when set to False, this module does not
+track such statistics, and initializes statistics buffers running_mean and
+running_var as None. When these buffers are None, this module always uses
+batch statistics in both training and eval modes. Default: True
+p (float): The probability to choose the second branch (usual BN). Default: 0.5</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((b, c, h, w)\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((b, c, h, w)\)</span> (same shape as input)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.normalization.stochnorm.StochNorm3d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.stochnorm.</code><code class="sig-name descname">StochNorm3d</code><span class="sig-paren">(</span><em class="sig-param">num_features</em>, <em class="sig-param">eps=1e-05</em>, <em class="sig-param">momentum=0.1</em>, <em class="sig-param">affine=True</em>, <em class="sig-param">track_running_stats=True</em>, <em class="sig-param">p=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/stochnorm.html#StochNorm3d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.stochnorm.StochNorm3d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies Stochastic  Normalization over a 5D input (a mini-batch of 3D inputs with additional channel dimension)</p>
+<p>Stochastic  Normalization is proposed in <a class="reference external" href="https://papers.nips.cc/paper/2020/file/bc573864331a9e42e4511de6f678aa83-Paper.pdf">Stochastic Normalization (NIPS 2020)</a></p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\hat{x}_{i,0} = \frac{x_i - \tilde{\mu}}{ \sqrt{\tilde{\sigma} + \epsilon}}\\\hat{x}_{i,1} = \frac{x_i - \mu}{ \sqrt{\sigma + \epsilon}}\\\hat{x}_i = (1-s)\cdot \hat{x}_{i,0} + s\cdot \hat{x}_{i,1}\\ y_i = \gamma \hat{x}_i + \beta\end{aligned}\end{align} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are mean and variance of current mini-batch data.</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\mu}\)</span> and <span class="math notranslate nohighlight">\(\tilde{\sigma}\)</span> are current moving statistics of training data.</p>
+<p><span class="math notranslate nohighlight">\(s\)</span> is a branch-selection variable generated from a Bernoulli distribution, where <span class="math notranslate nohighlight">\(P(s=1)=p\)</span>.</p>
+<p>During training, there are two normalization branches. One uses mean and
+variance of current mini-batch data, while the other uses current moving
+statistics of the training data as usual batch normalization.</p>
+<p>During evaluation, the moving statistics is used for normalization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – <span class="math notranslate nohighlight">\(c\)</span> from an expected input of size <span class="math notranslate nohighlight">\((b, c, d, h, w)\)</span></p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – A value added to the denominator for numerical stability.
+Default: 1e-5</p></li>
+<li><p><strong>momentum</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The value used for the running_mean and running_var
+computation. Default: 0.1</p></li>
+<li><p><strong>affine</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, gives the layer learnable
+affine parameters. Default: <code class="docutils literal notranslate"><span class="pre">True</span></code></p></li>
+<li><p><strong>track_running_stats</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – A boolean value that when set to True, this module tracks
+the running mean and variance, and when set to False, this module does not
+track such statistics, and initializes statistics buffers running_mean and
+running_var as None. When these buffers are None, this module always uses
+batch statistics in both training and eval modes. Default: True
+p (float): The probability to choose the second branch (usual BN). Default: 0.5</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Input: <span class="math notranslate nohighlight">\((b, c, d, h, w)\)</span></p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((b, c, d, h, w)\)</span> (same shape as input)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.stochnorm.convert_model">
+<code class="sig-prename descclassname">tllib.normalization.stochnorm.</code><code class="sig-name descname">convert_model</code><span class="sig-paren">(</span><em class="sig-param">module</em>, <em class="sig-param">p</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/stochnorm.html#convert_model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.stochnorm.convert_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Traverses the input module and its child recursively and replaces all
+instance of BatchNorm to StochNorm.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>module</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – The input module needs to be convert to StochNorm model.</p></li>
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – The hyper-parameter for StochNorm layer.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The module converted to StochNorm version.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="ibn-net-instance-batch-normalization-network">
+<span id="ibn"></span><h2>IBN-Net: Instance-Batch Normalization Network<a class="headerlink" href="#ibn-net-instance-batch-normalization-network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.normalization.ibn.InstanceBatchNorm2d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">InstanceBatchNorm2d</code><span class="sig-paren">(</span><em class="sig-param">planes</em>, <em class="sig-param">ratio=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#InstanceBatchNorm2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.InstanceBatchNorm2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instance-Batch Normalization layer from
+<a class="reference external" href="https://arxiv.org/pdf/1807.09441.pdf">Two at Once: Enhancing Learning and Generalization Capacities via IBN-Net (ECCV 2018)</a>.</p>
+<p>Given input feature map <span class="math notranslate nohighlight">\(f\_input\)</span> of dimension <span class="math notranslate nohighlight">\((C,H,W)\)</span>, we first split <span class="math notranslate nohighlight">\(f\_input\)</span> into
+two parts along <cite>channel</cite> dimension. They are denoted as <span class="math notranslate nohighlight">\(f_1\)</span> of dimension <span class="math notranslate nohighlight">\((C_1,H,W)\)</span> and
+<span class="math notranslate nohighlight">\(f_2\)</span> of dimension <span class="math notranslate nohighlight">\((C_2,H,W)\)</span>, where <span class="math notranslate nohighlight">\(C_1+C_2=C\)</span>. Then we pass <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span>
+through IN and BN layer, respectively, to get <span class="math notranslate nohighlight">\(IN(f_1)\)</span> and <span class="math notranslate nohighlight">\(BN(f_2)\)</span>. Last, we concat them along
+<cite>channel</cite> dimension to create <span class="math notranslate nohighlight">\(f\_output=concat(IN(f_1), BN(f_2))\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>planes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of channels for the input tensor</p></li>
+<li><p><strong>ratio</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Ratio of instance normalization in the IBN layer</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.normalization.ibn.IBNNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">IBNNet</code><span class="sig-paren">(</span><em class="sig-param">block</em>, <em class="sig-param">layers</em>, <em class="sig-param">ibn_cfg=('a'</em>, <em class="sig-param">'a'</em>, <em class="sig-param">'a'</em>, <em class="sig-param">None)</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#IBNNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.IBNNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>IBNNet without fully connected layer</p>
+<dl class="method">
+<dt id="tllib.normalization.ibn.IBNNet.out_features">
+<em class="property">property </em><code class="sig-name descname">out_features</code><a class="headerlink" href="#tllib.normalization.ibn.IBNNet.out_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dimension of output features</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-tllib.normalization.ibn"></span><p>Modified from <a class="reference external" href="https://github.com/XingangPan/IBN-Net">https://github.com/XingangPan/IBN-Net</a>
+&#64;author: Baixu Chen
+&#64;contact: <a class="reference external" href="mailto:cbx_99_hasta&#37;&#52;&#48;outlook&#46;com">cbx_99_hasta<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet18_ibn_a">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet18_ibn_a</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet18_ibn_a"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet18_ibn_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-18-IBN-a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet18_ibn_b">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet18_ibn_b</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet18_ibn_b"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet18_ibn_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-18-IBN-b model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet34_ibn_a">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet34_ibn_a</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet34_ibn_a"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet34_ibn_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-34-IBN-a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet34_ibn_b">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet34_ibn_b</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet34_ibn_b"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet34_ibn_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-34-IBN-b model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet50_ibn_a">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet50_ibn_a</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet50_ibn_a"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet50_ibn_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-50-IBN-a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet50_ibn_b">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet50_ibn_b</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet50_ibn_b"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet50_ibn_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-50-IBN-b model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet101_ibn_a">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet101_ibn_a</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet101_ibn_a"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet101_ibn_a" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-101-IBN-a model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.ibn.resnet101_ibn_b">
+<code class="sig-prename descclassname">tllib.normalization.ibn.</code><code class="sig-name descname">resnet101_ibn_b</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/ibn.html#resnet101_ibn_b"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.ibn.resnet101_ibn_b" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-101-IBN-b model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="mixstyle-domain-generalization-with-mixstyle">
+<span id="mixstyle"></span><h2>MixStyle: Domain Generalization with MixStyle<a class="headerlink" href="#mixstyle-domain-generalization-with-mixstyle" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.normalization.mixstyle.MixStyle">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.normalization.mixstyle.</code><code class="sig-name descname">MixStyle</code><span class="sig-paren">(</span><em class="sig-param">p=0.5</em>, <em class="sig-param">alpha=0.1</em>, <em class="sig-param">eps=1e-06</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/mixstyle.html#MixStyle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.mixstyle.MixStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>MixStyle module from <a class="reference external" href="https://arxiv.org/pdf/2104.02008v1.pdf">DOMAIN GENERALIZATION WITH MIXSTYLE (ICLR 2021)</a>.
+Given input <span class="math notranslate nohighlight">\(x\)</span>, we first compute mean <span class="math notranslate nohighlight">\(\mu(x)\)</span> and standard deviation <span class="math notranslate nohighlight">\(\sigma(x)\)</span> across spatial
+dimension. Then we permute <span class="math notranslate nohighlight">\(x\)</span> and get <span class="math notranslate nohighlight">\(\tilde{x}\)</span>, corresponding mean <span class="math notranslate nohighlight">\(\mu(\tilde{x})\)</span> and
+standard deviation <span class="math notranslate nohighlight">\(\sigma(\tilde{x})\)</span>. <cite>MixUp</cite> is performed using mean and standard deviation</p>
+<div class="math notranslate nohighlight">
+\[\gamma_{mix} = \lambda\sigma(x) + (1-\lambda)\sigma(\tilde{x})\]</div>
+<div class="math notranslate nohighlight">
+\[\beta_{mix} = \lambda\mu(x) + (1-\lambda)\mu(\tilde{x})\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda\)</span> is instance-wise weight sampled from <cite>Beta distribution</cite>. MixStyle is then</p>
+<div class="math notranslate nohighlight">
+\[MixStyle(x) = \gamma_{mix}\frac{x-\mu(x)}{\sigma(x)} + \beta_{mix}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – probability of using MixStyle.</p></li>
+<li><p><strong>alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – parameter of the <cite>Beta distribution</cite>.</p></li>
+<li><p><strong>eps</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – scaling parameter to avoid numerical issues.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>MixStyle is only activated during <cite>training</cite> stage, with some probability <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</div>
+<span class="target" id="module-tllib.normalization.mixstyle.resnet"></span><p>&#64;author: Baixu Chen
+&#64;contact: <a class="reference external" href="mailto:cbx_99_hasta&#37;&#52;&#48;outlook&#46;com">cbx_99_hasta<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="function">
+<dt id="tllib.normalization.mixstyle.resnet.resnet18">
+<code class="sig-prename descclassname">tllib.normalization.mixstyle.resnet.</code><code class="sig-name descname">resnet18</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/mixstyle/resnet.html#resnet18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.mixstyle.resnet.resnet18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-18 model with MixStyle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.mixstyle.resnet.resnet34">
+<code class="sig-prename descclassname">tllib.normalization.mixstyle.resnet.</code><code class="sig-name descname">resnet34</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/mixstyle/resnet.html#resnet34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.mixstyle.resnet.resnet34" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-34 model with MixStyle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.mixstyle.resnet.resnet50">
+<code class="sig-prename descclassname">tllib.normalization.mixstyle.resnet.</code><code class="sig-name descname">resnet50</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/mixstyle/resnet.html#resnet50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.mixstyle.resnet.resnet50" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-50 model with MixStyle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.normalization.mixstyle.resnet.resnet101">
+<code class="sig-prename descclassname">tllib.normalization.mixstyle.resnet.</code><code class="sig-name descname">resnet101</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/tllib/normalization/mixstyle/resnet.html#resnet101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.normalization.mixstyle.resnet.resnet101" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a ResNet-101 model with MixStyle.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regularization.html" class="btn btn-neutral float-right" title="Regularization" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="reweight.html" class="btn btn-neutral" title="Re-weighting" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Normalization</a><ul>
+<li><a class="reference internal" href="#afn-adaptive-feature-norm">AFN: Adaptive Feature Norm</a></li>
+<li><a class="reference internal" href="#stochnorm-stochastic-normalization">StochNorm: Stochastic Normalization</a></li>
+<li><a class="reference internal" href="#ibn-net-instance-batch-normalization-network">IBN-Net: Instance-Batch Normalization Network</a></li>
+<li><a class="reference internal" href="#mixstyle-domain-generalization-with-mixstyle">MixStyle: Domain Generalization with MixStyle</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

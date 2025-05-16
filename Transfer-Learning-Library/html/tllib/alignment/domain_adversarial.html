@@ -1,0 +1,1026 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Domain Adversarial Training &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Hypothesis Adversarial Learning" href="hypothesis_adversarial.html" />
+    <link rel="prev" title="Statistics Matching" href="statistics_matching.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Feature Alignment</a> &gt;</li>
+        
+      <li>Domain Adversarial Training</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tllib/alignment/domain_adversarial.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="domain-adversarial-training">
+<h1>Domain Adversarial Training<a class="headerlink" href="#domain-adversarial-training" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="dann-domain-adversarial-neural-network">
+<span id="dann"></span><h2>DANN: Domain Adversarial Neural Network<a class="headerlink" href="#dann-domain-adversarial-neural-network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.dann.DomainAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.dann.</code><code class="sig-name descname">DomainAdversarialLoss</code><span class="sig-paren">(</span><em class="sig-param">domain_discriminator</em>, <em class="sig-param">reduction='mean'</em>, <em class="sig-param">grl=None</em>, <em class="sig-param">sigmoid=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/dann.html#DomainAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.dann.DomainAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Domain Adversarial Loss proposed in
+<a class="reference external" href="https://arxiv.org/abs/1505.07818">Domain-Adversarial Training of Neural Networks (ICML 2015)</a></p>
+<p>Domain adversarial loss measures the domain discrepancy through training a domain discriminator.
+Given domain discriminator <span class="math notranslate nohighlight">\(D\)</span>, feature representation <span class="math notranslate nohighlight">\(f\)</span>, the definition of DANN loss is</p>
+<div class="math notranslate nohighlight">
+\[loss(\mathcal{D}_s, \mathcal{D}_t) = \mathbb{E}_{x_i^s \sim \mathcal{D}_s} \text{log}[D(f_i^s)]
+    + \mathbb{E}_{x_j^t \sim \mathcal{D}_t} \text{log}[1-D(f_j^t)].\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>domain_discriminator</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – A domain discriminator object, which predicts the domains of features. Its input shape is (N, F) and output shape is (N, 1)</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+<li><p><strong>grl</strong> (<a class="reference internal" href="../modules.html#tllib.modules.grl.WarmStartGradientReverseLayer" title="tllib.modules.grl.WarmStartGradientReverseLayer"><em>WarmStartGradientReverseLayer</em></a><em>, </em><em>optional</em>) – Default: None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>f_s (tensor): feature representations on source domain, <span class="math notranslate nohighlight">\(f^s\)</span></p></li>
+<li><p>f_t (tensor): feature representations on target domain, <span class="math notranslate nohighlight">\(f^t\)</span></p></li>
+<li><p>w_s (tensor, optional): a rescaling weight given to each instance from source domain.</p></li>
+<li><p>w_t (tensor, optional): a rescaling weight given to each instance from target domain.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f_s, f_t: <span class="math notranslate nohighlight">\((N, F)\)</span> where F means the dimension of input features.</p></li>
+<li><p>Outputs: scalar by default. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then <span class="math notranslate nohighlight">\((N, )\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.modules.domain_discriminator</span> <span class="kn">import</span> <span class="n">DomainDiscriminator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">discriminator</span> <span class="o">=</span> <span class="n">DomainDiscriminator</span><span class="p">(</span><span class="n">in_feature</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">DomainAdversarialLoss</span><span class="p">(</span><span class="n">discriminator</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_s</span><span class="p">,</span> <span class="n">f_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1024</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># If you want to assign different weights to each instance, you should pass in w_s and w_t</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">w_s</span><span class="p">,</span> <span class="n">w_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">f_s</span><span class="p">,</span> <span class="n">f_t</span><span class="p">,</span> <span class="n">w_s</span><span class="p">,</span> <span class="n">w_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cdan-conditional-domain-adversarial-network">
+<span id="cdan"></span><h2>CDAN: Conditional Domain Adversarial Network<a class="headerlink" href="#cdan-conditional-domain-adversarial-network" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.cdan.ConditionalDomainAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.cdan.</code><code class="sig-name descname">ConditionalDomainAdversarialLoss</code><span class="sig-paren">(</span><em class="sig-param">domain_discriminator</em>, <em class="sig-param">entropy_conditioning=False</em>, <em class="sig-param">randomized=False</em>, <em class="sig-param">num_classes=-1</em>, <em class="sig-param">features_dim=-1</em>, <em class="sig-param">randomized_dim=1024</em>, <em class="sig-param">reduction='mean'</em>, <em class="sig-param">sigmoid=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/cdan.html#ConditionalDomainAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.cdan.ConditionalDomainAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Conditional Domain Adversarial Loss used in <a class="reference external" href="https://arxiv.org/abs/1705.10667">Conditional Adversarial Domain Adaptation (NIPS 2018)</a></p>
+<p>Conditional Domain adversarial loss measures the domain discrepancy through training a domain discriminator in a
+conditional manner. Given domain discriminator <span class="math notranslate nohighlight">\(D\)</span>, feature representation <span class="math notranslate nohighlight">\(f\)</span> and
+classifier predictions <span class="math notranslate nohighlight">\(g\)</span>, the definition of CDAN loss is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}loss(\mathcal{D}_s, \mathcal{D}_t) &amp;= \mathbb{E}_{x_i^s \sim \mathcal{D}_s} \text{log}[D(T(f_i^s, g_i^s))] \\
+&amp;+ \mathbb{E}_{x_j^t \sim \mathcal{D}_t} \text{log}[1-D(T(f_j^t, g_j^t))],\\\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is a <a class="reference internal" href="#tllib.alignment.cdan.MultiLinearMap" title="tllib.alignment.cdan.MultiLinearMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">MultiLinearMap</span></code></a>  or <a class="reference internal" href="#tllib.alignment.cdan.RandomizedMultiLinearMap" title="tllib.alignment.cdan.RandomizedMultiLinearMap"><code class="xref py py-class docutils literal notranslate"><span class="pre">RandomizedMultiLinearMap</span></code></a> which convert two tensors to a single tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>domain_discriminator</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – A domain discriminator object, which predicts the domains of
+features. Its input shape is (N, F) and output shape is (N, 1)</p></li>
+<li><p><strong>entropy_conditioning</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, use entropy-aware weight to reweight each training example.
+Default: False</p></li>
+<li><p><strong>randomized</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, use <cite>randomized multi linear map</cite>. Else, use <cite>multi linear map</cite>.
+Default: False</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Number of classes. Default: -1</p></li>
+<li><p><strong>features_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Dimension of input features. Default: -1</p></li>
+<li><p><strong>randomized_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Dimension of features after randomized. Default: 1024</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to provide <cite>num_classes</cite>, <cite>features_dim</cite> and <cite>randomized_dim</cite> <strong>only when</strong> <cite>randomized</cite>
+is set True.</p>
+</div>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>g_s (tensor): unnormalized classifier predictions on source domain, <span class="math notranslate nohighlight">\(g^s\)</span></p></li>
+<li><p>f_s (tensor): feature representations on source domain, <span class="math notranslate nohighlight">\(f^s\)</span></p></li>
+<li><p>g_t (tensor): unnormalized classifier predictions on target domain, <span class="math notranslate nohighlight">\(g^t\)</span></p></li>
+<li><p>f_t (tensor): feature representations on target domain, <span class="math notranslate nohighlight">\(f^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>g_s, g_t: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C means the number of classes.</p></li>
+<li><p>f_s, f_t: <span class="math notranslate nohighlight">\((minibatch, F)\)</span> where F means the dimension of input features.</p></li>
+<li><p>Output: scalar by default. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then <span class="math notranslate nohighlight">\((minibatch, )\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.modules.domain_discriminator</span> <span class="kn">import</span> <span class="n">DomainDiscriminator</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllib.alignment.cdan</span> <span class="kn">import</span> <span class="n">ConditionalDomainAdversarialLoss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">feature_dim</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">discriminator</span> <span class="o">=</span> <span class="n">DomainDiscriminator</span><span class="p">(</span><span class="n">in_feature</span><span class="o">=</span><span class="n">feature_dim</span> <span class="o">*</span> <span class="n">num_classes</span><span class="p">,</span> <span class="n">hidden_size</span><span class="o">=</span><span class="mi">1024</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">ConditionalDomainAdversarialLoss</span><span class="p">(</span><span class="n">discriminator</span><span class="p">,</span> <span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># features from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f_s</span><span class="p">,</span> <span class="n">f_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">feature_dim</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># logits output from source domain adn target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">g_s</span><span class="p">,</span> <span class="n">g_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">g_s</span><span class="p">,</span> <span class="n">f_s</span><span class="p">,</span> <span class="n">g_t</span><span class="p">,</span> <span class="n">f_t</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.cdan.RandomizedMultiLinearMap">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.cdan.</code><code class="sig-name descname">RandomizedMultiLinearMap</code><span class="sig-paren">(</span><em class="sig-param">features_dim</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">output_dim=1024</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/cdan.html#RandomizedMultiLinearMap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.cdan.RandomizedMultiLinearMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Random multi linear map</p>
+<p>Given two inputs <span class="math notranslate nohighlight">\(f\)</span> and <span class="math notranslate nohighlight">\(g\)</span>, the definition is</p>
+<div class="math notranslate nohighlight">
+\[T_{\odot}(f,g) = \dfrac{1}{\sqrt{d}} (R_f f) \odot (R_g g),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\odot\)</span> is element-wise product, <span class="math notranslate nohighlight">\(R_f\)</span> and <span class="math notranslate nohighlight">\(R_g\)</span> are random matrices
+sampled only once and ﬁxed in training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>features_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – dimension of input <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – dimension of input <span class="math notranslate nohighlight">\(g\)</span></p></li>
+<li><p><strong>output_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – dimension of output tensor. Default: 1024</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f: (minibatch, features_dim)</p></li>
+<li><p>g: (minibatch, num_classes)</p></li>
+<li><p>Outputs: (minibatch, output_dim)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.cdan.MultiLinearMap">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.cdan.</code><code class="sig-name descname">MultiLinearMap</code><a class="reference internal" href="../../_modules/tllib/alignment/cdan.html#MultiLinearMap"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.cdan.MultiLinearMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multi linear map</p>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f: (minibatch, F)</p></li>
+<li><p>g: (minibatch, C)</p></li>
+<li><p>Outputs: (minibatch, F * C)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="adda-adversarial-discriminative-domain-adaptation">
+<span id="adda"></span><h2>ADDA: Adversarial Discriminative Domain Adaptation<a class="headerlink" href="#adda-adversarial-discriminative-domain-adaptation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.adda.DomainAdversarialLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.adda.</code><code class="sig-name descname">DomainAdversarialLoss</code><a class="reference internal" href="../../_modules/tllib/alignment/adda.html#DomainAdversarialLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.adda.DomainAdversarialLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain adversarial loss from <a class="reference external" href="https://arxiv.org/pdf/1702.05464.pdf">Adversarial Discriminative Domain Adaptation (CVPR 2017)</a>.
+Similar to the original <a class="reference external" href="https://arxiv.org/pdf/1406.2661.pdf">GAN</a> paper, ADDA argues that replacing
+<span class="math notranslate nohighlight">\(\text{log}(1-p)\)</span> with <span class="math notranslate nohighlight">\(-\text{log}(p)\)</span> in the adversarial loss provides better gradient qualities. Detailed
+optimization process can be found <a class="reference external" href="https://github.com/thuml/Transfer-Learning-Library/blob/master/examples/domain_adaptation/image_classification/adda.py">here</a>.</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>domain_pred (tensor): predictions of domain discriminator</p></li>
+<li><p>domain_label (str, optional): whether the data comes from source or target.
+Must be ‘source’ or ‘target’. Default: ‘source’</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>domain_pred: <span class="math notranslate nohighlight">\((minibatch,)\)</span>.</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ADDAgrl is also implemented and benchmarked. You can find code
+<a class="reference external" href="https://github.com/thuml/Transfer-Learning-Library/blob/master/examples/domain_adaptation/image_classification/addagrl.py">here</a>.</p>
+</div>
+</div>
+<div class="section" id="bsp-batch-spectral-penalization">
+<span id="bsp"></span><h2>BSP: Batch Spectral Penalization<a class="headerlink" href="#bsp-batch-spectral-penalization" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.bsp.BatchSpectralPenalizationLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.bsp.</code><code class="sig-name descname">BatchSpectralPenalizationLoss</code><a class="reference internal" href="../../_modules/tllib/alignment/bsp.html#BatchSpectralPenalizationLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.bsp.BatchSpectralPenalizationLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Batch spectral penalization loss from <a class="reference external" href="http://ise.thss.tsinghua.edu.cn/~mlong/doc/batch-spectral-penalization-icml19.pdf">Transferability vs. Discriminability: Batch
+Spectral Penalization for Adversarial Domain Adaptation (ICML 2019)</a>.</p>
+<p>Given source features <span class="math notranslate nohighlight">\(f_s\)</span> and target features <span class="math notranslate nohighlight">\(f_t\)</span> in current mini batch, singular value
+decomposition is first performed</p>
+<div class="math notranslate nohighlight">
+\[f_s = U_s\Sigma_sV_s^T\]</div>
+<div class="math notranslate nohighlight">
+\[f_t = U_t\Sigma_tV_t^T\]</div>
+<p>Then batch spectral penalization loss is calculated as</p>
+<div class="math notranslate nohighlight">
+\[loss=\sum_{i=1}^k(\sigma_{s,i}^2+\sigma_{t,i}^2)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{s,i},\sigma_{t,i}\)</span> refer to the <span class="math notranslate nohighlight">\(i-th\)</span> largest singular value of source features
+and target features respectively. We empirically set <span class="math notranslate nohighlight">\(k=1\)</span>.</p>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>f_s (tensor): feature representations on source domain, <span class="math notranslate nohighlight">\(f^s\)</span></p></li>
+<li><p>f_t (tensor): feature representations on target domain, <span class="math notranslate nohighlight">\(f^t\)</span></p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>f_s, f_t: <span class="math notranslate nohighlight">\((N, F)\)</span> where F means the dimension of input features.</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="osbp-open-set-domain-adaptation-by-backpropagation">
+<span id="osbp"></span><h2>OSBP: Open Set Domain Adaptation by Backpropagation<a class="headerlink" href="#osbp-open-set-domain-adaptation-by-backpropagation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.osbp.UnknownClassBinaryCrossEntropy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.osbp.</code><code class="sig-name descname">UnknownClassBinaryCrossEntropy</code><span class="sig-paren">(</span><em class="sig-param">t=0.5</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/osbp.html#UnknownClassBinaryCrossEntropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.osbp.UnknownClassBinaryCrossEntropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Binary cross entropy loss to make a boundary for unknown samples, proposed by
+<a class="reference external" href="https://arxiv.org/abs/1804.10427">Open Set Domain Adaptation by Backpropagation (ECCV 2018)</a>.</p>
+<p>Given a sample on target domain <span class="math notranslate nohighlight">\(x_t\)</span> and its classifcation outputs <span class="math notranslate nohighlight">\(y\)</span>, the binary cross entropy
+loss is defined as</p>
+<div class="math notranslate nohighlight">
+\[L_{\text{adv}}(x_t) = -t \text{log}(p(y=C+1|x_t)) - (1-t)\text{log}(1-p(y=C+1|x_t))\]</div>
+<p>where t is a hyper-parameter and C is the number of known classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>t</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Predefined hyper-parameter. Default: 0.5</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y (tensor): classification outputs (before softmax).</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>y: <span class="math notranslate nohighlight">\((minibatch, C+1)\)</span>  where C is the number of known classes.</p></li>
+<li><p>Outputs: scalar</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="advent-adversarial-entropy-minimization-for-semantic-segmentation">
+<span id="advent"></span><h2>ADVENT: Adversarial Entropy Minimization for Semantic Segmentation<a class="headerlink" href="#advent-adversarial-entropy-minimization-for-semantic-segmentation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.advent.Discriminator">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.advent.</code><code class="sig-name descname">Discriminator</code><span class="sig-paren">(</span><em class="sig-param">num_classes</em>, <em class="sig-param">ndf=64</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/advent.html#Discriminator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.advent.Discriminator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Domain discriminator model from
+<a class="reference external" href="https://arxiv.org/abs/1811.12833">ADVENT: Adversarial Entropy Minimization for Domain Adaptation in Semantic Segmentation (CVPR 2019)</a></p>
+<p>Distinguish pixel-by-pixel whether the input predictions come from the source domain or the target domain.
+The source domain label is 1 and the target domain label is 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – num of classes in the predictions</p></li>
+<li><p><strong>ndf</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – dimension of the hidden features</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, C, H, W)\)</span> where <span class="math notranslate nohighlight">\(C\)</span> is the number of classes</p></li>
+<li><p>Outputs: <span class="math notranslate nohighlight">\((minibatch, 1, H, W)\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.advent.DomainAdversarialEntropyLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.advent.</code><code class="sig-name descname">DomainAdversarialEntropyLoss</code><span class="sig-paren">(</span><em class="sig-param">discriminator</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/advent.html#DomainAdversarialEntropyLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.advent.DomainAdversarialEntropyLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference external" href="https://arxiv.org/abs/1811.12833">Domain Adversarial Entropy Loss</a></p>
+<p>Minimizing entropy with adversarial learning through training a domain discriminator.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>domain_discriminator</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – A domain discriminator object, which predicts
+the domains of predictions. Its input shape is <span class="math notranslate nohighlight">\((minibatch, C, H, W)\)</span> and output shape is <span class="math notranslate nohighlight">\((minibatch, 1, H, W)\)</span></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>logits (tensor): logits output of segmentation model</p></li>
+<li><p>domain_label (str, optional): whether the data comes from source or target.
+Choices: [‘source’, ‘target’]. Default: ‘source’</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>logits: <span class="math notranslate nohighlight">\((minibatch, C, H, W)\)</span> where <span class="math notranslate nohighlight">\(C\)</span> means the number of classes</p></li>
+<li><p>Outputs: scalar.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="mi">512</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">discriminator</span> <span class="o">=</span> <span class="n">Discriminator</span><span class="p">(</span><span class="n">num_classes</span><span class="o">=</span><span class="n">C</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dann</span> <span class="o">=</span> <span class="n">DomainAdversarialEntropyLoss</span><span class="p">(</span><span class="n">discriminator</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># logits output on source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">dann</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="s2">&quot;source&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">dann</span><span class="p">(</span><span class="n">y_t</span><span class="p">,</span> <span class="s2">&quot;target&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="tllib.alignment.advent.DomainAdversarialEntropyLoss.eval">
+<code class="sig-name descname">eval</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/advent.html#DomainAdversarialEntropyLoss.eval"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.advent.DomainAdversarialEntropyLoss.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the module in evaluation mode. In the training mode,
+all the parameters in discriminator will be set requires_grad=False.</p>
+<p>This is equivalent with <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module.train" title="(in PyTorch v1.12)"><code class="xref py py-meth docutils literal notranslate"><span class="pre">self.train(False)</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tllib.alignment.advent.DomainAdversarialEntropyLoss.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">logits</em>, <em class="sig-param">domain_label='source'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/advent.html#DomainAdversarialEntropyLoss.forward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.advent.DomainAdversarialEntropyLoss.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="tllib.alignment.advent.DomainAdversarialEntropyLoss.train">
+<code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param">mode=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/advent.html#DomainAdversarialEntropyLoss.train"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.advent.DomainAdversarialEntropyLoss.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the discriminator in training mode. In the training mode,
+all the parameters in discriminator will be set requires_grad=True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mode</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether to set training mode (<code class="docutils literal notranslate"><span class="pre">True</span></code>) or evaluation mode (<code class="docutils literal notranslate"><span class="pre">False</span></code>). Default: <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="d-adapt-decoupled-adaptation-for-cross-domain-object-detection">
+<span id="dadapt"></span><h2>D-adapt: Decoupled Adaptation for Cross-Domain Object Detection<a class="headerlink" href="#d-adapt-decoupled-adaptation-for-cross-domain-object-detection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://openreview.net/pdf?id=VNqaB1g9393">Origin Paper</a>.</p>
+<dl class="class">
+<dt id="tllib.alignment.d_adapt.proposal.Proposal">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.d_adapt.proposal.</code><code class="sig-name descname">Proposal</code><span class="sig-paren">(</span><em class="sig-param">image_id</em>, <em class="sig-param">filename</em>, <em class="sig-param">pred_boxes</em>, <em class="sig-param">pred_classes</em>, <em class="sig-param">pred_scores</em>, <em class="sig-param">gt_classes=None</em>, <em class="sig-param">gt_boxes=None</em>, <em class="sig-param">gt_ious=None</em>, <em class="sig-param">gt_fg_classes=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/d_adapt/proposal.html#Proposal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.d_adapt.proposal.Proposal" title="Permalink to this definition">¶</a></dt>
+<dd><p>A data structure that stores the proposals for a single image.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>image_id</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – unique image identifier</p></li>
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – image filename</p></li>
+<li><p><strong>pred_boxes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a>) – predicted boxes</p></li>
+<li><p><strong>pred_classes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a>) – predicted classes</p></li>
+<li><p><strong>pred_scores</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a>) – class confidence score</p></li>
+<li><p><strong>gt_classes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a><em>, </em><em>optional</em>) – ground-truth classes, including background classes</p></li>
+<li><p><strong>gt_boxes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a><em>, </em><em>optional</em>) – ground-truth boxes</p></li>
+<li><p><strong>gt_ious</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a><em>, </em><em>optional</em>) – IoU between predicted boxes and ground-truth boxes</p></li>
+<li><p><strong>gt_fg_classes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v1.23)"><em>numpy.ndarray</em></a><em>, </em><em>optional</em>) – ground-truth foreground classes, not including background classes</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.d_adapt.proposal.PersistentProposalList">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.d_adapt.proposal.</code><code class="sig-name descname">PersistentProposalList</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/d_adapt/proposal.html#PersistentProposalList"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.d_adapt.proposal.PersistentProposalList" title="Permalink to this definition">¶</a></dt>
+<dd><p>A data structure that stores the proposals for a dataset.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – filename indicating where to cache</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.d_adapt.proposal.ProposalDataset">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.d_adapt.proposal.</code><code class="sig-name descname">ProposalDataset</code><span class="sig-paren">(</span><em class="sig-param">proposal_list</em>, <em class="sig-param">transform=None</em>, <em class="sig-param">crop_func=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/d_adapt/proposal.html#ProposalDataset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.d_adapt.proposal.ProposalDataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dataset for proposals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>proposal_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – list of Proposal</p></li>
+<li><p><strong>transform</strong> (<em>callable</em><em>, </em><em>optional</em>) – A function/transform that  takes in an PIL image
+and returns a transformed version. E.g, <code class="docutils literal notranslate"><span class="pre">transforms.RandomCrop</span></code></p></li>
+<li><p><strong>crop_func</strong> – (ExpandCrop, optional):</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.d_adapt.modeling.meta_arch.DecoupledGeneralizedRCNN">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.d_adapt.modeling.meta_arch.</code><code class="sig-name descname">DecoupledGeneralizedRCNN</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/d_adapt/modeling/meta_arch/rcnn.html#DecoupledGeneralizedRCNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.d_adapt.modeling.meta_arch.DecoupledGeneralizedRCNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generalized R-CNN for Decoupled Adaptation (D-adapt).
+Similar to that in in Supervised Learning, DecoupledGeneralizedRCNN has the following three components:
+1. Per-image feature extraction (aka backbone)
+2. Region proposal generation
+3. Per-region feature extraction and prediction</p>
+<p>Different from that in Supervised Learning, DecoupledGeneralizedRCNN
+1. accepts unlabeled images and uses the feedbacks from adaptors as supervision during training
+2. generate foreground and background proposals during inference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> – a backbone module, must follow detectron2’s backbone interface</p></li>
+<li><p><strong>proposal_generator</strong> – a module that generates proposals using backbone features</p></li>
+<li><p><strong>roi_heads</strong> – a ROI head that performs per-region computation</p></li>
+<li><p><strong>pixel_std</strong> (<em>pixel_mean</em><em>,</em>) – list or tuple with #channels element,
+representing the per-channel mean and std to be used to normalize
+the input image</p></li>
+<li><p><strong>input_format</strong> – describe the meaning of channels of input. Needed by visualization</p></li>
+<li><p><strong>vis_period</strong> – the period to run visualization. Set to 0 to disable.</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether finetune the detector or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>batched_inputs: a list, batched outputs of <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetMapper</span></code>.
+Each item in the list contains the inputs for one image.
+For now, each item in the list is a dict that contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>image: Tensor, image in (C, H, W) format.</p></li>
+<li><p>instances (optional): groundtruth <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code></p></li>
+<li><p>feedbacks (optional): <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>, feedbacks from adaptors.</p></li>
+<li><p>“height”, “width” (int): the output resolution of the model, used in inference.
+See <code class="xref py py-meth docutils literal notranslate"><span class="pre">postprocess()</span></code> for details.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs (during inference): A list of dict where each dict is the output for one input image.
+The dict contains a key “instances” whose value is a <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code> object has the following keys:
+“pred_boxes”, “pred_classes”, “scores”, “pred_masks”, “pred_keypoints”</p></li>
+<li><p>losses (during training): A dict of different losses</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.d_adapt.modeling.meta_arch.DecoupledRetinaNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.d_adapt.modeling.meta_arch.</code><code class="sig-name descname">DecoupledRetinaNet</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">max_samples_per_level=25</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/d_adapt/modeling/meta_arch/retinanet.html#DecoupledRetinaNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.d_adapt.modeling.meta_arch.DecoupledRetinaNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>RetinaNet for Decoupled Adaptation (D-adapt).</p>
+<p>Different from that in Supervised Learning, DecoupledRetinaNet
+1. accepts unlabeled images and uses the feedbacks from adaptors as supervision during training
+2. generate foreground and background proposals during inference</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> – a backbone module, must follow detectron2’s backbone interface</p></li>
+<li><p><strong>head</strong> (<em>nn.Module</em>) – a module that predicts logits and regression deltas
+for each level from a list of per-level features</p></li>
+<li><p><strong>head_in_features</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – Names of the input feature maps to be used in head</p></li>
+<li><p><strong>anchor_generator</strong> (<em>nn.Module</em>) – a module that creates anchors from a
+list of features. Usually an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorGenerator</span></code></p></li>
+<li><p><strong>box2box_transform</strong> (<em>Box2BoxTransform</em>) – defines the transform from anchors boxes to
+instance boxes</p></li>
+<li><p><strong>anchor_matcher</strong> (<em>Matcher</em>) – label the anchors by matching them with ground truth.</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of classes. Used to label background proposals.</p></li>
+<li><p><strong>Loss parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>focal_loss_alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – focal_loss_alpha</p></li>
+<li><p><strong>focal_loss_gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – focal_loss_gamma</p></li>
+<li><p><strong>smooth_l1_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – smooth_l1_beta</p></li>
+<li><p><strong>box_reg_loss_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Options are “smooth_l1”, “giou”</p></li>
+<li><p><strong>Inference parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>test_score_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Inference cls score threshold, only anchors with
+score &gt; INFERENCE_TH are considered for inference (to improve speed)</p></li>
+<li><p><strong>test_topk_candidates</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Select topk candidates before NMS</p></li>
+<li><p><strong>test_nms_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Overlap threshold used for non-maximum suppression
+(suppress boxes with IoU &gt;= this threshold)</p></li>
+<li><p><strong>max_detections_per_image</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Maximum number of detections to return per image during inference
+(100 is based on the limit established for the COCO dataset).</p></li>
+<li><p><strong>Input parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>pixel_mean</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – Values to be used for image normalization (BGR order).
+To train on images of different number of channels, set different mean &amp; std.
+Default values are the mean pixel value from ImageNet: [103.53, 116.28, 123.675]</p></li>
+<li><p><strong>pixel_std</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – When using pre-trained models in Detectron1 or any MSRA models,
+std has been absorbed into its conv1 weights, so the std needs to be set 1.
+Otherwise, you can use [57.375, 57.120, 58.395] (ImageNet std)</p></li>
+<li><p><strong>vis_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The period (in terms of steps) for minibatch visualization at train time.
+Set to 0 to disable.</p></li>
+<li><p><strong>input_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Whether the model needs RGB, YUV, HSV etc.</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether finetune the detector or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>batched_inputs: a list, batched outputs of <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetMapper</span></code>.
+Each item in the list contains the inputs for one image.
+For now, each item in the list is a dict that contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>image: Tensor, image in (C, H, W) format.</p></li>
+<li><p>instances (optional): groundtruth <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code></p></li>
+<li><p>“height”, “width” (int): the output resolution of the model, used in inference.
+See <code class="xref py py-meth docutils literal notranslate"><span class="pre">postprocess()</span></code> for details.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: A list of dict where each dict is the output for one input image.
+The dict contains a key “instances” whose value is a <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>
+and a key “features” whose value is the features of middle layers.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code> object has the following keys:
+“pred_boxes”, “pred_classes”, “scores”, “pred_masks”, “pred_keypoints”</p></li>
+<li><p>losses: A dict of different losses</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="hypothesis_adversarial.html" class="btn btn-neutral float-right" title="Hypothesis Adversarial Learning" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="statistics_matching.html" class="btn btn-neutral" title="Statistics Matching" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Domain Adversarial Training</a><ul>
+<li><a class="reference internal" href="#dann-domain-adversarial-neural-network">DANN: Domain Adversarial Neural Network</a></li>
+<li><a class="reference internal" href="#cdan-conditional-domain-adversarial-network">CDAN: Conditional Domain Adversarial Network</a></li>
+<li><a class="reference internal" href="#adda-adversarial-discriminative-domain-adaptation">ADDA: Adversarial Discriminative Domain Adaptation</a></li>
+<li><a class="reference internal" href="#bsp-batch-spectral-penalization">BSP: Batch Spectral Penalization</a></li>
+<li><a class="reference internal" href="#osbp-open-set-domain-adaptation-by-backpropagation">OSBP: Open Set Domain Adaptation by Backpropagation</a></li>
+<li><a class="reference internal" href="#advent-adversarial-entropy-minimization-for-semantic-segmentation">ADVENT: Adversarial Entropy Minimization for Semantic Segmentation</a></li>
+<li><a class="reference internal" href="#d-adapt-decoupled-adaptation-for-cross-domain-object-detection">D-adapt: Decoupled Adaptation for Cross-Domain Object Detection</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

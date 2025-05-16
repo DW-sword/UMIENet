@@ -1,0 +1,1339 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Models &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Transforms" href="transforms.html" />
+    <link rel="prev" title="Datasets" href="datasets.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alignment/index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Vision</a> &gt;</li>
+        
+      <li>Models</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tllib/vision/models.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="image-classification">
+<h2>Image Classification<a class="headerlink" href="#image-classification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-tllib.vision.models.resnet">
+<span id="resnets"></span><h3>ResNets<a class="headerlink" href="#module-tllib.vision.models.resnet" title="Permalink to this headline">¶</a></h3>
+<p>Modified based on torchvision.models.resnet.
+&#64;author: Junguang Jiang
+&#64;contact: <a class="reference external" href="mailto:JiangJunguang1123&#37;&#52;&#48;outlook&#46;com">JiangJunguang1123<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="class">
+<dt id="tllib.vision.models.resnet.ResNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">ResNet</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#ResNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.ResNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNets without fully connected layer</p>
+<dl class="method">
+<dt id="tllib.vision.models.resnet.ResNet.copy_head">
+<code class="sig-name descname">copy_head</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#ResNet.copy_head"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.ResNet.copy_head" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the origin fully connected layer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tllib.vision.models.resnet.ResNet.out_features">
+<em class="property">property </em><code class="sig-name descname">out_features</code><a class="headerlink" href="#tllib.vision.models.resnet.ResNet.out_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dimension of output features</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnet18">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnet18</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnet18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnet18" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNet-18 model from
+<a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">“Deep Residual Learning for Image Recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnet34">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnet34</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnet34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnet34" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNet-34 model from
+<a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">“Deep Residual Learning for Image Recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnet50">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnet50</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnet50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnet50" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNet-50 model from
+<a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">“Deep Residual Learning for Image Recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnet101">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnet101</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnet101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnet101" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNet-101 model from
+<a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">“Deep Residual Learning for Image Recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnet152">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnet152</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnet152"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnet152" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNet-152 model from
+<a class="reference external" href="https://arxiv.org/pdf/1512.03385.pdf">“Deep Residual Learning for Image Recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnext50_32x4d">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnext50_32x4d</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnext50_32x4d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnext50_32x4d" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNeXt-50 32x4d model from
+<a class="reference external" href="https://arxiv.org/pdf/1611.05431.pdf">“Aggregated Residual Transformation for Deep Neural Networks”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.resnext101_32x8d">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">resnext101_32x8d</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#resnext101_32x8d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.resnext101_32x8d" title="Permalink to this definition">¶</a></dt>
+<dd><p>ResNeXt-101 32x8d model from
+<a class="reference external" href="https://arxiv.org/pdf/1611.05431.pdf">“Aggregated Residual Transformation for Deep Neural Networks”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.wide_resnet50_2">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">wide_resnet50_2</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#wide_resnet50_2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.wide_resnet50_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wide ResNet-50-2 model from
+<a class="reference external" href="https://arxiv.org/pdf/1605.07146.pdf">“Wide Residual Networks”</a></p>
+<p>The model is the same as ResNet except for the bottleneck number of channels
+which is twice larger in every block. The number of channels in outer 1x1
+convolutions is the same, e.g. last block in ResNet-50 has 2048-512-2048
+channels, and in Wide ResNet-50-2 has 2048-1024-2048.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.resnet.wide_resnet101_2">
+<code class="sig-prename descclassname">tllib.vision.models.resnet.</code><code class="sig-name descname">wide_resnet101_2</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/resnet.html#wide_resnet101_2"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.resnet.wide_resnet101_2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wide ResNet-101-2 model from
+<a class="reference external" href="https://arxiv.org/pdf/1605.07146.pdf">“Wide Residual Networks”</a></p>
+<p>The model is the same as ResNet except for the bottleneck number of channels
+which is twice larger in every block. The number of channels in outer 1x1
+convolutions is the same, e.g. last block in ResNet-50 has 2048-512-2048
+channels, and in Wide ResNet-50-2 has 2048-1024-2048.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-tllib.vision.models.digits.lenet">
+<span id="lenet"></span><h3>LeNet<a class="headerlink" href="#module-tllib.vision.models.digits.lenet" title="Permalink to this headline">¶</a></h3>
+<p>LeNet model from
+<a class="reference external" href="http://yann.lecun.com/exdb/publis/pdf/lecun-98.pdf">“Gradient-based learning applied to document recognition”</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">param num_classes</dt>
+<dd class="field-odd"><p>number of classes. Default: 10</p>
+</dd>
+<dt class="field-even">type num_classes</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The input image size must be 28 x 28.</p>
+</div>
+</div>
+<div class="section" id="module-tllib.vision.models.digits.dtn">
+<span id="dtn"></span><h3>DTN<a class="headerlink" href="#module-tllib.vision.models.digits.dtn" title="Permalink to this headline">¶</a></h3>
+<p>DTN model</p>
+<dl class="field-list simple">
+<dt class="field-odd">param num_classes</dt>
+<dd class="field-odd"><p>number of classes. Default: 10</p>
+</dd>
+<dt class="field-even">type num_classes</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The input image size must be 32 x 32.</p>
+</div>
+</div>
+</div>
+<div class="section" id="object-detection">
+<h2>Object Detection<a class="headerlink" href="#object-detection" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.object_detection.meta_arch.</code><code class="sig-name descname">TLGeneralizedRCNN</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">finetune=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/meta_arch/rcnn.html#TLGeneralizedRCNN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generalized R-CNN for Transfer Learning.
+Similar to that in in Supervised Learning, TLGeneralizedRCNN has the following three components:
+1. Per-image feature extraction (aka backbone)
+2. Region proposal generation
+3. Per-region feature extraction and prediction</p>
+<p>Different from that in Supervised Learning, TLGeneralizedRCNN
+1. accepts unlabeled images during training (return no losses)
+2. return both detection outputs, features, and losses during training</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> – a backbone module, must follow detectron2’s backbone interface</p></li>
+<li><p><strong>proposal_generator</strong> – a module that generates proposals using backbone features</p></li>
+<li><p><strong>roi_heads</strong> – a ROI head that performs per-region computation</p></li>
+<li><p><strong>pixel_std</strong> (<em>pixel_mean</em><em>,</em>) – list or tuple with #channels element,
+representing the per-channel mean and std to be used to normalize
+the input image</p></li>
+<li><p><strong>input_format</strong> – describe the meaning of channels of input. Needed by visualization</p></li>
+<li><p><strong>vis_period</strong> – the period to run visualization. Set to 0 to disable.</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether finetune the detector or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>batched_inputs: a list, batched outputs of <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetMapper</span></code>.
+Each item in the list contains the inputs for one image.
+For now, each item in the list is a dict that contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>image: Tensor, image in (C, H, W) format.</p></li>
+<li><p>instances (optional): groundtruth <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code></p></li>
+<li><p>proposals (optional): <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>, precomputed proposals.</p></li>
+<li><p>“height”, “width” (int): the output resolution of the model, used in inference.
+See <code class="xref py py-meth docutils literal notranslate"><span class="pre">postprocess()</span></code> for details.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: A list of dict where each dict is the output for one input image.
+The dict contains a key “instances” whose value is a <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>
+and a key “features” whose value is the features of middle layers.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code> object has the following keys:
+“pred_boxes”, “pred_classes”, “scores”, “pred_masks”, “pred_keypoints”</p></li>
+<li><p>losses: A dict of different losses</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN.get_parameters">
+<code class="sig-name descname">get_parameters</code><span class="sig-paren">(</span><em class="sig-param">lr=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/meta_arch/rcnn.html#TLGeneralizedRCNN.get_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.meta_arch.TLGeneralizedRCNN.get_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a parameter list which decides optimization hyper-parameters,
+such as the learning rate of each layer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.object_detection.meta_arch.TLRetinaNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.object_detection.meta_arch.</code><code class="sig-name descname">TLRetinaNet</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">finetune=False</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/meta_arch/retinanet.html#TLRetinaNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.meta_arch.TLRetinaNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>RetinaNet for Transfer Learning.</p>
+<p>Different from that in Supervised Learning, TLRetinaNet
+1. accepts unlabeled images during training (return no losses)
+2. return both detection outputs, features, and losses during training</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> – a backbone module, must follow detectron2’s backbone interface</p></li>
+<li><p><strong>head</strong> (<em>nn.Module</em>) – a module that predicts logits and regression deltas
+for each level from a list of per-level features</p></li>
+<li><p><strong>head_in_features</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – Names of the input feature maps to be used in head</p></li>
+<li><p><strong>anchor_generator</strong> (<em>nn.Module</em>) – a module that creates anchors from a
+list of features. Usually an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorGenerator</span></code></p></li>
+<li><p><strong>box2box_transform</strong> (<em>Box2BoxTransform</em>) – defines the transform from anchors boxes to
+instance boxes</p></li>
+<li><p><strong>anchor_matcher</strong> (<em>Matcher</em>) – label the anchors by matching them with ground truth.</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of classes. Used to label background proposals.</p></li>
+<li><p><strong>Loss parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>focal_loss_alpha</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – focal_loss_alpha</p></li>
+<li><p><strong>focal_loss_gamma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – focal_loss_gamma</p></li>
+<li><p><strong>smooth_l1_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – smooth_l1_beta</p></li>
+<li><p><strong>box_reg_loss_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Options are “smooth_l1”, “giou”</p></li>
+<li><p><strong>Inference parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>test_score_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Inference cls score threshold, only anchors with
+score &gt; INFERENCE_TH are considered for inference (to improve speed)</p></li>
+<li><p><strong>test_topk_candidates</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Select topk candidates before NMS</p></li>
+<li><p><strong>test_nms_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – Overlap threshold used for non-maximum suppression
+(suppress boxes with IoU &gt;= this threshold)</p></li>
+<li><p><strong>max_detections_per_image</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Maximum number of detections to return per image during inference
+(100 is based on the limit established for the COCO dataset).</p></li>
+<li><p><strong>Input parameters</strong> (<em>#</em>) – </p></li>
+<li><p><strong>pixel_mean</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – Values to be used for image normalization (BGR order).
+To train on images of different number of channels, set different mean &amp; std.
+Default values are the mean pixel value from ImageNet: [103.53, 116.28, 123.675]</p></li>
+<li><p><strong>pixel_std</strong> (<em>Tuple</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – When using pre-trained models in Detectron1 or any MSRA models,
+std has been absorbed into its conv1 weights, so the std needs to be set 1.
+Otherwise, you can use [57.375, 57.120, 58.395] (ImageNet std)</p></li>
+<li><p><strong>vis_period</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The period (in terms of steps) for minibatch visualization at train time.
+Set to 0 to disable.</p></li>
+<li><p><strong>input_format</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Whether the model needs RGB, YUV, HSV etc.</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether finetune the detector or train from scratch. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>batched_inputs: a list, batched outputs of <code class="xref py py-class docutils literal notranslate"><span class="pre">DatasetMapper</span></code>.
+Each item in the list contains the inputs for one image.
+For now, each item in the list is a dict that contains:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>image: Tensor, image in (C, H, W) format.</p></li>
+<li><p>instances (optional): groundtruth <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code></p></li>
+<li><p>“height”, “width” (int): the output resolution of the model, used in inference.
+See <code class="xref py py-meth docutils literal notranslate"><span class="pre">postprocess()</span></code> for details.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: A list of dict where each dict is the output for one input image.
+The dict contains a key “instances” whose value is a <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code>
+and a key “features” whose value is the features of middle layers.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">Instances</span></code> object has the following keys:
+“pred_boxes”, “pred_classes”, “scores”, “pred_masks”, “pred_keypoints”</p></li>
+<li><p>losses: A dict of different losses</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.models.object_detection.meta_arch.TLRetinaNet.get_parameters">
+<code class="sig-name descname">get_parameters</code><span class="sig-paren">(</span><em class="sig-param">lr=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/meta_arch/retinanet.html#TLRetinaNet.get_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.meta_arch.TLRetinaNet.get_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a parameter list which decides optimization hyper-parameters,
+such as the learning rate of each layer</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.object_detection.proposal_generator.rpn.TLRPN">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.object_detection.proposal_generator.rpn.</code><code class="sig-name descname">TLRPN</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/proposal_generator/rpn.html#TLRPN"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.proposal_generator.rpn.TLRPN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Region Proposal Network, introduced by <cite>Faster R-CNN</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – list of names of input features to use</p></li>
+<li><p><strong>head</strong> (<em>nn.Module</em>) – a module that predicts logits and regression deltas
+for each level from a list of per-level features</p></li>
+<li><p><strong>anchor_generator</strong> (<em>nn.Module</em>) – a module that creates anchors from a
+list of features. Usually an instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">AnchorGenerator</span></code></p></li>
+<li><p><strong>anchor_matcher</strong> (<em>Matcher</em>) – label the anchors by matching them with ground truth.</p></li>
+<li><p><strong>box2box_transform</strong> (<em>Box2BoxTransform</em>) – defines the transform from anchors boxes to
+instance boxes</p></li>
+<li><p><strong>batch_size_per_image</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of anchors per image to sample for training</p></li>
+<li><p><strong>positive_fraction</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – fraction of foreground anchors to sample for training</p></li>
+<li><p><strong>pre_nms_topk</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – (train, test) that represents the
+number of top k proposals to select before NMS, in
+training and testing.</p></li>
+<li><p><strong>post_nms_topk</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.10)"><em>tuple</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>]</em>) – (train, test) that represents the
+number of top k proposals to select after NMS, in
+training and testing.</p></li>
+<li><p><strong>nms_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – NMS threshold used to de-duplicate the predicted proposals</p></li>
+<li><p><strong>min_box_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – remove proposal boxes with any side smaller than this threshold,
+in the unit of input image pixels</p></li>
+<li><p><strong>anchor_boundary_thresh</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – legacy option</p></li>
+<li><p><strong>loss_weight</strong> (<em>float|dict</em>) – <p>weights to use for losses. Can be single float for weighting
+all rpn losses together, or a dict of individual weightings. Valid dict keys are:</p>
+<blockquote>
+<div><p>”loss_rpn_cls” - applied to classification loss
+“loss_rpn_loc” - applied to box regression loss</p>
+</div></blockquote>
+</p></li>
+<li><p><strong>box_reg_loss_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a>) – Loss type to use. Supported losses: “smooth_l1”, “giou”.</p></li>
+<li><p><strong>smooth_l1_beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – beta parameter for the smooth L1 regression loss. Default to
+use L1 loss. Only used when <cite>box_reg_loss_type</cite> is “smooth_l1”</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>images (ImageList): input images of length <cite>N</cite></p></li>
+<li><p>features (dict[str, Tensor]): input data as a mapping from feature
+map name to tensor. Axis 0 represents the number of images <cite>N</cite> in
+the input data; axes 1-3 are channels, height, and width, which may
+vary between feature maps (e.g., if a feature pyramid is used).</p></li>
+<li><p>gt_instances (list[Instances], optional): a length <cite>N</cite> list of <cite>Instances`s.
+Each `Instances</cite> stores ground-truth instances for the corresponding image.</p></li>
+<li><p>labeled (bool, optional): whether has ground-truth label. Default: True</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>proposals: list[Instances]: contains fields “proposal_boxes”, “objectness_logits”</p></li>
+<li><p>loss: dict[Tensor] or None</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.object_detection.roi_heads.</code><code class="sig-name descname">TLRes5ROIHeads</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/roi_heads/roi_heads.html#TLRes5ROIHeads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads" title="Permalink to this definition">¶</a></dt>
+<dd><p>The ROIHeads in a typical “C4” R-CNN model, where
+the box and mask head share the cropping and
+the per-region feature computation by a Res5 block.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – list of backbone feature map names to use for
+feature extraction</p></li>
+<li><p><strong>pooler</strong> (<em>ROIPooler</em>) – pooler to extra region features from backbone</p></li>
+<li><p><strong>res5</strong> (<em>nn.Sequential</em>) – a CNN to compute per-region features, to be used by
+<code class="docutils literal notranslate"><span class="pre">box_predictor</span></code> and <code class="docutils literal notranslate"><span class="pre">mask_head</span></code>. Typically this is a “res5”
+block from a ResNet.</p></li>
+<li><p><strong>box_predictor</strong> (<em>nn.Module</em>) – make box predictions from the feature.
+Should have the same interface as <code class="xref py py-class docutils literal notranslate"><span class="pre">FastRCNNOutputLayers</span></code>.</p></li>
+<li><p><strong>mask_head</strong> (<em>nn.Module</em>) – transform features to make mask predictions</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>images (ImageList):</p></li>
+<li><p>features (dict[str,Tensor]): input data as a mapping from feature
+map name to tensor. Axis 0 represents the number of images <cite>N</cite> in
+the input data; axes 1-3 are channels, height, and width, which may
+vary between feature maps (e.g., if a feature pyramid is used).</p></li>
+<li><p>proposals (list[Instances]): length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains object proposals for the i-th input image,
+with fields “proposal_boxes” and “objectness_logits”.</p></li>
+<li><p>targets (list[Instances], optional): length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains the ground-truth per-instance annotations
+for the i-th input image.  Specify <cite>targets</cite> during training only.
+It may have the following fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gt_boxes: the bounding box of each instance.</p></li>
+<li><p>gt_classes: the label for each instance with a category ranging in [0, #class].</p></li>
+<li><p>gt_masks: PolygonMasks or BitMasks, the ground-truth masks of each instance.</p></li>
+<li><p>gt_keypoints: NxKx3, the groud-truth keypoints for each instance.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label. Default: True</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>list[Instances]: length <cite>N</cite> list of <cite>Instances</cite> containing the
+detected instances. Returned during inference only; may be [] during training.</p></li>
+<li><p>dict[str-&gt;Tensor]:
+mapping from a named loss to a tensor storing the loss. Used during training only.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads.sample_unlabeled_proposals">
+<code class="sig-name descname">sample_unlabeled_proposals</code><span class="sig-paren">(</span><em class="sig-param">proposals</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/roi_heads/roi_heads.html#TLRes5ROIHeads.sample_unlabeled_proposals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.roi_heads.TLRes5ROIHeads.sample_unlabeled_proposals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare some unlabeled proposals.
+It returns top <code class="docutils literal notranslate"><span class="pre">self.batch_size_per_image</span></code> samples from proposals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>proposals</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><em>Instances</em><em>]</em>) – length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains object proposals for the i-th input image,
+with fields “proposal_boxes” and “objectness_logits”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>length <cite>N</cite> list of <a href="#id7"><span class="problematic" id="id8">`</span></a>Instances`s containing the proposals sampled for training.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.object_detection.roi_heads.</code><code class="sig-name descname">TLStandardROIHeads</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/roi_heads/roi_heads.html#TLStandardROIHeads"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s “standard” in a sense that there is no ROI transform sharing
+or feature sharing between tasks.
+Each head independently processes the input features by each head’s
+own pooler and head.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>box_in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – list of feature names to use for the box head.</p></li>
+<li><p><strong>box_pooler</strong> (<em>ROIPooler</em>) – pooler to extra region features for box head</p></li>
+<li><p><strong>box_head</strong> (<em>nn.Module</em>) – transform features to make box predictions</p></li>
+<li><p><strong>box_predictor</strong> (<em>nn.Module</em>) – make box predictions from the feature.
+Should have the same interface as <code class="xref py py-class docutils literal notranslate"><span class="pre">FastRCNNOutputLayers</span></code>.</p></li>
+<li><p><strong>mask_in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>]</em>) – list of feature names to use for the mask
+pooler or mask head. None if not using mask head.</p></li>
+<li><p><strong>mask_pooler</strong> (<em>ROIPooler</em>) – pooler to extract region features from image features.
+The mask head will then take region features to make predictions.
+If None, the mask head will directly take the dict of image features
+defined by <cite>mask_in_features</cite></p></li>
+<li><p><strong>mask_head</strong> (<em>nn.Module</em>) – transform features to make mask predictions</p></li>
+<li><p><strong>keypoint_pooler</strong><strong>, </strong><strong>keypoint_head</strong> (<em>keypoint_in_features</em><em>,</em>) – similar to <code class="docutils literal notranslate"><span class="pre">mask_*</span></code>.</p></li>
+<li><p><strong>train_on_pred_boxes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – whether to use proposal boxes or
+predicted boxes from the box head to train other heads.</p></li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt>Inputs:</dt><dd><ul>
+<li><p>images (ImageList):</p></li>
+<li><p>features (dict[str,Tensor]): input data as a mapping from feature
+map name to tensor. Axis 0 represents the number of images <cite>N</cite> in
+the input data; axes 1-3 are channels, height, and width, which may
+vary between feature maps (e.g., if a feature pyramid is used).</p></li>
+<li><p>proposals (list[Instances]): length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains object proposals for the i-th input image,
+with fields “proposal_boxes” and “objectness_logits”.</p></li>
+<li><p>targets (list[Instances], optional): length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains the ground-truth per-instance annotations
+for the i-th input image.  Specify <cite>targets</cite> during training only.
+It may have the following fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>gt_boxes: the bounding box of each instance.</p></li>
+<li><p>gt_classes: the label for each instance with a category ranging in [0, #class].</p></li>
+<li><p>gt_masks: PolygonMasks or BitMasks, the ground-truth masks of each instance.</p></li>
+<li><p>gt_keypoints: NxKx3, the groud-truth keypoints for each instance.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>labeled (bool, optional): whether has ground-truth label. Default: True</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>list[Instances]: length <cite>N</cite> list of <cite>Instances</cite> containing the
+detected instances. Returned during inference only; may be [] during training.</p></li>
+<li><p>dict[str-&gt;Tensor]:
+mapping from a named loss to a tensor storing the loss. Used during training only.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads.sample_unlabeled_proposals">
+<code class="sig-name descname">sample_unlabeled_proposals</code><span class="sig-paren">(</span><em class="sig-param">proposals</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/object_detection/roi_heads/roi_heads.html#TLStandardROIHeads.sample_unlabeled_proposals"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.object_detection.roi_heads.TLStandardROIHeads.sample_unlabeled_proposals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepare some unlabeled proposals.
+It returns top <code class="docutils literal notranslate"><span class="pre">self.batch_size_per_image</span></code> samples from proposals</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>proposals</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a><em>[</em><em>Instances</em><em>]</em>) – length <cite>N</cite> list of <cite>Instances</cite>. The i-th
+<cite>Instances</cite> contains object proposals for the i-th input image,
+with fields “proposal_boxes” and “objectness_logits”.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>length <cite>N</cite> list of <a href="#id9"><span class="problematic" id="id10">`</span></a>Instances`s containing the proposals sampled for training.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="semantic-segmentation">
+<h2>Semantic Segmentation<a class="headerlink" href="#semantic-segmentation" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tllib.vision.models.segmentation.deeplabv2.deeplabv2_resnet101">
+<code class="sig-prename descclassname">tllib.vision.models.segmentation.deeplabv2.</code><code class="sig-name descname">deeplabv2_resnet101</code><span class="sig-paren">(</span><em class="sig-param">num_classes=19</em>, <em class="sig-param">pretrained_backbone=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/segmentation/deeplabv2.html#deeplabv2_resnet101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.segmentation.deeplabv2.deeplabv2_resnet101" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a DeepLabV2 model with a ResNet-101 backbone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – number of classes. Default: 19</p></li>
+<li><p><strong>pretrained_backbone</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, returns a model pre-trained on ImageNet. Default: True.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="keypoint-detection">
+<h2>Keypoint Detection<a class="headerlink" href="#keypoint-detection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="poseresnet">
+<h3>PoseResNet<a class="headerlink" href="#poseresnet" title="Permalink to this headline">¶</a></h3>
+<dl class="function">
+<dt id="tllib.vision.models.keypoint_detection.pose_resnet.pose_resnet101">
+<code class="sig-prename descclassname">tllib.vision.models.keypoint_detection.pose_resnet.</code><code class="sig-name descname">pose_resnet101</code><span class="sig-paren">(</span><em class="sig-param">num_keypoints</em>, <em class="sig-param">pretrained_backbone=True</em>, <em class="sig-param">deconv_with_bias=False</em>, <em class="sig-param">finetune=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/keypoint_detection/pose_resnet.html#pose_resnet101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.keypoint_detection.pose_resnet.pose_resnet101" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Simple Baseline model with a ResNet-101 backbone.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_keypoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – number of keypoints</p></li>
+<li><p><strong>pretrained_backbone</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, returns a model pre-trained on ImageNet. Default: True.</p></li>
+<li><p><strong>deconv_with_bias</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use bias in the deconvolution layer. Default: False</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use 10x smaller learning rate in the backbone. Default: False</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – If True, displays a progress bar of the download to stderr. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.keypoint_detection.pose_resnet.PoseResNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.keypoint_detection.pose_resnet.</code><code class="sig-name descname">PoseResNet</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">upsampling</em>, <em class="sig-param">feature_dim</em>, <em class="sig-param">num_keypoints</em>, <em class="sig-param">finetune=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/keypoint_detection/pose_resnet.html#PoseResNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.keypoint_detection.pose_resnet.PoseResNet" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference external" href="https://arxiv.org/abs/1804.06208">Simple Baseline</a> for keypoint detection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Backbone to extract 2-d features from data</p></li>
+<li><p><strong>upsampling</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Layer to upsample image feature to heatmap size</p></li>
+<li><p><strong>feature_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The dimension of the features from upsampling layer.</p></li>
+<li><p><strong>num_keypoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of keypoints</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use 10x smaller learning rate in the backbone. Default: False</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.keypoint_detection.pose_resnet.Upsampling">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.keypoint_detection.pose_resnet.</code><code class="sig-name descname">Upsampling</code><span class="sig-paren">(</span><em class="sig-param">in_channel=2048</em>, <em class="sig-param">hidden_dims=(256</em>, <em class="sig-param">256</em>, <em class="sig-param">256)</em>, <em class="sig-param">kernel_sizes=(4</em>, <em class="sig-param">4</em>, <em class="sig-param">4)</em>, <em class="sig-param">bias=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/keypoint_detection/pose_resnet.html#Upsampling"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.keypoint_detection.pose_resnet.Upsampling" title="Permalink to this definition">¶</a></dt>
+<dd><p>3-layers deconvolution used in <a class="reference external" href="https://arxiv.org/abs/1804.06208">Simple Baseline</a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="joint-loss">
+<h3>Joint Loss<a class="headerlink" href="#joint-loss" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.vision.models.keypoint_detection.loss.JointsMSELoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.keypoint_detection.loss.</code><code class="sig-name descname">JointsMSELoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/keypoint_detection/loss.html#JointsMSELoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.keypoint_detection.loss.JointsMSELoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Typical MSE loss for keypoint detection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>output (tensor): heatmap predictions</p></li>
+<li><p>target (tensor): heatmap labels</p></li>
+<li><p>target_weight (tensor): whether the keypoint is visible. All keypoint is visible if None. Default: None.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>output: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span> where K means the number of keypoints,
+H and W is the height and width of the heatmap respectively.</p></li>
+<li><p>target: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span>.</p></li>
+<li><p>target_weight: <span class="math notranslate nohighlight">\((minibatch, K)\)</span>.</p></li>
+<li><p>Output: scalar by default. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then <span class="math notranslate nohighlight">\((minibatch, K)\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.keypoint_detection.loss.JointsKLLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.keypoint_detection.loss.</code><code class="sig-name descname">JointsKLLoss</code><span class="sig-paren">(</span><em class="sig-param">reduction='mean'</em>, <em class="sig-param">epsilon=0.0</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/keypoint_detection/loss.html#JointsKLLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.keypoint_detection.loss.JointsKLLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>KL Divergence for keypoint detection proposed by
+<a class="reference external" href="https://arxiv.org/abs/2103.06175">Regressive Domain Adaptation for Unsupervised Keypoint Detection</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>output (tensor): heatmap predictions</p></li>
+<li><p>target (tensor): heatmap labels</p></li>
+<li><p>target_weight (tensor): whether the keypoint is visible. All keypoint is visible if None. Default: None.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>output: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span> where K means the number of keypoints,
+H and W is the height and width of the heatmap respectively.</p></li>
+<li><p>target: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span>.</p></li>
+<li><p>target_weight: <span class="math notranslate nohighlight">\((minibatch, K)\)</span>.</p></li>
+<li><p>Output: scalar by default. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then <span class="math notranslate nohighlight">\((minibatch, K)\)</span>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="re-identification">
+<h2>Re-Identification<a class="headerlink" href="#re-identification" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id12">
+<h3>Models<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.vision.models.reid.resnet.ReidResNet">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.reid.resnet.</code><code class="sig-name descname">ReidResNet</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/resnet.html#ReidResNet"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.resnet.ReidResNet" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modified <cite>ResNet</cite> architecture for ReID from <a class="reference external" href="https://arxiv.org/pdf/2001.01526.pdf">Mutual Mean-Teaching: Pseudo Label Refinery for Unsupervised
+Domain Adaptation on Person Re-identification (ICLR 2020)</a>. We change stride
+of <span class="math notranslate nohighlight">\(layer4\_group1\_conv2, layer4\_group1\_downsample1\)</span> to 1. During forward pass, we will not activate
+<cite>self.relu</cite>. Please refer to source code for details.</p>
+</dd></dl>
+
+<span class="target" id="module-tllib.vision.models.reid.resnet"></span><p>&#64;author: Baixu Chen
+&#64;contact: <a class="reference external" href="mailto:cbx_99_hasta&#37;&#52;&#48;outlook&#46;com">cbx_99_hasta<span>&#64;</span>outlook<span>&#46;</span>com</a></p>
+<dl class="function">
+<dt id="tllib.vision.models.reid.resnet.reid_resnet18">
+<code class="sig-prename descclassname">tllib.vision.models.reid.resnet.</code><code class="sig-name descname">reid_resnet18</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/resnet.html#reid_resnet18"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.resnet.reid_resnet18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Reid-ResNet-18 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.reid.resnet.reid_resnet34">
+<code class="sig-prename descclassname">tllib.vision.models.reid.resnet.</code><code class="sig-name descname">reid_resnet34</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/resnet.html#reid_resnet34"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.resnet.reid_resnet34" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Reid-ResNet-34 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.reid.resnet.reid_resnet50">
+<code class="sig-prename descclassname">tllib.vision.models.reid.resnet.</code><code class="sig-name descname">reid_resnet50</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/resnet.html#reid_resnet50"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.resnet.reid_resnet50" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Reid-ResNet-50 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.vision.models.reid.resnet.reid_resnet101">
+<code class="sig-prename descclassname">tllib.vision.models.reid.resnet.</code><code class="sig-name descname">reid_resnet101</code><span class="sig-paren">(</span><em class="sig-param">pretrained=False</em>, <em class="sig-param">progress=True</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/resnet.html#reid_resnet101"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.resnet.reid_resnet101" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs a Reid-ResNet-101 model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pretrained</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, returns a model pre-trained on ImageNet</p></li>
+<li><p><strong>progress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a>) – If True, displays a progress bar of the download to stderr</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.vision.models.reid.identifier.ReIdentifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.reid.identifier.</code><code class="sig-name descname">ReIdentifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">bottleneck=None</em>, <em class="sig-param">bottleneck_dim=-1</em>, <em class="sig-param">finetune=True</em>, <em class="sig-param">pool_layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/identifier.html#ReIdentifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.identifier.ReIdentifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Person reIdentifier from <a class="reference external" href="https://arxiv.org/pdf/1903.07071.pdf">Bag of Tricks and A Strong Baseline for Deep Person Re-identification (CVPR 2019)</a>.
+Given 2-d features <span class="math notranslate nohighlight">\(f\)</span> from backbone network, the authors pass <span class="math notranslate nohighlight">\(f\)</span> through another <cite>BatchNorm1d</cite> layer
+and get <span class="math notranslate nohighlight">\(bn\_f\)</span>, which will then pass through a <cite>Linear</cite> layer to output predictions. During training, we
+use <span class="math notranslate nohighlight">\(f\)</span> to compute triplet loss. While during testing, <span class="math notranslate nohighlight">\(bn\_f\)</span> is used as feature. This may be a little
+confusing. The figures in the origin paper will help you understand better.</p>
+<dl class="method">
+<dt id="tllib.vision.models.reid.identifier.ReIdentifier.features_dim">
+<em class="property">property </em><code class="sig-name descname">features_dim</code><a class="headerlink" href="#tllib.vision.models.reid.identifier.ReIdentifier.features_dim" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dimension of features before the final <cite>head</cite> layer</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="tllib.vision.models.reid.identifier.ReIdentifier.get_parameters">
+<code class="sig-name descname">get_parameters</code><span class="sig-paren">(</span><em class="sig-param">base_lr=1.0</em>, <em class="sig-param">rate=0.1</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/identifier.html#ReIdentifier.get_parameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.identifier.ReIdentifier.get_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>A parameter list which decides optimization hyper-parameters,
+such as the relative learning rate of each layer</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="loss">
+<h3>Loss<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.vision.models.reid.loss.TripletLoss">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.vision.models.reid.loss.</code><code class="sig-name descname">TripletLoss</code><span class="sig-paren">(</span><em class="sig-param">margin</em>, <em class="sig-param">normalize_feature=False</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/vision/models/reid/loss.html#TripletLoss"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.vision.models.reid.loss.TripletLoss" title="Permalink to this definition">¶</a></dt>
+<dd><p>Triplet loss augmented with batch hard from <a class="reference external" href="https://arxiv.org/pdf/1703.07737v2.pdf">In defense of the Triplet Loss for Person Re-Identification
+(ICCV 2017)</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – margin of triplet loss</p></li>
+<li><p><strong>normalize_feature</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – if True, normalize features into unit norm first before computing loss.
+Default: False.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="sampler">
+<h3>Sampler<a class="headerlink" href="#sampler" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="tllib.utils.data.RandomMultipleGallerySampler">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.utils.data.</code><code class="sig-name descname">RandomMultipleGallerySampler</code><span class="sig-paren">(</span><em class="sig-param">dataset</em>, <em class="sig-param">num_instances=4</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/utils/data.html#RandomMultipleGallerySampler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.utils.data.RandomMultipleGallerySampler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sampler from <a class="reference external" href="https://arxiv.org/pdf/1703.07737v2.pdf">In defense of the Triplet Loss for Person Re-Identification
+(ICCV 2017)</a>. Assume there are <span class="math notranslate nohighlight">\(N\)</span> identities in the dataset, this
+implementation simply samples <span class="math notranslate nohighlight">\(K\)</span> images for every identity to form an iter of size <span class="math notranslate nohighlight">\(N\times K\)</span>. During
+training, we will call <code class="docutils literal notranslate"><span class="pre">__iter__</span></code> method of pytorch dataloader once we reach a <code class="docutils literal notranslate"><span class="pre">StopIteration</span></code>, this guarantees
+every image in the dataset will eventually be selected and we are not wasting any training data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dataset</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.10)"><em>list</em></a>) – each element of this list is a tuple (image_path, person_id, camera_id)</p></li>
+<li><p><strong>num_instances</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – number of images to sample for every identity (<span class="math notranslate nohighlight">\(K\)</span> here)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="transforms.html" class="btn btn-neutral float-right" title="Transforms" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="datasets.html" class="btn btn-neutral" title="Datasets" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Models</a><ul>
+<li><a class="reference internal" href="#image-classification">Image Classification</a><ul>
+<li><a class="reference internal" href="#module-tllib.vision.models.resnet">ResNets</a></li>
+<li><a class="reference internal" href="#module-tllib.vision.models.digits.lenet">LeNet</a></li>
+<li><a class="reference internal" href="#module-tllib.vision.models.digits.dtn">DTN</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#object-detection">Object Detection</a></li>
+<li><a class="reference internal" href="#semantic-segmentation">Semantic Segmentation</a></li>
+<li><a class="reference internal" href="#keypoint-detection">Keypoint Detection</a><ul>
+<li><a class="reference internal" href="#poseresnet">PoseResNet</a></li>
+<li><a class="reference internal" href="#joint-loss">Joint Loss</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#re-identification">Re-Identification</a><ul>
+<li><a class="reference internal" href="#id12">Models</a></li>
+<li><a class="reference internal" href="#loss">Loss</a></li>
+<li><a class="reference internal" href="#sampler">Sampler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

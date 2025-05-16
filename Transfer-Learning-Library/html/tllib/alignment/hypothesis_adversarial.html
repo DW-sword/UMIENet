@@ -1,0 +1,969 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Hypothesis Adversarial Learning &mdash; Transfer Learning Library 0.0.24 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" /> -->
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Domain Translation" href="../translation.html" />
+    <link rel="prev" title="Domain Adversarial Training" href="domain_adversarial.html" /> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+  <!-- Preload the theme fonts -->
+
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-book.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-Medium.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/FreightSans/freight-sans-medium-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="../../_static/fonts/IBMPlexMono/IBMPlexMono-SemiBold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
+<!-- Preload the katex fonts -->
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Math-Italic.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Main-Bold.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size1-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size4-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size2-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Size3-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/katex@0.10.0/dist/fonts/KaTeX_Caligraphic-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+<!--      pytorch logo -->
+<!--      <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>-->
+
+      <div class="main-menu">
+        <ul>
+          <!-- <li>
+            <a href="">Full Survey</a>
+          </li>
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li> -->
+          <li>
+            <li>
+              <a href="transfer.thuml.ai">Docs</a>
+            </li>
+            
+            <li>
+              <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+            </li>
+
+            <li>
+              <a href="https://arxiv.org/abs/2201.05867">Survey</a>
+            </li>
+
+          <li>
+            <a href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">Paper List</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+  </div>
+</div>
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Transfer Learning API</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Modules</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Feature Alignment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../translation.html">Domain Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../self_training.html">Self Training Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reweight.html">Re-weighting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../normalization.html">Normalization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../regularization.html">Regularization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ranking.html">Ranking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Common API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../vision/index.html">Vision</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../utils/index.html">Utilities</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Feature Alignment</a> &gt;</li>
+        
+      <li>Hypothesis Adversarial Learning</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/tllib/alignment/hypothesis_adversarial.rst.txt" rel="nofollow"><img src="../../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+
+        
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <div class="section" id="hypothesis-adversarial-learning">
+<h1>Hypothesis Adversarial Learning<a class="headerlink" href="#hypothesis-adversarial-learning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mcd-maximum-classifier-discrepancy">
+<span id="mcd"></span><h2>MCD: Maximum Classifier Discrepancy<a class="headerlink" href="#mcd-maximum-classifier-discrepancy" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="tllib.alignment.mcd.classifier_discrepancy">
+<code class="sig-prename descclassname">tllib.alignment.mcd.</code><code class="sig-name descname">classifier_discrepancy</code><span class="sig-paren">(</span><em class="sig-param">predictions1</em>, <em class="sig-param">predictions2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mcd.html#classifier_discrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mcd.classifier_discrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <cite>Classifier Discrepancy</cite> in
+<a class="reference external" href="https://arxiv.org/abs/1712.02560">Maximum Classiﬁer Discrepancy for Unsupervised Domain Adaptation (CVPR 2018)</a>.</p>
+<p>The classfier discrepancy between predictions <span class="math notranslate nohighlight">\(p_1\)</span> and <span class="math notranslate nohighlight">\(p_2\)</span> can be described as:</p>
+<div class="math notranslate nohighlight">
+\[d(p_1, p_2) = \dfrac{1}{K} \sum_{k=1}^K | p_{1k} - p_{2k} |,\]</div>
+<p>where K is number of classes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>predictions1</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><em>torch.Tensor</em></a>) – Classifier predictions <span class="math notranslate nohighlight">\(p_1\)</span>. Expected to contain raw, normalized scores for each class</p></li>
+<li><p><strong>predictions2</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><em>torch.Tensor</em></a>) – Classifier predictions <span class="math notranslate nohighlight">\(p_2\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.alignment.mcd.entropy">
+<code class="sig-prename descclassname">tllib.alignment.mcd.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">predictions</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mcd.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mcd.entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entropy of N predictions <span class="math notranslate nohighlight">\((p_1, p_2, ..., p_N)\)</span>.
+The definition is:</p>
+<div class="math notranslate nohighlight">
+\[d(p_1, p_2, ..., p_N) = -\dfrac{1}{K} \sum_{k=1}^K \log \left( \dfrac{1}{N} \sum_{i=1}^N p_{ik} \right)\]</div>
+<p>where K is number of classes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This entropy function is specifically used in MCD and different from the usual <a class="reference internal" href="../modules.html#tllib.modules.entropy.entropy" title="tllib.modules.entropy.entropy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">entropy()</span></code></a> function.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>predictions</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><em>torch.Tensor</em></a>) – Classifier predictions. Expected to contain raw, normalized scores for each class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.mcd.ImageClassifierHead">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mcd.</code><code class="sig-name descname">ImageClassifierHead</code><span class="sig-paren">(</span><em class="sig-param">in_features</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">bottleneck_dim=1024</em>, <em class="sig-param">pool_layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mcd.html#ImageClassifierHead"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mcd.ImageClassifierHead" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifier Head for MCD.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>in_features</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Dimension of input features</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer. Default: 1024</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, F)\)</span> where F = <cite>in_features</cite>.</p></li>
+<li><p>Output: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C = <cite>num_classes</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="mdd-margin-disparity-discrepancy">
+<span id="mdd"></span><h2>MDD: Margin Disparity Discrepancy<a class="headerlink" href="#mdd-margin-disparity-discrepancy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.mdd.MarginDisparityDiscrepancy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">MarginDisparityDiscrepancy</code><span class="sig-paren">(</span><em class="sig-param">source_disparity</em>, <em class="sig-param">target_disparity</em>, <em class="sig-param">margin=4</em>, <em class="sig-param">reduction='mean'</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#MarginDisparityDiscrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.MarginDisparityDiscrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The margin disparity discrepancy (MDD) proposed in <a class="reference external" href="https://arxiv.org/abs/1904.05801">Bridging Theory and Algorithm for Domain Adaptation (ICML 2019)</a>.</p>
+<p>MDD can measure the distribution discrepancy in domain adaptation.</p>
+<p>The <span class="math notranslate nohighlight">\(y^s\)</span> and <span class="math notranslate nohighlight">\(y^t\)</span> are logits output by the main head on the source and target domain respectively.
+The <span class="math notranslate nohighlight">\(y_{adv}^s\)</span> and <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> are logits output by the adversarial head.</p>
+<p>The definition can be described as:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_{\gamma}(\hat{\mathcal{S}}, \hat{\mathcal{T}}) =
+-\gamma \mathbb{E}_{y^s, y_{adv}^s \sim\hat{\mathcal{S}}} L_s (y^s, y_{adv}^s) +
+\mathbb{E}_{y^t, y_{adv}^t \sim\hat{\mathcal{T}}} L_t (y^t, y_{adv}^t),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is a margin hyper-parameter, <span class="math notranslate nohighlight">\(L_s\)</span> refers to the disparity function defined on the source domain
+and <span class="math notranslate nohighlight">\(L_t\)</span> refers to the disparity function defined on the target domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source_disparity</strong> (<em>callable</em>) – The disparity function defined on the source domain, <span class="math notranslate nohighlight">\(L_s\)</span>.</p></li>
+<li><p><strong>target_disparity</strong> (<em>callable</em>) – The disparity function defined on the target domain, <span class="math notranslate nohighlight">\(L_t\)</span>.</p></li>
+<li><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – margin <span class="math notranslate nohighlight">\(\gamma\)</span>. Default: 4</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y_s: output <span class="math notranslate nohighlight">\(y^s\)</span> by the main head on the source domain</p></li>
+<li><p>y_s_adv: output <span class="math notranslate nohighlight">\(y^s\)</span> by the adversarial head on the source domain</p></li>
+<li><p>y_t: output <span class="math notranslate nohighlight">\(y^t\)</span> by the main head on the target domain</p></li>
+<li><p>y_t_adv: output <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> by the adversarial head on the target domain</p></li>
+<li><p>w_s (optional): instance weights for source domain</p></li>
+<li><p>w_t (optional): instance weights for target domain</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">num_outputs</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">MarginDisparityDiscrepancy</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mf">4.</span><span class="p">,</span> <span class="n">source_disparity</span><span class="o">=</span><span class="n">F</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">,</span> <span class="n">target_disparity</span><span class="o">=</span><span class="n">F</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># adversarial output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t_adv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t</span><span class="p">,</span> <span class="n">y_t_adv</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<p><strong>MDD for Classification</strong></p>
+<dl class="class">
+<dt id="tllib.alignment.mdd.ClassificationMarginDisparityDiscrepancy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">ClassificationMarginDisparityDiscrepancy</code><span class="sig-paren">(</span><em class="sig-param">margin=4</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#ClassificationMarginDisparityDiscrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.ClassificationMarginDisparityDiscrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The margin disparity discrepancy (MDD) proposed in <a class="reference external" href="https://arxiv.org/abs/1904.05801">Bridging Theory and Algorithm for Domain Adaptation (ICML 2019)</a>.</p>
+<p>It measures the distribution discrepancy in domain adaptation
+for classification.</p>
+<p>When margin is equal to 1, it’s also called disparity discrepancy (DD).</p>
+<p>The <span class="math notranslate nohighlight">\(y^s\)</span> and <span class="math notranslate nohighlight">\(y^t\)</span> are logits output by the main classifier on the source and target domain respectively.
+The <span class="math notranslate nohighlight">\(y_{adv}^s\)</span> and <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> are logits output by the adversarial classifier.
+They are expected to contain raw, unnormalized scores for each class.</p>
+<p>The definition can be described as:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_{\gamma}(\hat{\mathcal{S}}, \hat{\mathcal{T}}) =
+\gamma \mathbb{E}_{y^s, y_{adv}^s \sim\hat{\mathcal{S}}} \log\left(\frac{\exp(y_{adv}^s[h_{y^s}])}{\sum_j \exp(y_{adv}^s[j])}\right) +
+\mathbb{E}_{y^t, y_{adv}^t \sim\hat{\mathcal{T}}} \log\left(1-\frac{\exp(y_{adv}^t[h_{y^t}])}{\sum_j \exp(y_{adv}^t[j])}\right),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is a margin hyper-parameter and <span class="math notranslate nohighlight">\(h_y\)</span> refers to the predicted label when the logits output is <span class="math notranslate nohighlight">\(y\)</span>.
+You can see more details in <a class="reference external" href="https://arxiv.org/abs/1904.05801">Bridging Theory and Algorithm for Domain Adaptation</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – margin <span class="math notranslate nohighlight">\(\gamma\)</span>. Default: 4</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y_s: logits output <span class="math notranslate nohighlight">\(y^s\)</span> by the main classifier on the source domain</p></li>
+<li><p>y_s_adv: logits output <span class="math notranslate nohighlight">\(y^s\)</span> by the adversarial classifier on the source domain</p></li>
+<li><p>y_t: logits output <span class="math notranslate nohighlight">\(y^t\)</span> by the main classifier on the target domain</p></li>
+<li><p>y_t_adv: logits output <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> by the adversarial classifier on the target domain</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, C)\)</span> where C = number of classes, or <span class="math notranslate nohighlight">\((minibatch, C, d_1, d_2, ..., d_K)\)</span>
+with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of <cite>K</cite>-dimensional loss.</p></li>
+<li><p>Output: scalar. If <code class="xref py py-attr docutils literal notranslate"><span class="pre">reduction</span></code> is <code class="docutils literal notranslate"><span class="pre">'none'</span></code>, then the same size as the target: <span class="math notranslate nohighlight">\((minibatch)\)</span>, or
+<span class="math notranslate nohighlight">\((minibatch, d_1, d_2, ..., d_K)\)</span> with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of K-dimensional loss.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">num_classes</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">ClassificationMarginDisparityDiscrepancy</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mf">4.</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># logits output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># adversarial logits output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t_adv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t</span><span class="p">,</span> <span class="n">y_t_adv</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.mdd.ImageClassifier">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">ImageClassifier</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_classes</em>, <em class="sig-param">bottleneck_dim=1024</em>, <em class="sig-param">width=1024</em>, <em class="sig-param">grl=None</em>, <em class="sig-param">finetune=True</em>, <em class="sig-param">pool_layer=None</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#ImageClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.ImageClassifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifier for MDD.</p>
+<p>Classifier for MDD has one backbone, one bottleneck, while two classifier heads.
+The first classifier head is used for final predictions.
+The adversarial classifier head is only used when calculating MarginDisparityDiscrepancy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 1-d features from data</p></li>
+<li><p><strong>num_classes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of classes</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer. Default: 1024</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the classifier head. Default: 1024</p></li>
+<li><p><strong>grl</strong> (<em>nn.Module</em>) – Gradient reverse layer. Will use default parameters if None. Default: None.</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use 10x smaller learning rate in the backbone. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (tensor): input data</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: logits outputs by the main classifier</p></li>
+<li><p>outputs_adv: logits outputs by the adversarial classifier</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>x: <span class="math notranslate nohighlight">\((minibatch, *)\)</span>, same shape as the input of the <cite>backbone</cite>.</p></li>
+<li><p>outputs, outputs_adv: <span class="math notranslate nohighlight">\((minibatch, C)\)</span>, where C means the number of classes.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to call function <cite>step()</cite> after function <cite>forward()</cite> <strong>during training phase</strong>! For instance,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># x is inputs, classifier is an ImageClassifier</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outputs</span><span class="p">,</span> <span class="n">outputs_adv</span> <span class="o">=</span> <span class="n">classifier</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">classifier</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tllib.alignment.mdd.shift_log">
+<code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">shift_log</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">offset=1e-06</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#shift_log"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.shift_log" title="Permalink to this definition">¶</a></dt>
+<dd><p>First shift, then calculate log, which can be described as:</p>
+<div class="math notranslate nohighlight">
+\[y = \max(\log(x+\text{offset}), 0)\]</div>
+<p>Used to avoid the gradient explosion problem in log(x) function when x=0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/tensors.html#torch.Tensor" title="(in PyTorch v1.12)"><em>torch.Tensor</em></a>) – input tensor</p></li>
+<li><p><strong>offset</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a><em>, </em><em>optional</em>) – offset size. Default: 1e-6</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Input tensor falls in [0., 1.] and the output tensor falls in [-log(offset), 0]</p>
+</div>
+</dd></dl>
+
+<p><strong>MDD for Regression</strong></p>
+<dl class="class">
+<dt id="tllib.alignment.mdd.RegressionMarginDisparityDiscrepancy">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">RegressionMarginDisparityDiscrepancy</code><span class="sig-paren">(</span><em class="sig-param">margin=1</em>, <em class="sig-param">loss_function=&lt;function l1_loss&gt;</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#RegressionMarginDisparityDiscrepancy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.RegressionMarginDisparityDiscrepancy" title="Permalink to this definition">¶</a></dt>
+<dd><p>The margin disparity discrepancy (MDD) proposed in <a class="reference external" href="https://arxiv.org/abs/1904.05801">Bridging Theory and Algorithm for Domain Adaptation (ICML 2019)</a>.</p>
+<p>It measures the distribution discrepancy in domain adaptation
+for regression.</p>
+<p>The <span class="math notranslate nohighlight">\(y^s\)</span> and <span class="math notranslate nohighlight">\(y^t\)</span> are logits output by the main regressor on the source and target domain respectively.
+The <span class="math notranslate nohighlight">\(y_{adv}^s\)</span> and <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> are logits output by the adversarial regressor.
+They are expected to contain <code class="docutils literal notranslate"><span class="pre">normalized</span></code> values for each factors.</p>
+<p>The definition can be described as:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_{\gamma}(\hat{\mathcal{S}}, \hat{\mathcal{T}}) =
+-\gamma \mathbb{E}_{y^s, y_{adv}^s \sim\hat{\mathcal{S}}} L (y^s, y_{adv}^s) +
+\mathbb{E}_{y^t, y_{adv}^t \sim\hat{\mathcal{T}}} L (y^t, y_{adv}^t),\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is a margin hyper-parameter and <span class="math notranslate nohighlight">\(L\)</span> refers to the disparity function defined on both domains.
+You can see more details in <a class="reference external" href="https://arxiv.org/abs/1904.05801">Bridging Theory and Algorithm for Domain Adaptation</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>loss_function</strong> (<em>callable</em>) – The disparity function defined on both domains, <span class="math notranslate nohighlight">\(L\)</span>.</p></li>
+<li><p><strong>margin</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.10)"><em>float</em></a>) – margin <span class="math notranslate nohighlight">\(\gamma\)</span>. Default: 1</p></li>
+<li><p><strong>reduction</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.10)"><em>str</em></a><em>, </em><em>optional</em>) – Specifies the reduction to apply to the output:
+<code class="docutils literal notranslate"><span class="pre">'none'</span></code> | <code class="docutils literal notranslate"><span class="pre">'mean'</span></code> | <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>. <code class="docutils literal notranslate"><span class="pre">'none'</span></code>: no reduction will be applied,
+<code class="docutils literal notranslate"><span class="pre">'mean'</span></code>: the sum of the output will be divided by the number of
+elements in the output, <code class="docutils literal notranslate"><span class="pre">'sum'</span></code>: the output will be summed. Default: <code class="docutils literal notranslate"><span class="pre">'mean'</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y_s: logits output <span class="math notranslate nohighlight">\(y^s\)</span> by the main regressor on the source domain</p></li>
+<li><p>y_s_adv: logits output <span class="math notranslate nohighlight">\(y^s\)</span> by the adversarial regressor on the source domain</p></li>
+<li><p>y_t: logits output <span class="math notranslate nohighlight">\(y^t\)</span> by the main regressor on the target domain</p></li>
+<li><p>y_t_adv: logits output <span class="math notranslate nohighlight">\(y_{adv}^t\)</span> by the adversarial regressor on the target domain</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>Inputs: <span class="math notranslate nohighlight">\((minibatch, F)\)</span> where F = number of factors, or <span class="math notranslate nohighlight">\((minibatch, F, d_1, d_2, ..., d_K)\)</span>
+with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of <cite>K</cite>-dimensional loss.</p></li>
+<li><p>Output: scalar. The same size as the target: <span class="math notranslate nohighlight">\((minibatch)\)</span>, or
+<span class="math notranslate nohighlight">\((minibatch, d_1, d_2, ..., d_K)\)</span> with <span class="math notranslate nohighlight">\(K \geq 1\)</span> in the case of K-dimensional loss.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">num_outputs</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">RegressionMarginDisparityDiscrepancy</span><span class="p">(</span><span class="n">margin</span><span class="o">=</span><span class="mf">4.</span><span class="p">,</span> <span class="n">loss_function</span><span class="o">=</span><span class="n">F</span><span class="o">.</span><span class="n">l1_loss</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># adversarial output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t_adv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_outputs</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t</span><span class="p">,</span> <span class="n">y_t_adv</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.mdd.ImageRegressor">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.mdd.</code><code class="sig-name descname">ImageRegressor</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">num_factors</em>, <em class="sig-param">bottleneck=None</em>, <em class="sig-param">head=None</em>, <em class="sig-param">adv_head=None</em>, <em class="sig-param">bottleneck_dim=1024</em>, <em class="sig-param">width=1024</em>, <em class="sig-param">finetune=True</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/mdd.html#ImageRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.mdd.ImageRegressor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regressor for MDD.</p>
+<p>Regressor for MDD has one backbone, one bottleneck, while two regressor heads.
+The first regressor head is used for final predictions.
+The adversarial regressor head is only used when calculating MarginDisparityDiscrepancy.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Any backbone to extract 1-d features from data</p></li>
+<li><p><strong>num_factors</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of factors</p></li>
+<li><p><strong>bottleneck_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the bottleneck layer. Default: 1024</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a><em>, </em><em>optional</em>) – Feature dimension of the classifier head. Default: 1024</p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use 10x smaller learning rate in the backbone. Default: True</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (Tensor): input data</p></li>
+</ul>
+</dd>
+<dt>Outputs: (outputs, outputs_adv)</dt><dd><ul class="simple">
+<li><p>outputs: outputs by the main regressor</p></li>
+<li><p>outputs_adv: outputs by the adversarial regressor</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>x: <span class="math notranslate nohighlight">\((minibatch, *)\)</span>, same shape as the input of the <cite>backbone</cite>.</p></li>
+<li><p>outputs, outputs_adv: <span class="math notranslate nohighlight">\((minibatch, F)\)</span>, where F means the number of factors.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to call function <cite>step()</cite> after function <cite>forward()</cite> <strong>during training phase</strong>! For instance,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># x is inputs, regressor is an ImageRegressor</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outputs</span><span class="p">,</span> <span class="n">outputs_adv</span> <span class="o">=</span> <span class="n">regressor</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">regressor</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="regda-regressive-domain-adaptation">
+<span id="regda"></span><h2>RegDA: Regressive Domain Adaptation<a class="headerlink" href="#regda-regressive-domain-adaptation" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="tllib.alignment.regda.PseudoLabelGenerator2d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.regda.</code><code class="sig-name descname">PseudoLabelGenerator2d</code><span class="sig-paren">(</span><em class="sig-param">num_keypoints</em>, <em class="sig-param">height=64</em>, <em class="sig-param">width=64</em>, <em class="sig-param">sigma=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/regda.html#PseudoLabelGenerator2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.regda.PseudoLabelGenerator2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate ground truth heatmap and ground false heatmap from a prediction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_keypoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of keypoints</p></li>
+<li><p><strong>height</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – height of the heatmap. Default: 64</p></li>
+<li><p><strong>width</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – width of the heatmap. Default: 64</p></li>
+<li><p><strong>sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – sigma parameter when generate the heatmap. Default: 2</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y: predicted heatmap</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>ground_truth: heatmap conforming to Gaussian distribution</p></li>
+<li><p>ground_false: ground false heatmap</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>y: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span> where K means the number of keypoints,
+H and W is the height and width of the heatmap respectively.</p></li>
+<li><p>ground_truth: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span></p></li>
+<li><p>ground_false: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.regda.RegressionDisparity">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.regda.</code><code class="sig-name descname">RegressionDisparity</code><span class="sig-paren">(</span><em class="sig-param">pseudo_label_generator</em>, <em class="sig-param">criterion</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/regda.html#RegressionDisparity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.regda.RegressionDisparity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Regression Disparity proposed by <a class="reference external" href="https://arxiv.org/abs/2103.06175">Regressive Domain Adaptation for Unsupervised Keypoint Detection (CVPR 2021)</a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pseudo_label_generator</strong> (<a class="reference internal" href="#tllib.alignment.regda.PseudoLabelGenerator2d" title="tllib.alignment.regda.PseudoLabelGenerator2d"><em>PseudoLabelGenerator2d</em></a>) – generate ground truth heatmap and ground false heatmap
+from a prediction.</p></li>
+<li><p><strong>criterion</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – the loss function to calculate distance between two predictions.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>y: output by the main head</p></li>
+<li><p>y_adv: output by the adversarial head</p></li>
+<li><p>weight (optional): instance weights</p></li>
+<li><p>mode (str): whether minimize the disparity or maximize the disparity. Choices includes <code class="docutils literal notranslate"><span class="pre">min</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>.
+Default: <code class="docutils literal notranslate"><span class="pre">min</span></code>.</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>y: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span> where K means the number of keypoints,
+H and W is the height and width of the heatmap respectively.</p></li>
+<li><p>y_adv: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span></p></li>
+<li><p>weight: <span class="math notranslate nohighlight">\((minibatch, K)\)</span>.</p></li>
+<li><p>Output: depends on the <code class="docutils literal notranslate"><span class="pre">criterion</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">num_keypoints</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">H</span> <span class="o">=</span> <span class="n">W</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pseudo_label_generator</span> <span class="o">=</span> <span class="n">PseudoLabelGenerator2d</span><span class="p">(</span><span class="n">num_keypoints</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">tllibvision.models.keypoint_detection.loss</span> <span class="kn">import</span> <span class="n">JointsKLLoss</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loss</span> <span class="o">=</span> <span class="n">RegressionDisparity</span><span class="p">(</span><span class="n">pseudo_label_generator</span><span class="p">,</span> <span class="n">JointsKLLoss</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_keypoints</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_keypoints</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># adversarial output from source domain and target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_s_adv</span><span class="p">,</span> <span class="n">y_t_adv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_keypoints</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_keypoints</span><span class="p">,</span> <span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># minimize regression disparity on source domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_s</span><span class="p">,</span> <span class="n">y_s_adv</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># maximize regression disparity on target domain</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">output</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">y_t</span><span class="p">,</span> <span class="n">y_t_adv</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;max&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="class">
+<dt id="tllib.alignment.regda.PoseResNet2d">
+<em class="property">class </em><code class="sig-prename descclassname">tllib.alignment.regda.</code><code class="sig-name descname">PoseResNet2d</code><span class="sig-paren">(</span><em class="sig-param">backbone</em>, <em class="sig-param">upsampling</em>, <em class="sig-param">feature_dim</em>, <em class="sig-param">num_keypoints</em>, <em class="sig-param">gl=None</em>, <em class="sig-param">finetune=True</em>, <em class="sig-param">num_head_layers=2</em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/tllib/alignment/regda.html#PoseResNet2d"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#tllib.alignment.regda.PoseResNet2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pose ResNet for RegDA has one backbone, one upsampling, while two regression heads.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>backbone</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Backbone to extract 2-d features from data</p></li>
+<li><p><strong>upsampling</strong> (<a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Module.html#torch.nn.Module" title="(in PyTorch v1.12)"><em>torch.nn.Module</em></a>) – Layer to upsample image feature to heatmap size</p></li>
+<li><p><strong>feature_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – The dimension of the features from upsampling layer.</p></li>
+<li><p><strong>num_keypoints</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of keypoints</p></li>
+<li><p><strong>gl</strong> (<em>WarmStartGradientLayer</em>) – </p></li>
+<li><p><strong>finetune</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.10)"><em>bool</em></a><em>, </em><em>optional</em>) – Whether use 10x smaller learning rate in the backbone. Default: True</p></li>
+<li><p><strong>num_head_layers</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.10)"><em>int</em></a>) – Number of head layers. Default: 2</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Inputs:</dt><dd><ul class="simple">
+<li><p>x (tensor): input data</p></li>
+</ul>
+</dd>
+<dt>Outputs:</dt><dd><ul class="simple">
+<li><p>outputs: logits outputs by the main regressor</p></li>
+<li><p>outputs_adv: logits outputs by the adversarial regressor</p></li>
+</ul>
+</dd>
+<dt>Shape:</dt><dd><ul class="simple">
+<li><p>x: <span class="math notranslate nohighlight">\((minibatch, *)\)</span>, same shape as the input of the <cite>backbone</cite>.</p></li>
+<li><p>outputs, outputs_adv: <span class="math notranslate nohighlight">\((minibatch, K, H, W)\)</span>, where K means the number of keypoints.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember to call function <cite>step()</cite> after function <cite>forward()</cite> <strong>during training phase</strong>! For instance,</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># x is inputs, model is an PoseResNet</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">outputs</span><span class="p">,</span> <span class="n">outputs_adv</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../translation.html" class="btn btn-neutral float-right" title="Domain Translation" accesskey="n" rel="next">Next <img src="../../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="domain_adversarial.html" class="btn btn-neutral" title="Domain Adversarial Training" accesskey="p" rel="prev"><img src="../../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright THUML Group.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://github.com/pytorch/pytorch_sphinx_theme">PyTorch Sphinx Theme</a>.
+      </div>
+      <!-- <div>
+        <a href="https://beian.miit.gov.cn/">京ICP备16023543号-1</a>
+      </div> -->
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Hypothesis Adversarial Learning</a><ul>
+<li><a class="reference internal" href="#mcd-maximum-classifier-discrepancy">MCD: Maximum Classifier Discrepancy</a></li>
+<li><a class="reference internal" href="#mdd-margin-disparity-discrepancy">MDD: Margin Disparity Discrepancy</a></li>
+<li><a class="reference internal" href="#regda-regressive-domain-adaptation">RegDA: Regressive Domain Adaptation</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+         <script src="../../_static/jquery.js"></script>
+         <script src="../../_static/underscore.js"></script>
+         <script src="../../_static/doctools.js"></script>
+         <script src="../../_static/language_data.js"></script>
+         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+  <!-- Begin Footer -->
+
+  <div class="container-fluid docs-tutorials-resources" id="docs-tutorials-resources">
+    <div class="container">
+      <div class="row">
+        <!-- <div class="col-md-4 text-center">
+          <h2>Survey</h2>
+          <p>Access comprehensive survey for transfer learning</p>
+          <a class="with-right-arrow" href="">View Survey</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Papers</h2>
+          <p>Access comprehensive paper list for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Paper List</a>
+        </div> -->
+
+        <div class="col-md-4 text-center">
+          <h2>Docs</h2>
+          <p>Access comprehensive documentation for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="transfer.thuml.ai">View Docs</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Tutorials</h2>
+          <p>Get started for Transfer Learning Library</p>
+          <a class="with-right-arrow" href="http://microhhh.com/get_started/installing.html">Get Started</a>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <h2>Paper List</h2>
+          <p>Get started for transfer learning</p>
+          <a class="with-right-arrow" href="https://github.com/thuml/Awesome-Transferability-in-Deep-Learning">View Resources</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="cookie-banner-wrapper">
+  <div class="container">
+    <p class="gdpr-notice">To analyze traffic and optimize your experience, we serve cookies on this site. By clicking or navigating, you agree to allow our usage of cookies. As the current maintainers of this site, Facebook’s Cookies Policy applies. Learn more, including about available controls: <a href="https://www.facebook.com/policies/cookies/">Cookies Policy</a>.</p>
+    <img class="close-button" src="../../_static/images/pytorch-x.svg">
+  </div>
+</div>
+
+  <!-- End Footer -->
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="transfer.thuml.ai" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="http://microhhh.com/get_started/installing.html">Get Started</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/ecosystem">Ecosystem</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/mobile">Mobile</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/hub">PyTorch Hub</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/blog/">Blog</a>
+          </li>
+
+          <li>
+            <a href="https://pytorch.org/tutorials">Tutorials</a>
+          </li>
+
+          <li class="resources-mobile-menu-title">
+            Docs
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="transfer.thuml.ai">PyTorch</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/audio/stable/index.html">torchaudio</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/text/stable/index.html">torchtext</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/vision/stable/index.html">torchvision</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/elastic/">TorchElastic</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/serve/">TorchServe</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/xla">PyTorch on XLA Devices</a>
+            </li>
+          </ul>
+
+          <li class="resources-mobile-menu-title">
+            Resources
+          </li>
+
+          <ul class="resources-mobile-menu-items">
+            <li>
+              <a href="https://pytorch.org/resources">Developer Resources</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/hub">Models (Beta)</a>
+            </li>
+
+            <li>
+              <a href="https://pytorch.org/#community-module">Community</a>
+            </li>
+
+            <li>
+              <a href="https://discuss.pytorch.org/">Forums</a>
+            </li>
+          </ul>
+
+          <li>
+            <a href="https://github.com/thuml/Transfer-Learning-Library/">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>
